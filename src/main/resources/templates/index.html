@@ -1,19 +1,111 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+
+    <style>
+        #wrapper{
+            margin: 0 auto;
+            width: 1000px;
+            height: 800px;
+            background: white;
+            padding: 30px;
+        }
+        body{
+            background: #af2b31;
+        }
+        td{
+            height: 100px;
+        }
+        thead td{
+            height: 30px;
+            background: #af2b31;
+            color: white;
+            font-weight: bold;
+
+        }
+        thead{
+            border: 0px;
+        }
+        tbody tr td{
+            border-left: 1px solid #cbcbcb;
+            border-right: 1px solid #cbcbcb;
+        }
+        
+
+
+
+
+    </style>
 </head>
 <body>
 
-<div class="wrapper">
-    <header>
-        <a href="login.html">Login</a>
+<div id="wrapper">
+
+<div class="table-responsive">
+    <table class="tablehead">
+
+        <tr>
+            <td><p><strong>date</strong></p></td>
+            <td><p>Monday</p></td>
+            <td><p>Monday</p></td>
+            <td><p>Monday</p></td>
+            <td><p>Monday</p></td>
+            <td><p>Monday</p></td>
+            <td><p>Monday</p></td>
+
+        </tr>
+    </table>
+
+    <table class="table">
+
+        <tr>
+
+            <td>
+                <p><strong>date</strong></p>
+                <p>name+time</p>
+            </td>
 
 
-    </header>
+            <td>
+                <p><strong>date</strong></p>
+                <p>name+time</p>
+            </td>
+            <td>
+                <p><strong>date</strong></p>
+                <p>name+time</p>
+            </td>
+            <td>
+                <p><strong>date</strong></p>
+                <p>name+time</p>
+            </td>
+            <td>
+                <p><strong>date</strong></p>
+                <p>name+time</p>
+            </td>
+            <td>
+                <p><strong>date</strong></p>
+                <p>name+time</p>
+            </td>
+            <td>
+                <p><strong>date</strong></p>
+                <p>name+time</p>
+            </td>
+
+        </tr>
 
 
+
+
+        <tr><td>8</td><td>9</td><td>10</td><td>11</td><td>5</td><td>6</td><td>7</td></tr>
+        <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+        <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+
+    </table>
+</div>
 
 </div>
 
