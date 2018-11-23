@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
-    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
 
     <style>
+        *{
+            font-family: arial;
+        }
+
         #wrapper{
             margin: 0 auto;
             width: 1000px;
@@ -17,23 +21,59 @@
         body{
             background: #af2b31;
         }
-        td{
-            height: 100px;
+        table{
+            border-collapse: collapse;
+            width: 100%;
         }
-        thead td{
+        table, th, td{
+            border: 1px solid #af2b31;
+        }
+        td{
+            height: 120px;
+            vertical-align: top;
+            padding: 10px;
+            width: 14%;
+        }
+        .tablehead td{
             height: 30px;
             background: #af2b31;
             color: white;
             font-weight: bold;
+        }
+        .date{
+
+            font-weight: bold;
+        }
+        p{
+            margin: 0;
+            padding: 0;
+        }
+
+        .shift{
+            background: #d0cfff;
+            margin-bottom: 5px;
 
         }
-        thead{
-            border: 0px;
+
+        .time{
+            text-align: right;
+            float:right;
         }
-        tbody tr td{
-            border-left: 1px solid #cbcbcb;
-            border-right: 1px solid #cbcbcb;
+        .name{
+            float:left;
+
         }
+        .floatclear{
+            clear: both;
+        }
+        .noschedule{
+            background: #ffa9a9;
+        }
+        .dummyrow{
+            font-weight: bold;
+        }
+
+
         
 
 
@@ -46,53 +86,57 @@
 <div id="wrapper">
 
 <div class="table-responsive">
-    <table class="tablehead">
 
-        <tr>
-            <td><p><strong>date</strong></p></td>
-            <td><p>Monday</p></td>
-            <td><p>Monday</p></td>
-            <td><p>Monday</p></td>
-            <td><p>Monday</p></td>
-            <td><p>Monday</p></td>
-            <td><p>Monday</p></td>
 
-        </tr>
-    </table>
 
     <table class="table">
 
+        <tr class="tablehead">
+            <td><p>Monday</p></td>
+            <td><p>Tuesday</p></td>
+            <td><p>Wednesday</p></td>
+            <td><p>Thursday</p></td>
+            <td><p>Friday</p></td>
+            <td><p>Saturday</p></td>
+            <td><p>Sunday</p></td>
+
+        </tr>
+
         <tr>
 
             <td>
-                <p><strong>date</strong></p>
-                <p>name+time</p>
+                <p class="date">1</p>
+                <div class="shift"><p class="name">Peter </p>   <p class="time">16 - 22</p> <p class="floatclear"></p></div>
+                <div class="shift"><p class="name">Alice </p> <p class="time">20 - 24</p> <p class="floatclear"></p></div>
             </td>
 
 
-            <td>
-                <p><strong>date</strong></p>
-                <p>name+time</p>
+            <td class="noschedule">
+                <p class="date">2</p>
+                <div class="shift"></div>
+            </td>
+            <td class="noschedule">
+                <p class="date">3</p>
+
             </td>
             <td>
-                <p><strong>date</strong></p>
-                <p>name+time</p>
+                <p class="date">4</p>
+                <div class="shift"><p class="name">Anders </p>   <p class="time">16 - 22</p> <p class="floatclear"></p></div>
+                <div class="shift"><p class="name">David </p> <p class="time">21 - 02</p> <p class="floatclear"></p></div>
             </td>
             <td>
-                <p><strong>date</strong></p>
-                <p>name+time</p>
+                <p class="date">5</p>
+                <div class="shift"><p class="name">Frank </p>   <p class="time">16 - 22</p> <p class="floatclear"></p></div>
+                <div class="shift"><p class="name">Alice </p> <p class="time">21 - 02</p> <p class="floatclear"></p></div>
+                <div class="shift"><p class="name">David </p> <p class="time">21 - 02</p> <p class="floatclear"></p></div>
+            </td>
+            <td class="noschedule">
+                <p class="date">6</p>
+
             </td>
             <td>
-                <p><strong>date</strong></p>
-                <p>name+time</p>
-            </td>
-            <td>
-                <p><strong>date</strong></p>
-                <p>name+time</p>
-            </td>
-            <td>
-                <p><strong>date</strong></p>
-                <p>name+time</p>
+                <p class="date">7</p>
+                <div class="shift"><p class="name">Frank </p>   <p class="time">16 - 22</p> <p class="floatclear"></p></div>
             </td>
 
         </tr>
@@ -100,9 +144,9 @@
 
 
 
-        <tr><td>8</td><td>9</td><td>10</td><td>11</td><td>5</td><td>6</td><td>7</td></tr>
-        <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
-        <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+        <tr class="dummyrow"><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td></tr>
+        <tr class="dummyrow"><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td></tr>
+        <tr class="dummyrow"><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td></tr>
 
     </table>
 </div>
