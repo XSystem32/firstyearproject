@@ -10,26 +10,45 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+import java.util.logging.Logger;
+
 @Controller
 public class SalesOverviewController {
 
+    @Autowired
+    SalesOverviewService salesOverviewService;
 
-    @GetMapping("/create.html")
-    public String create(Model model, Model genreDisplay, Model actorDisplay) {
-        LOGGER.info("create was called... ");
-        model.addAttribute("salesoverview", new Salesoverview());
-        genreDisplay.addAttribute("genres", genreController.genreService.getGenres());
-        actorDisplay.addAttribute("actors", actorController.actorService.getActors());
-        return CREATE;
+    private static final Logger LOGGER = Logger.getLogger(SalesOverviewController.class.getName());
+
+    private String INDEX = "index.html";
+    private String CREATEOVERVIEW = "createoverview.html";
+    private String SALESOVERVIEW = "salesoverview.html";
+
+    @GetMapping("/index.html")
+    public String index (Model model) {
+        LOGGER.info("index was called");
+        return INDEX;
     }
 
-    @RequestMapping("/saveMovie")
-    public String saveMovie(@ModelAttribute Movie movie) {
-        LOGGER.info("saveMovie was called... ");
-        System.out.println(movie);
-        movieService.createMovie(movie);
-        return REDIRECT_INDEX;
+    @GetMapping("/salesoverview.html")
+    public String getSALESOVERVIEW (Model model) {
+        LOGGER.info("index was called");
+        return SALESOVERVIEW;
+    }
 
+    @GetMapping("/createoverview.html")
+    public String create(Model model) {
+        LOGGER.info("create was called... ");
+        model.addAttribute("salesoverview", new SalesOverview());
+        return CREATEOVERVIEW;
+    }
+
+    @RequestMapping("/saveSalesOverview")
+    public String saveSalesOverview(@ModelAttribute SalesOverview salesOverview) {
+        LOGGER.info("saveSalesOverview was called... ");
+        salesOverviewService.createSalesOverview(salesOverview);
+        return SALESOVERVIEW;
     }
 
 }

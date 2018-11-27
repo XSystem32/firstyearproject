@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Createoverview</title>
+
+    <style>
+
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+    </style>
+
 </head>
 <body>
 
@@ -11,18 +20,18 @@
     <form method="post" action="#" th:action="@{/saveSalesOverview}" th:object="${SalesOverview}"  >
 
         <p>Cash</p>
-        <input type="text" min="0" max="1000000" step="1" value="0" th:field="*{cash}" />
+        <input type="text" min="0" max="1000000" step="1" value="" th:field="*{cash}" />
 
         <p>Credit</p>
-        <input type="text" min="0" max="1000000" step="1" value="0" th:field="*{credit}" />
+        <input type="text" min="0" max="1000000" step="1" value="" th:field="*{credit}" />
 
         <p>Till</p>
-        <input type="text" min="0" max="1000000" step="1" value="0" th:field="*{till}" />
+        <input type="text" min="0" max="1000000" step="1" value="" th:field="*{till}" />
 
         <p>Vault</p>
-        <input type="text" min="0" max="1000000" step="1" value="0" th:field="*{vault}" />
+        <input type="text" min="0" max="1000000" step="1" value="" th:field="*{vault}" />
 
-
+        <input type="submit" value="Submit">
 
 </div>
 
