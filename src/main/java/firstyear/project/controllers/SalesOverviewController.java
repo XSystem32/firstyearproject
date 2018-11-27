@@ -7,22 +7,29 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class SalesOverviewController {
 
-    @Autowired
-    SalesOverviewService salesOverviewService;
 
-
-
-    private final String INDEX = "index";
-
-    @GetMapping("/")
-    public String index(Model model){
-       return INDEX;
+    @GetMapping("/create.html")
+    public String create(Model model, Model genreDisplay, Model actorDisplay) {
+        LOGGER.info("create was called... ");
+        model.addAttribute("salesoverview", new Salesoverview());
+        genreDisplay.addAttribute("genres", genreController.genreService.getGenres());
+        actorDisplay.addAttribute("actors", actorController.actorService.getActors());
+        return CREATE;
     }
+
+    @RequestMapping("/saveMovie")
+    public String saveMovie(@ModelAttribute Movie movie) {
+        LOGGER.info("saveMovie was called... ");
+        System.out.println(movie);
+        movieService.createMovie(movie);
+        return REDIRECT_INDEX;
+
+    }
+
 }
