@@ -11,11 +11,6 @@ import java.util.List;
 public class CalendarController {
     private final String INDEX = "index";
 
-    @GetMapping("/")
-    public String index(Model model){
-        return INDEX;
 
-
-    }
 
 }

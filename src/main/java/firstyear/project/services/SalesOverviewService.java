@@ -2,14 +2,21 @@ package firstyear.project.services;
 
 import firstyear.project.models.SalesOverview;
 import firstyear.project.repositories.SalesOverviewRepo;
+import firstyear.project.repositories.SalesOverviewRepoImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SalesOverviewService implements SalesOverviewRepo {
 
+    @Autowired
+    SalesOverviewRepoImpl salesOverviewRepo;
+
     @Override
     public boolean createSalesOverview(SalesOverview salesOverview) {
-        return false;
+        salesOverviewRepo.createSalesOverview(salesOverview);
+        return true;
+
     }
 
     @Override
