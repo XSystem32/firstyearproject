@@ -19,7 +19,6 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
             System.out.println(stringInsert);
             statement.execute(stringInsert);
 
-
             closeConnection(connection);
             return true;
         } catch (Exception e) { e.printStackTrace();}
@@ -28,6 +27,15 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
 
     @Override
     public boolean deleteSalesOverview(int index) {
+        try {
+            connection = getConnection();
+            Statement statement = connection.createStatement();
+            String stringDelete = "DELETE FROM salesoverviews  WHERE salesOverviewId =" + index + ";";
+            statement.execute(stringDelete);
+
+            connection.close();
+            return true;
+        } catch (Exception e) { e.printStackTrace();}
         return false;
     }
 
