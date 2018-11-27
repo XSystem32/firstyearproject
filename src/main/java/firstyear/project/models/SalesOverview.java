@@ -10,18 +10,19 @@ public class SalesOverview {
     private double cash;
     private double till;
     private double vault;
-
+    private String comment;
 
     public SalesOverview() {
     }
 
-    public SalesOverview(int id, Date date, double credit, double cash, double till, double vault) {
+    public SalesOverview(int id, Date date, double credit, double cash, double till, double vault, String comment) {
         this.id = id;
         this.date = date;
         this.credit = credit;
         this.cash = cash;
         this.till = till;
         this.vault = vault;
+        this.comment = comment;
     }
 
     public int getId() {
@@ -43,6 +44,7 @@ public class SalesOverview {
     public double getCredit() {
         return credit;
     }
+
 
     public void setCredit(double credit) {
         this.credit = credit;
@@ -72,6 +74,14 @@ public class SalesOverview {
         this.vault = vault;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     @Override
     public String toString() {
         return "SalesOverview{" +
@@ -81,6 +91,7 @@ public class SalesOverview {
                 ", cash=" + cash +
                 ", till=" + till +
                 ", vault=" + vault +
+                ", comment='" + comment + '\'' +
                 '}';
     }
 }
