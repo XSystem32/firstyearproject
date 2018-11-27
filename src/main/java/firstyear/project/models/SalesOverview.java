@@ -1,6 +1,7 @@
 package firstyear.project.models;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SalesOverview {
@@ -80,6 +81,15 @@ public class SalesOverview {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+    public String getDateString(){
+        String dateString = "";
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+        dateString = formatter.format(date);
+
+        return dateString;
     }
 
     @Override

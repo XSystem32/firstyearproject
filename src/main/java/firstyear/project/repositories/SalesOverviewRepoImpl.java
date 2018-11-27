@@ -14,8 +14,9 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
             connection = getConnection();
             Statement statement = connection.createStatement();
 
-            String stringInsert = "INSERT INTO salesOverviews VALUE (default, '" + so.getDate() + "', " + so.getCredit() + ", "+ so.getCash() +","+ so.getTill()+","+ so.getVault()+","+so.getComment()+"); ";
+            String stringInsert = "INSERT INTO charlie.saleoverviews VALUE (default, '" + so.getDateString() + "', " + so.getCredit() + ", "+ so.getCash() +","+ so.getTill()+","+ so.getVault()+",'"+so.getComment()+"'); ";
 
+            System.out.println(stringInsert);
             statement.execute(stringInsert);
 
 

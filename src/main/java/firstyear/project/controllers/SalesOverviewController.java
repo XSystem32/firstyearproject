@@ -1,18 +1,21 @@
 package firstyear.project.controllers;
 
+import firstyear.project.models.SalesOverview;
+import firstyear.project.services.SalesOverviewService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 
 @Controller
 public class SalesOverviewController {
 
 
     @GetMapping("/create.html")
-    public String create(Model model, Model genreDisplay, Model actorDisplay){
+    public String create(Model model, Model genreDisplay, Model actorDisplay) {
         LOGGER.info("create was called... ");
         model.addAttribute("salesoverview", new Salesoverview());
         genreDisplay.addAttribute("genres", genreController.genreService.getGenres());
@@ -21,7 +24,7 @@ public class SalesOverviewController {
     }
 
     @RequestMapping("/saveMovie")
-    public String saveMovie(@ModelAttribute Movie movie){
+    public String saveMovie(@ModelAttribute Movie movie) {
         LOGGER.info("saveMovie was called... ");
         System.out.println(movie);
         movieService.createMovie(movie);
@@ -29,3 +32,4 @@ public class SalesOverviewController {
 
     }
 
+}
