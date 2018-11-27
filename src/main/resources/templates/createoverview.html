@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Createoverview</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <form method="post" action="#" th:action="@{/saveSalesOverview}" th:object="${SalesOverview}"  >
+
+        <p>Cash</p>
+        <input type="text" min="0" max="1000000" step="1" value="0" th:field="*{cash}" />
+
+        <p>Credit</p>
+        <input type="text" min="0" max="1000000" step="1" value="0" th:field="*{credit}" />
+
+        <p>Till</p>
+        <input type="text" min="0" max="1000000" step="1" value="0" th:field="*{till}" />
+
+        <p>Vault</p>
+        <input type="text" min="0" max="1000000" step="1" value="0" th:field="*{vault}" />
+
+
+
+</div>
+
+</body>
+</html>
