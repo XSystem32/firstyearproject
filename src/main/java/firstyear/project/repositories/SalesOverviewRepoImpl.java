@@ -9,9 +9,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Repository
 public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
+
+    @Override
+    public List<SalesOverview> getSalesOverviews(Date start, Date end) {
+        return null;
+    }
 
     @Override
     public boolean createSalesOverview(SalesOverview so) {
