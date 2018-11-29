@@ -33,7 +33,6 @@ public class SalesOverviewController {
     @GetMapping("/test")
     public String test (Model model){
         LOGGER.info("test was called");
-        salesOverviewService.getSalesOverview(1);
 
         return INDEX;
     }
