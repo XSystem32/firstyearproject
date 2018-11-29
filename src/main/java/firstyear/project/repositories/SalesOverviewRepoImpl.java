@@ -51,11 +51,17 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
     }
 
     @Override
-    public boolean updateSalesOverview(SalesOverview so) {
+    public boolean updateSalesOverview(int index, SalesOverview so) {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringUpdate = "UPDATE salesoverviews SET date='"+ so.getDateString() +"', credit='" + so.getCredit() +"', cash='"+ so.getCash()+ "',till='"+ so.getTill()+"',+ vault ='" + so.getVault() +"', comment =" + so.getComment();
+            String stringUpdate = "UPDATE salesoverviews SET date='"+ so.getDateString() +"" +
+                    "', credit='" + so.getCredit() +"" +
+                    "', cash='"+ so.getCash()+ "" +
+                    "',till='"+ so.getTill()+"" +
+                    "', vault ='" + so.getVault() +"" +
+                    "', comment ='" + so.getComment() + "'" +
+                    " WHERE salesOverviewId = "+ index +";";
             System.out.println(stringUpdate);
             statement.execute(stringUpdate);
 

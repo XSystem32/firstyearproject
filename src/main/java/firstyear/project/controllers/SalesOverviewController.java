@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -33,7 +34,7 @@ public class SalesOverviewController {
     @GetMapping("/test")
     public String test (Model model){
         LOGGER.info("test was called");
-        salesOverviewService.getSalesOverview(1);
+        salesOverviewService.updateSalesOverview(1, new SalesOverview(1, new Date(), 10.1,10.2,3.3,3.2,"kommer" ) );
 
         return INDEX;
     }
