@@ -60,16 +60,7 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringGet = "SELECT " +
-                    "       salesOverviewId, \n" +
-                    "       date, \n" +
-                    "       credit, \n" +
-                    "       cash, \n" +
-                    "       till, \n" +
-                    "       vault, \n" +
-                    "       comment" +
-                    "FROM salesoverviews \n" +
-                    "WHERE salesOverviewId ="+ index +";";
+            String stringGet = "SELECT * FROM charlie.salesoverviews WHERE salesOverviewId ="+ index +";";
 
             statement.executeQuery(stringGet);
             ResultSet result = statement.getResultSet();
@@ -80,17 +71,22 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
             so.setId(result.getInt("salesOverviewId"));
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String dateString = dateFormat.format(new Date());
-            //Date date = dateFormat.parse(result.getString("date"));
+
+
+            Date tempDate = result.getDate("date");
+
+            String dateString = dateFormat.format(tempDate);
+
+            //so.setDate();
+            so.setCredit(result.getDouble("credit"));
+            so.setCash(result.getDouble("cash"));
+            so.setTill(result.getDouble("till"));
+            so.setVault(result.getDouble("vault"));
+            so.setComment(result.getString("comment"));
 
 
 
 
-//            movie.setMovie_id(result.getInt("movie_id"));
-  //          movie.getGenre().setGenre_id(result.getInt("genre_id"));
-    //        movie.getGenre().setGenre(result.getString("genre"));
-      //      movie.setProductionYear(result.getInt("productionYear"));
-        //    movie.setTitle(result.getString("title"));
 
             return so;
 

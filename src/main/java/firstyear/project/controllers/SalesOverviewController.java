@@ -30,6 +30,13 @@ public class SalesOverviewController {
         LOGGER.info("index was called");
         return INDEX;
     }
+    @GetMapping("/test")
+    public String test (Model model){
+        LOGGER.info("test was called");
+        salesOverviewService.getSalesOverview(1);
+
+        return INDEX;
+    }
 
     @GetMapping("/salesoverview.html")
     public String getSALESOVERVIEW (Model model) {

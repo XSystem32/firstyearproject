@@ -31,6 +31,6 @@ public class SalesOverviewService implements SalesOverviewRepo {
 
     @Override
     public SalesOverview getSalesOverview(int index) {
-        return null;
+        return salesOverviewRepo.getSalesOverview(index);
     }
 }
