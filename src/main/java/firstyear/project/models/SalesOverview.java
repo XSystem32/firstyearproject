@@ -14,6 +14,7 @@ public class SalesOverview {
     private String comment;
 
     public SalesOverview() {
+        this.date = new Date();
     }
 
     public SalesOverview(int id, Date date, double credit, double cash, double till, double vault, String comment) {
