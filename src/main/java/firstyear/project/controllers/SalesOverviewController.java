@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -33,6 +34,7 @@ public class SalesOverviewController {
     @GetMapping("/test")
     public String test (Model model){
         LOGGER.info("test was called");
+
 
         return INDEX;
     }

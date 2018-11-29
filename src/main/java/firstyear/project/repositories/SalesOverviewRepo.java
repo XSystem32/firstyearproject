@@ -9,6 +9,6 @@ public interface SalesOverviewRepo {
 
     boolean createSalesOverview(SalesOverview salesOverview);
     boolean deleteSalesOverview(int index);
-    boolean updateSalesOverview(SalesOverview salesOverview);
+    boolean updateSalesOverview(int index, SalesOverview salesOverview);
     SalesOverview getSalesOverview(int index);
 }

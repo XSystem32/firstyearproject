@@ -24,9 +24,9 @@ public class SalesOverviewService implements SalesOverviewRepo {
         return false;
     }
 
-    @Override
-    public boolean updateSalesOverview(SalesOverview salesOverview) {
-        return false;
+    public boolean updateSalesOverview(int index, SalesOverview salesOverview) {
+        salesOverviewRepo.updateSalesOverview(index, salesOverview);
+        return true;
     }
 
     @Override
