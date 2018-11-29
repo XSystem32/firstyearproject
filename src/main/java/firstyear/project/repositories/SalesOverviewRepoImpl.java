@@ -94,15 +94,7 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
             SalesOverview so = new SalesOverview();
 
             so.setId(result.getInt("salesOverviewId"));
-
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-
-            Date tempDate = result.getDate("date");
-
-            String dateString = dateFormat.format(tempDate);
-
-            //so.setDate();
+            so.setDate(result.getDate("date"));
             so.setCredit(result.getDouble("credit"));
             so.setCash(result.getDouble("cash"));
             so.setTill(result.getDouble("till"));
