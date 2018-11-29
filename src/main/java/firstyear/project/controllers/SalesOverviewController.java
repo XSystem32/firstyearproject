@@ -46,7 +46,7 @@ public class SalesOverviewController {
     @GetMapping("/createoverview.html")
     public String create(Model model) {
         LOGGER.info("create was called... ");
-        model.addAttribute("salesoverview", new SalesOverview());
+        model.addAttribute("salesoverview", salesOverviewService.getSalesOverview(1));
         return CREATEOVERVIEW;
     }
 
