@@ -26,20 +26,19 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
             System.out.println(stringGet);
             statement.executeQuery(stringGet);
             ResultSet result = statement.getResultSet();
-            result.next();
-
-            SalesOverview so = new SalesOverview();
-
-
-            so.setId(result.getInt("salesOverviewId"));
-            so.setDate(result.getDate("date"));
-            so.setCredit(result.getDouble("credit"));
-            so.setCash(result.getDouble("cash"));
-            so.setTill(result.getDouble("till"));
-            so.setVault(result.getDouble("vault"));
-            so.setComment(result.getString("comment"));
-
-            salesOverviews.add(so);
+            
+            while (result.next()){
+                SalesOverview so = new SalesOverview();
+                so.setId(result.getInt("salesOverviewId"));
+                so.setDate(result.getDate("date"));
+                so.setCredit(result.getDouble("credit"));
+                so.setCash(result.getDouble("cash"));
+                so.setTill(result.getDouble("till"));
+                so.setVault(result.getDouble("vault"));
+                so.setComment(result.getString("comment"));
+                salesOverviews.add(so);
+            }
+            System.out.println(salesOverviews);
 
             return salesOverviews;
 
