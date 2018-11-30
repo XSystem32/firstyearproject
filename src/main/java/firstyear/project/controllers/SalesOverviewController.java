@@ -30,6 +30,13 @@ public class SalesOverviewController {
     private String INDEX = "index.html";
     private String CREATEOVERVIEW = "createoverview.html";
     private String SALESOVERVIEW = "salesoverview.html";
+    private String SALESOVERVIEWS = "salesoverviews.html";
+
+    @GetMapping("/salesoverviews.html")
+    public String overview (Model model) {
+        LOGGER.info("index was called");
+        return SALESOVERVIEWS;
+    }
 
     @GetMapping("/index.html")
     public String index (Model model) {
