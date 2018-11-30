@@ -31,9 +31,11 @@ public class SalesOverviewController {
     public String overview (Model model) {
         LOGGER.info("index was called");
 
-        LocalDate start = LocalDate.ofEpochDay(-30);
         LocalDate end = LocalDate.now();
 
+        LocalDate start = end.minusMonths(1);
+
+        System.out.println(start);
         List<SalesOverview> salesOverviews = salesOverviewService.getSalesOverviews(LocalDate.from(start) ,LocalDate.now());
         model.addAttribute("salesoverviews", salesOverviews);
         return SALESOVERVIEWS;
