@@ -62,7 +62,6 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
             System.out.println(stringInsert);
             statement.execute(stringInsert);
 
-
             return true;
         } catch (Exception e) { e.printStackTrace();} finally {
             closeConnection(connection);

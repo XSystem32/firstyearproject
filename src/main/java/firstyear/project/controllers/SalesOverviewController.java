@@ -39,6 +39,10 @@ public class SalesOverviewController {
     @GetMapping("/test")
     public String test (Model model){
         LOGGER.info("test was called");
+        SalesOverview so = new SalesOverview();
+        so.setComment("/test SO I made to see if this works.");
+
+        salesOverviewService.createSalesOverview(so);
         return INDEX;
     }
 

@@ -91,13 +91,8 @@ public class SalesOverview {
         this.comment = comment;
     }
     public String getDateString(){
-        String dateString = "";
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
-        dateString = formatter.format(date);
-
-        return dateString;
+        return date.toString();
     }
 
     @Override
