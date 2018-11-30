@@ -2,6 +2,7 @@ package firstyear.project.controllers;
 
 import firstyear.project.models.SalesOverview;
 import firstyear.project.services.SalesOverviewService;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Date;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -40,9 +46,16 @@ public class SalesOverviewController {
     }
     @GetMapping("/test")
     public String test (Model model){
+
+        //TODO FIXXXXXXXXX VLC
         LOGGER.info("test was called");
 
 
+        LocalDate start = LocalDate.of(1,1,1);
+
+        LocalDate end = LocalDate.of(2050,11,11);
+
+        salesOverviewService.getSalesOverviews(start, end);
         return INDEX;
     }
 

@@ -8,19 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 import java.util.List;
 
 @Service
 public class SalesOverviewService implements SalesOverviewRepo {
 
-    @Override
-    public List<SalesOverview> getSalesOverviews(Date start, Date end) {
-        return null;
-    }
-
     @Autowired
     SalesOverviewRepoImpl salesOverviewRepo;
+
+    @Override
+    public List<SalesOverview> getSalesOverviews(LocalDate start, LocalDate end) {
+        return salesOverviewRepo.getSalesOverviews(start, end);
+    }
 
     @Override
     public boolean createSalesOverview(SalesOverview salesOverview) {

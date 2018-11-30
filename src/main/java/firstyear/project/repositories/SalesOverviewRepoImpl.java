@@ -1,22 +1,58 @@
 package firstyear.project.repositories;
 
 import firstyear.project.models.SalesOverview;
+import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Repository;
 
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
 
     @Override
-    public List<SalesOverview> getSalesOverviews(Date start, Date end) {
-        return null;
+    public List<SalesOverview> getSalesOverviews(LocalDate start, LocalDate end) {
+        List<SalesOverview> salesOverviews = new ArrayList<>();
+        try {
+            connection = getConnection();
+            Statement statement = connection.createStatement();
+            String stringGet = "SELECT * FROM charlie.salesoverviews WHERE date BETWEEN '" + start + "' AND '" + end +"';";
+
+            System.out.println(stringGet);
+            statement.executeQuery(stringGet);
+            ResultSet result = statement.getResultSet();
+            result.next();
+
+            SalesOverview so = new SalesOverview();
+
+
+            so.setId(result.getInt("salesOverviewId"));
+            so.setDate(result.getDate("date"));
+            so.setCredit(result.getDouble("credit"));
+            so.setCash(result.getDouble("cash"));
+            so.setTill(result.getDouble("till"));
+            so.setVault(result.getDouble("vault"));
+            so.setComment(result.getString("comment"));
+
+            salesOverviews.add(so);
+
+            return salesOverviews;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;} finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     @Override
@@ -30,9 +66,11 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
             System.out.println(stringInsert);
             statement.execute(stringInsert);
 
-            closeConnection(connection);
+
             return true;
-        } catch (Exception e) { e.printStackTrace();}
+        } catch (Exception e) { e.printStackTrace();} finally {
+            closeConnection(connection);
+        }
         return false;
     }
 
@@ -87,7 +125,6 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
 
     @Override
     public SalesOverview getSalesOverview(int index) {
-        //TODO VLC - virker ikke lige nu.
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
@@ -99,6 +136,8 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
 
             SalesOverview so = new SalesOverview();
 
+
+
             so.setId(result.getInt("salesOverviewId"));
             so.setDate(result.getDate("date"));
             so.setCredit(result.getDouble("credit"));
@@ -106,10 +145,6 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
             so.setTill(result.getDouble("till"));
             so.setVault(result.getDouble("vault"));
             so.setComment(result.getString("comment"));
-
-
-
-
 
             return so;
 
