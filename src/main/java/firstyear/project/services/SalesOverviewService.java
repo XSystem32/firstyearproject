@@ -3,9 +3,11 @@ package firstyear.project.services;
 import firstyear.project.models.SalesOverview;
 import firstyear.project.repositories.SalesOverviewRepo;
 import firstyear.project.repositories.SalesOverviewRepoImpl;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -40,5 +42,18 @@ public class SalesOverviewService implements SalesOverviewRepo {
     @Override
     public SalesOverview getSalesOverview(int index) {
         return salesOverviewRepo.getSalesOverview(index);
+    }
+
+
+    public boolean getCsv(LocalDate start, LocalDate end){
+        getSalesOverviews(start, end);
+        for (int i = 0; i < list.size(); i++) {
+        E element = list.get(i);
+        // 1 - can call methods of element
+        // 2 - can use 'i' to make index-based calls to methods of list
+
+        // ...
+    }
+
     }
 }
