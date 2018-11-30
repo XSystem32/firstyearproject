@@ -29,6 +29,14 @@ public class SalesOverviewController {
     @GetMapping("/salesoverviews.html")
     public String overview (Model model) {
         LOGGER.info("index was called");
+
+        LocalDate end = LocalDate.now();
+
+        LocalDate start = end.minusMonths(1);
+
+        System.out.println(start);
+        List<SalesOverview> salesOverviews = salesOverviewService.getSalesOverviews(LocalDate.from(start) ,LocalDate.now());
+        model.addAttribute("salesoverviews", salesOverviews);
         return SALESOVERVIEWS;
     }
 
@@ -42,11 +50,15 @@ public class SalesOverviewController {
         LocalDate start = LocalDate.of(2010,11,11);
         salesOverviewService.getCsv(start,  LocalDate.of(2050,11,11));
         LOGGER.info("test was called");
+        SalesOverview so = new SalesOverview();
+        so.setComment("/test SO I made to see if this works.");
+
+        salesOverviewService.createSalesOverview(so);
         return INDEX;
     }
 
     @GetMapping("/salesoverview.html")
-    public String getSALESOVERVIEW (Model model) {
+    public String getSale (Model model) {
         LOGGER.info("index was called");
         return SALESOVERVIEW;
     }
@@ -64,5 +76,7 @@ public class SalesOverviewController {
         salesOverviewService.createSalesOverview(salesOverview);
         return SALESOVERVIEW;
     }
+
+
 
 }
