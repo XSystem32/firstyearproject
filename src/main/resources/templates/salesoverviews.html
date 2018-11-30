@@ -1,10 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Sales Overviews</title>
+
+    <style>
+        *{
+            font-family: arial;
+        }
+
+        table.redTable {
+            border: 2px solid #af2b31;
+            background-color: #fdf8ff;
+            width: 80%;
+            text-align: center;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        table.redTable td, table.redTable th {
+            border: 1px solid #AAAAAA;
+            padding: 3px 2px;
+        }
+
+        table.redTable tbody td {
+            font-size: 20px;
+        }
+
+        table.redTable tr:nth-child(even) {
+            background: #F5C8BF;
+        }
+
+        table.redTable thead {
+            background: #af2b31;
+        }
+
+        table.redTable thead th {
+            font-size: 20px;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-align: center;
+            border-left: 2px solid #af2b31;
+        }
+
+    </style>
+
 </head>
 <body>
+
+<div class="wrapper">
+
+    <table class="redTable">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Cash</th>
+            <th>Card</th>
+            <th>Till</th>
+            <th>Vault</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="salesoverview : ${salesoverviews}" id="tablerow">
+
+
+            <td th:text="${salesoverview.date}"/>
+            <td th:text="${salesoverview.cash}"/>
+            <td th:text="${salesoverview.till}"/>
+            <td th:text="${salesoverview.vault}"/>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
 
 </body>
 </html>

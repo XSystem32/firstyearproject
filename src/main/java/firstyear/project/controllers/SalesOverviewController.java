@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
@@ -28,6 +30,12 @@ public class SalesOverviewController {
     @GetMapping("/salesoverviews.html")
     public String overview (Model model) {
         LOGGER.info("index was called");
+
+        LocalDate start = LocalDate.ofEpochDay(-30);
+        LocalDate end = LocalDate.now();
+
+        List<SalesOverview> salesOverviews = salesOverviewService.getSalesOverviews(LocalDate.from(start) ,LocalDate.now());
+        model.addAttribute("salesoverviews", salesOverviews);
         return SALESOVERVIEWS;
     }
 
@@ -47,7 +55,7 @@ public class SalesOverviewController {
     }
 
     @GetMapping("/salesoverview.html")
-    public String getSALESOVERVIEW (Model model) {
+    public String getSale (Model model) {
         LOGGER.info("index was called");
         return SALESOVERVIEW;
     }
@@ -65,5 +73,7 @@ public class SalesOverviewController {
         salesOverviewService.createSalesOverview(salesOverview);
         return SALESOVERVIEW;
     }
+
+
 
 }
