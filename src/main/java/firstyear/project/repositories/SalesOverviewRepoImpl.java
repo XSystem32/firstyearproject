@@ -1,7 +1,6 @@
 package firstyear.project.repositories;
 
 import firstyear.project.models.SalesOverview;
-import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Repository;
 
 
@@ -26,7 +25,7 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
             System.out.println(stringGet);
             statement.executeQuery(stringGet);
             ResultSet result = statement.getResultSet();
-            
+
             while (result.next()){
                 SalesOverview so = new SalesOverview();
                 so.setId(result.getInt("salesOverviewId"));
@@ -38,8 +37,6 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
                 so.setComment(result.getString("comment"));
                 salesOverviews.add(so);
             }
-            System.out.println(salesOverviews);
-
             return salesOverviews;
 
         } catch (Exception e) {
