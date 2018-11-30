@@ -7,6 +7,9 @@ import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 
 import java.util.List;
@@ -46,14 +49,22 @@ public class SalesOverviewService implements SalesOverviewRepo {
 
 
     public boolean getCsv(LocalDate start, LocalDate end){
-        getSalesOverviews(start, end);
-        for (int i = 0; i < list.size(); i++) {
-        E element = list.get(i);
-        // 1 - can call methods of element
-        // 2 - can use 'i' to make index-based calls to methods of list
+        File file = new File("c://tmp//testFile1s.csv");
+        String header =  "Date,cash,card,till,vault,comment";
+        FileWriter writer;
 
-        // ...
-    }
+        try {
+            writer = new FileWriter(file);
+            writer.write("Date,cash,card,till,vault,comment");
 
+            for (SalesOverview obj: getSalesOverviews(start, end)) {
+                String data = (obj.getDate()+","+obj.getCash()+","+obj.getCredit()+","+obj.getTill()+","+obj.getVault()+","+obj.getComment());
+                writer.write(data);
+                System.out.println(data);
+                System.out.println(obj);
+
+        }
+        } catch (IOException e) { e.printStackTrace(); }
+        return true;
     }
 }
