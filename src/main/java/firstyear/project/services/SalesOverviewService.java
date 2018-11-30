@@ -6,8 +6,7 @@ import firstyear.project.repositories.SalesOverviewRepoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -17,7 +16,7 @@ public class SalesOverviewService implements SalesOverviewRepo {
     SalesOverviewRepoImpl salesOverviewRepo;
 
     @Override
-    public List<SalesOverview> getSalesOverviews(Date start, Date end) {
+    public List<SalesOverview> getSalesOverviews(LocalDate start, LocalDate end) {
         return salesOverviewRepo.getSalesOverviews(start, end);
     }
 

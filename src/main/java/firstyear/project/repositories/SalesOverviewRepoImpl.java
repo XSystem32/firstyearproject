@@ -1,22 +1,22 @@
 package firstyear.project.repositories;
 
 import firstyear.project.models.SalesOverview;
+import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Repository;
 
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Repository
 public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
 
     @Override
-    public List<SalesOverview> getSalesOverviews(Date start, Date end) {
+    public List<SalesOverview> getSalesOverviews(LocalDate start, LocalDate end) {
         List<SalesOverview> salesOverviews = new ArrayList<>();
         try {
             connection = getConnection();
@@ -29,6 +29,7 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
             result.next();
 
             SalesOverview so = new SalesOverview();
+
 
             so.setId(result.getInt("salesOverviewId"));
             so.setDate(result.getDate("date"));
@@ -134,6 +135,8 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
             result.next();
 
             SalesOverview so = new SalesOverview();
+
+
 
             so.setId(result.getInt("salesOverviewId"));
             so.setDate(result.getDate("date"));

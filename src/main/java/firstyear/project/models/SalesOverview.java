@@ -1,23 +1,26 @@
 package firstyear.project.models;
 
 
+import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class SalesOverview {
     private int id;
-    private Date date;
+    private LocalDate date;
     private double credit;
     private double cash;
     private double till;
     private double vault;
     private String comment;
+    private LocalDateTime localDateTime;
 
     public SalesOverview() {
-        this.date = new Date();
+        this.date = LocalDate.now();
     }
 
-    public SalesOverview(int id, Date date, double credit, double cash, double till, double vault, String comment) {
+    public SalesOverview(int id, LocalDate date, double credit, double cash, double till, double vault, String comment) {
         this.id = id;
         this.date = date;
         this.credit = credit;
@@ -35,16 +38,20 @@ public class SalesOverview {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
     public double getCredit() {
         return credit;
+    }
+
+    public void setDate(Date date){
+        this.date = date.toLocalDate();
     }
 
 

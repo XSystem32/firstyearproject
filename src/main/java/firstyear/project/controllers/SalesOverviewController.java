@@ -15,6 +15,7 @@ import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Logger;
@@ -49,18 +50,10 @@ public class SalesOverviewController {
         //TODO FIXXXXXXXXX VLC
         LOGGER.info("test was called");
 
-        java.sql.Date start = new Date(0);
 
+        LocalDate start = LocalDate.of(1,1,1);
 
-        LocalDate localdate = LocalDate.of(1,1,1);
-        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        //Date thisDate = formatter.parse("2010-03-04");
-
-        java.util.Date endTest = new GregorianCalendar(2018,11, 20).getTime();
-
-
-
-        java.sql.Date end = (Date) endTest;
+        LocalDate end = LocalDate.of(2050,11,11);
 
         salesOverviewService.getSalesOverviews(start, end);
         return INDEX;

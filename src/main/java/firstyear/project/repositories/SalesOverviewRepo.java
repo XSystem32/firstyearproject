@@ -3,7 +3,7 @@ package firstyear.project.repositories;
 import firstyear.project.models.SalesOverview;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -14,5 +14,5 @@ public interface SalesOverviewRepo {
     boolean deleteSalesOverview(int index);
     boolean updateSalesOverview(int index, SalesOverview salesOverview);
     SalesOverview getSalesOverview(int index);
-    List<SalesOverview> getSalesOverviews(Date start, Date end);
+    List<SalesOverview> getSalesOverviews(LocalDate start, LocalDate end);
 }
