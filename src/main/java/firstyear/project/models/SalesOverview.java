@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class SalesOverview {
     private int id;
@@ -54,6 +55,9 @@ public class SalesOverview {
         this.date = date.toLocalDate();
     }
 
+    public void setDate(String date){
+        this.date = LocalDate.parse(date);
+    }
 
     public void setCredit(double credit) {
         this.credit = credit;
@@ -94,6 +98,7 @@ public class SalesOverview {
 
         return date.toString();
     }
+
 
     @Override
     public String toString() {
