@@ -3,19 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Sales Overviews</title>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+
 
     <style>
         *{
             font-family: arial;
         }
 
+        a{
+            font-size: 30px;
+            color: #f6f6f6;
+            background: #af2b31;
+        }
+        .wrapper{
+            width: 80%;
+            margin: 0 auto;
+        }
+
+
+        .headline{
+            font-size: 70px;
+            text-align: center;
+        }
+
         table.redTable {
             border: 2px solid #af2b31;
             background-color: #fdf8ff;
-            width: 80%;
+            width: 100%;
             text-align: center;
             border-collapse: collapse;
-            margin: 0 auto;
+
         }
         table.redTable td, table.redTable th {
             border: 1px solid #AAAAAA;
@@ -47,7 +65,15 @@
 </head>
 <body>
 
+
 <div class="wrapper">
+
+    <div class="col-md-12">
+        <h1 class="headline">Sales overview</h1>
+    </div>
+
+    <a href="createoverview.html">Create Sales Overview</a>
+
 
     <table class="redTable">
         <thead>
