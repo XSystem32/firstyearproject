@@ -1,7 +1,12 @@
 package firstyear.project.controllers.userController;
 
 import firstyear.project.controllers.salesOverviewController.SalesOverviewController;
+
 import firstyear.project.models.User;
+
+import firstyear.project.models.SalesOverview;
+import firstyear.project.services.UserService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +35,14 @@ public class UserController {
 
         return CREATE_USER;
     }
-    @GetMapping("user/saveUser")
+
+    @GetMapping("/userTest")
+    public String usertest (Model model){
+        LOGGER.info("test was called");
+        return REDIRECT_INDEX;
+    }
+
+    @GetMapping("/saveUser")
     public String saveUser(Model model) {
         LOGGER.info("create was called... ");
 
