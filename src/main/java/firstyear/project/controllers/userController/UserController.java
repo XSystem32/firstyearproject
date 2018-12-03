@@ -12,19 +12,19 @@ public class UserController {
 
     private static final Logger LOGGER = Logger.getLogger(SalesOverviewController.class.getName());
 
-    private final String CREATE_USER = "createUser.html";
-    private final String DELETE_USER = "deleteUser.html";
-    private final String UPDATE_USER = "updateUser.html";
-    private final String DISPLAY_USER = "displayUser.html";
+    private final String CREATE_USER = "user/createUser.html";
+    private final String DELETE_USER = "user/deleteUser.html";
+    private final String UPDATE_USER = "user/updateUser.html";
+    private final String DISPLAY_USER = "user/displayUser.html";
     private final String REDIRECT_INDEX = "redirect:/";
 
-    @GetMapping("/createUser")
+    @GetMapping("user/createUser")
     public String create(Model model) {
         LOGGER.info("create was called... ");
 
         return CREATE_USER;
     }
-    @GetMapping("/saveUser")
+    @GetMapping("user/saveUser")
     public String saveUser(Model model) {
         LOGGER.info("create was called... ");
 
@@ -32,18 +32,18 @@ public class UserController {
     }
 
 
-    @GetMapping("/deleteUser")
+    @GetMapping("user/deleteUser")
     public String delete(Model model) {
         LOGGER.info("create was called... ");
         return DELETE_USER;
     }
 
-    @GetMapping("/updateUser")
+    @GetMapping("user/updateUser")
     public String update(Model model) {
         LOGGER.info("create was called... ");
         return UPDATE_USER;
     }
-    @GetMapping("/displayUser")
+    @GetMapping("user/displayUser")
     public String display(Model model) {
         LOGGER.info("create was called... ");
         return DISPLAY_USER;

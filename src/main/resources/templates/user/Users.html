@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+
+
+
+<div class="wrapper">
+
+    <div class="col-md-12">
+        <h1 class="headline">Sales overview</h1>
+    </div>
+
+    <a href="createoverview.html">Create Sales Overview</a>
+
+
+    <table class="redTable">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Clearance</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="user : ${users}" id="tablerow">
+            <td th:text="${user.username}"/>
+            <td><a href="reset">reset password</a></td>
+            <td th:text="${user.email}"/>
+            <td th:text="${user.name}"/>
+            <td th:text="${user.clearance}"/>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</body>
+</html>
