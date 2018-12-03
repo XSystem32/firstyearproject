@@ -1,8 +1,8 @@
 package firstyear.project.services;
 
 import firstyear.project.models.SalesOverview;
-import firstyear.project.repositories.SalesOverviewRepo;
-import firstyear.project.repositories.SalesOverviewRepoImpl;
+import firstyear.project.repositories.salesOverviewRepo.SalesOverviewRepo;
+import firstyear.project.repositories.salesOverviewRepo.SalesOverviewRepoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

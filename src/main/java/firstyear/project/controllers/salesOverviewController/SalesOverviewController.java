@@ -1,4 +1,4 @@
-package firstyear.project.controllers;
+package firstyear.project.controllers.salesOverviewController;
 
 import firstyear.project.models.SalesOverview;
 import firstyear.project.services.SalesOverviewService;
