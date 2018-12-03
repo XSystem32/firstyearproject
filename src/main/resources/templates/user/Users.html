@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
+
+    <style>
+
+        .blocklink{
+            display:block;
+
+        }
+    </style>
 </head>
 <body>
 
@@ -32,8 +40,8 @@
 
 
         <tr th:each="user : ${users}">
-            <td th:text="${user.username}"/>
-            <td><a th:href="@{/User(id=${user.userId})}" > <p th:text="${user.userId}"/> </a></td>
+            <td th:text="${user.username}">  <a th:href="@{/user/User(id=${user.userId})}" class="blocklink"> <p th:text="${user.userId}"/> </a> </td>
+            <td><a th:href="@{/user/resetPassword(id=${user.userId})}" class="blocklink">Reset</a></td>
             <td th:text="${user.email}"/>
             <td th:text="${user.name}"/>
             <td th:text="${user.clearance}"/>
