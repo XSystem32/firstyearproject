@@ -3,7 +3,7 @@ package firstyear.project.models;
 public class User {
 
 
-    private int user_id;
+    private int userId;
     private String username;
     private String password;
     private String email;
@@ -17,8 +17,8 @@ public class User {
     public User() {
     }
 
-    public User(int user_id, String username, String password, String email, String name, String clearance) {
-        this.user_id = user_id;
+    public User(int userId, String username, String password, String email, String name, String clearance) {
+        this.userId = userId;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -26,12 +26,12 @@ public class User {
         this.clearance = clearance;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -80,7 +80,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "user_id=" + user_id +
+                "userId=" + userId +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
