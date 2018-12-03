@@ -28,12 +28,7 @@ public class SalesOverviewController {
     private String SALESOVERVIEW = "salesoverview.html";
     private String SALESOVERVIEWS = "salesoverviews.html";
 
-    @RequestMapping(method = RequestMethod.GET)
-    ResponseEntity dateConvert(@RequestParam(name = "dateConvert") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateConvert) {
-        // ...
 
-        return ResponseEntity.noContent().build();
-    }
 
     @GetMapping("/salesoverviews.html")
     public String overview (Model model) {
@@ -47,6 +42,7 @@ public class SalesOverviewController {
         model.addAttribute("salesoverviews", salesOverviews);
         return SALESOVERVIEWS;
     }
+
 
     @GetMapping("/index.html")
     public String index (Model model) {
@@ -82,7 +78,6 @@ public class SalesOverviewController {
         salesOverviewService.createSalesOverview(salesOverview);
         return SALESOVERVIEW;
     }
-
 
 
 }
