@@ -1,7 +1,6 @@
 package firstyear.project.repositories.userRepo;
 
 
-import firstyear.project.models.SalesOverview;
 import firstyear.project.models.User;
 import firstyear.project.repositories.JdbcFix;
 import org.springframework.stereotype.Repository;
@@ -96,7 +95,7 @@ public class UserRepoImpl extends JdbcFix implements UserRepo {
 
 
 
-            user.setUser_id(result.getInt("salesOverviewId"));
+            user.setUserId(result.getInt("salesOverviewId"));
             user.setUsername(result.getString("userName"));
             user.setPassword(result.getString("userpassword"));
             user.setEmail(result.getString("email"));
@@ -130,7 +129,7 @@ public class UserRepoImpl extends JdbcFix implements UserRepo {
 
             while (result.next()){
                 User user = new User();
-                user.setUser_id(result.getInt("userId"));
+                user.setUserId(result.getInt("userId"));
                 user.setUsername(result.getString("userName"));
                 user.setPassword(result.getString("userPassword"));
                 user.setEmail(result.getString("email"));
