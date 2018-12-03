@@ -29,7 +29,7 @@ public class UserService implements UserRepo {
     }
 
     @Override
-    public List<User> getUser() {
+    public List<User> getUsers() {
         return null;
     }
 }

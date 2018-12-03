@@ -1,19 +1,8 @@
 package firstyear.project.models;
 
-public class User {private int user_id;
+public class User {
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "user_id=" + user_id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", clearance='" + clearance + '\'' +
-                '}';
-    }
-
+    private int user_id;
     private String username;
     private String password;
     private String email;
@@ -81,5 +70,17 @@ public class User {private int user_id;
 
     public void setName(String username) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", clearance='" + clearance + '\'' +
+                '}';
     }
 }
