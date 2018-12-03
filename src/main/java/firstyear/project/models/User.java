@@ -1,6 +1,9 @@
 package firstyear.project.models;
 
-public class User {private int user_id;
+public class User {
+
+
+
 
     @Override
     public String toString() {
@@ -14,11 +17,13 @@ public class User {private int user_id;
                 '}';
     }
 
+    private int user_id;
     private String username;
     private String password;
     private String email;
     private String name;
     private String clearance;
+
 
 
 

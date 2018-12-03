@@ -30,13 +30,15 @@
 
         <tbody>
 
-        <tr th:each="user : ${users}" id="tablerow">
+
+        <tr th:each="user : ${users}">
             <td th:text="${user.username}"/>
-            <td><a href="reset">reset password</a></td>
+            <td><a th:href="@{/User(id=${user.userId})}" > <p th:text="${user.userId}"/> </a></td>
             <td th:text="${user.email}"/>
             <td th:text="${user.name}"/>
             <td th:text="${user.clearance}"/>
         </tr>
+
 
         </tbody>
 

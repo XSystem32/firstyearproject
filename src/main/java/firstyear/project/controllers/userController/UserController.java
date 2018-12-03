@@ -5,6 +5,9 @@ import firstyear.project.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -46,9 +49,12 @@ public class UserController {
         LOGGER.info("create was called... ");
         return UPDATE_USER;
     }
-    @GetMapping("user/displayUser")
-    public String display(Model model) {
-        LOGGER.info("create was called... ");
+
+    @RequestMapping(value = "user/displayUser", method = RequestMethod.GET)
+    public String display(@RequestParam(name="id")String id, Model model) {
+        LOGGER.info("display user was called... ");
+
+
         return DISPLAY_USER;
     }
 
@@ -59,8 +65,8 @@ public class UserController {
         ArrayList<User> users = new ArrayList<>();
 
         users.add(new User(1,"ptrprkt","asdf","peter@parker.dk","Peter Parker", "1"));
-        users.add(new User(1,"katiee","asdf","katie@parker.dk","Katie Parker", "1"));
-        users.add(new User(1,"coolcat","asdf","catt@parker.dk","Frank Black", "1"));
+        users.add(new User(2,"katiee","asdf","katie@parker.dk","Katie Parker", "1"));
+        users.add(new User(3,"coolcat","asdf","catt@parker.dk","Frank Black", "1"));
 
 
         model.addAttribute("users", users);
