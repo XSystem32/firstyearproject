@@ -1,6 +1,8 @@
 package firstyear.project.models;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -9,13 +11,15 @@ import java.time.format.DateTimeFormatter;
 
 public class SalesOverview {
     private int id;
+
+    @DateTimeFormat (pattern = "yyyy-MM-dd")
     private LocalDate date;
+
     private double credit;
     private double cash;
     private double till;
     private double vault;
     private String comment;
-    private LocalDateTime localDateTime;
 
     public SalesOverview() {
         this.date = LocalDate.now();
@@ -95,7 +99,6 @@ public class SalesOverview {
         this.comment = comment;
     }
     public String getDateString(){
-
         return date.toString();
     }
 
