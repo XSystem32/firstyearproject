@@ -1,4 +1,4 @@
-package firstyear.project.repositories;
+package firstyear.project.repositories.salesOverviewRepo;
 
 import firstyear.project.models.SalesOverview;
 import org.springframework.stereotype.Repository;

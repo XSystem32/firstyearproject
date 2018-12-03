@@ -1,6 +1,7 @@
-package firstyear.project.repositories;
+package firstyear.project.repositories.salesOverviewRepo;
 
 import firstyear.project.models.SalesOverview;
+import firstyear.project.repositories.JdbcFix;
 import org.springframework.stereotype.Repository;
 
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo{
+public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo {
 
     @Override
     public List<SalesOverview> getSalesOverviews(LocalDate start, LocalDate end) {
