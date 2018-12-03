@@ -3,15 +3,11 @@ package firstyear.project.controllers;
 import firstyear.project.models.SalesOverview;
 import firstyear.project.services.SalesOverviewService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -66,9 +62,12 @@ public class SalesOverviewController {
     }
 
     @GetMapping("/createoverview.html")
-    public String create(Model model) {
+    public String create(Model model, SalesOverview dateConverter) {
         LOGGER.info("create was called... ");
         model.addAttribute("salesoverview", new SalesOverview());
+        if (dateConverter.getDate() == null) {
+            dateConverter.setDate(LocalDate.now());
+        }
         return CREATEOVERVIEW;
     }
 
@@ -78,6 +77,14 @@ public class SalesOverviewController {
         salesOverviewService.createSalesOverview(salesOverview);
         return SALESOVERVIEW;
     }
+
+    /*@RequestMapping("/dateTest")
+    public String dateTest(final SalesOverview dateConverter) {
+        if (dateConverter.getDate() == null) {
+            dateConverter.setDate(LocalDate.now());
+        }
+        return "dateTest";
+    }*/
 
 
 }
