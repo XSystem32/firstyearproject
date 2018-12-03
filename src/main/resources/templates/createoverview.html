@@ -20,19 +20,19 @@
     <form method="post" action="#" th:action="@{/saveSalesOverview}" th:object="${salesoverview}"  >
 
         <p>Date</p>
-        <input type="date">
+        <input type="date" th:field="*{date}">
 
         <p>Cash</p>
         <input type="number" min="0" max="1000000" step="1" value="" th:field="*{cash}" />
 
         <p>Credit</p>
-        <input type="text" min="0" max="1000000" step="1" value="" th:field="*{credit}" />
+        <input type="number" min="0" max="1000000" step="1" value="" th:field="*{credit}" />
 
         <p>Till</p>
-        <input type="text" min="0" max="1000000" step="1" value="" th:field="*{till}" />
+        <input type="number" min="0" max="1000000" step="1" value="" th:field="*{till}" />
 
         <p>Vault</p>
-        <input type="text" min="0" max="1000000" step="1" value="" th:field="*{vault}" />
+        <input type="number" min="0" max="1000000" step="1" value="" th:field="*{vault}" />
 
         <input type="submit" value="Submit">
 

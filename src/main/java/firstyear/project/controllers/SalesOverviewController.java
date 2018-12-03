@@ -3,14 +3,14 @@ package firstyear.project.controllers;
 import firstyear.project.models.SalesOverview;
 import firstyear.project.services.SalesOverviewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -27,12 +27,13 @@ public class SalesOverviewController {
     private String SALESOVERVIEW = "salesoverview.html";
     private String SALESOVERVIEWS = "salesoverviews.html";
 
+
+
     @GetMapping("/salesoverviews.html")
     public String overview (Model model) {
         LOGGER.info("index was called");
 
         LocalDate end = LocalDate.now();
-
         LocalDate start = end.minusMonths(1);
 
         System.out.println(start);
@@ -41,6 +42,7 @@ public class SalesOverviewController {
         return SALESOVERVIEWS;
     }
 
+
     @GetMapping("/index.html")
     public String index (Model model) {
         LOGGER.info("index was called");
@@ -48,8 +50,6 @@ public class SalesOverviewController {
     }
     @GetMapping("/test")
     public String test (Model model){
-        LocalDate start = LocalDate.of(2010,11,11);
-        salesOverviewService.getCsv(start,  LocalDate.of(2050,11,11));
         LOGGER.info("test was called");
         SalesOverview so = new SalesOverview();
         so.setComment("/test SO I made to see if this works.");
@@ -77,7 +77,6 @@ public class SalesOverviewController {
         salesOverviewService.createSalesOverview(salesOverview);
         return SALESOVERVIEW;
     }
-
 
 
 }

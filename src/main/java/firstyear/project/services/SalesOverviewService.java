@@ -3,7 +3,6 @@ package firstyear.project.services;
 import firstyear.project.models.SalesOverview;
 import firstyear.project.repositories.SalesOverviewRepo;
 import firstyear.project.repositories.SalesOverviewRepoImpl;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +10,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
-
 import java.util.List;
 
 @Service
@@ -48,6 +46,7 @@ public class SalesOverviewService implements SalesOverviewRepo {
     }
 
 
+
     public boolean getCsv(LocalDate start, LocalDate end){
         // snak med faisal om path til csv
         File file = new File("c://tmp//testFile1s.csv");
@@ -69,4 +68,5 @@ public class SalesOverviewService implements SalesOverviewRepo {
         } catch (IOException e) { e.printStackTrace(); }
         return true;
     }
+
 }
