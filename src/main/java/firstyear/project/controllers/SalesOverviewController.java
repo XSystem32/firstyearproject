@@ -22,8 +22,8 @@ public class SalesOverviewController {
 
     private String INDEX = "index.html";
     private String CREATEOVERVIEW = "createoverview.html";
-    private String SALESOVERVIEW = "salesoverview.html";
     private String SALESOVERVIEWS = "salesoverviews.html";
+    private final String REDIRECT_SALESOVERVIEW = "redirect:/salesoverviews.html";
 
 
 
@@ -56,11 +56,6 @@ public class SalesOverviewController {
         return INDEX;
     }
 
-    @GetMapping("/salesoverview.html")
-    public String getSale (Model model) {
-        LOGGER.info("index was called");
-        return SALESOVERVIEW;
-    }
 
     @GetMapping("/createoverview.html")
     public String create(Model model, SalesOverview dateConverter) {
@@ -76,16 +71,8 @@ public class SalesOverviewController {
     public String saveSalesOverview(@ModelAttribute SalesOverview salesOverview) {
         LOGGER.info("saveSalesOverview was called... ");
         salesOverviewService.createSalesOverview(salesOverview);
-        return SALESOVERVIEW;
+        return REDIRECT_SALESOVERVIEW;
     }
-
-    /*@RequestMapping("/dateTest")
-    public String dateTest(final SalesOverview dateConverter) {
-        if (dateConverter.getDate() == null) {
-            dateConverter.setDate(LocalDate.now());
-        }
-        return "dateTest";
-    }*/
 
 
 }
