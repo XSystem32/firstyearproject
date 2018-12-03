@@ -11,6 +11,6 @@ public interface UserRepo {
     boolean deleteUser(int index);
     boolean updateUser(int index, User user);
     User getUser(int index);
-    List<User> getUser();
+    List<User> getUsers();
 
 }

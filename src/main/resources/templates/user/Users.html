@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+
+
+
+<div class="wrapper">
+
+    <div class="col-md-12">
+        <h1 class="headline">Users</h1>
+    </div>
+
+    <a href="createUser">Create user</a>
+
+
+    <table class="redTable">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Clearance</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+        <tr th:each="user : ${users}">
+            <td th:text="${user.username}"/>
+            <td><a th:href="@{/User(id=${user.userId})}" > <p th:text="${user.userId}"/> </a></td>
+            <td th:text="${user.email}"/>
+            <td th:text="${user.name}"/>
+            <td th:text="${user.clearance}"/>
+        </tr>
+
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</body>
+</html>
