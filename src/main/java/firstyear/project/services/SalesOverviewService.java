@@ -49,21 +49,23 @@ public class SalesOverviewService implements SalesOverviewRepo {
 
 
     public boolean getCsv(LocalDate start, LocalDate end){
+        // snak med faisal om path til csv
         File file = new File("c://tmp//testFile1s.csv");
         String header =  "Date,cash,card,till,vault,comment";
         FileWriter writer;
 
         try {
             writer = new FileWriter(file);
-            writer.write("Date,cash,card,till,vault,comment");
+            writer.write(header+System.getProperty("line.separator"));
 
             for (SalesOverview obj: getSalesOverviews(start, end)) {
-                String data = (obj.getDate()+","+obj.getCash()+","+obj.getCredit()+","+obj.getTill()+","+obj.getVault()+","+obj.getComment());
+                String data = (obj.getDate()+","+obj.getCash()+","+obj.getCredit()+","+obj.getTill()+","+obj.getVault()+","+obj.getComment()+System.getProperty("line.separator"));
                 writer.write(data);
                 System.out.println(data);
                 System.out.println(obj);
 
         }
+        writer.close();
         } catch (IOException e) { e.printStackTrace(); }
         return true;
     }
