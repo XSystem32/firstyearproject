@@ -24,6 +24,7 @@ public class SalesOverviewController {
     private String CREATEOVERVIEW = "salesoverview/createoverview.html";
     private String SALESOVERVIEWS = "index.html";
     private final String REDIRECT_SALESOVERVIEW = "redirect:/salesoverview/index.html";
+    private String DELETESALEOVERVIEW = "deleteSalesOverview";
 
 
 
@@ -69,5 +70,11 @@ public class SalesOverviewController {
         return REDIRECT_SALESOVERVIEW;
     }
 
+    @RequestMapping(value = "/deleteSalesOverview", method = RequestMethod.GET)
+    public String deleteSalesOverview(@RequestParam(name="id")String id){
+        LOGGER.info("Delete movie was called" + id);
+        salesOverviewService.deleteSalesOverview(Integer.parseInt(id));
+        return REDIRECT_SALESOVERVIEW;
+    }
 
 }

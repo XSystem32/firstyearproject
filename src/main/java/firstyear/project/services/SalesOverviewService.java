@@ -32,7 +32,8 @@ public class SalesOverviewService implements SalesOverviewRepo {
 
     @Override
     public boolean deleteSalesOverview(int index) {
-        return false;
+        salesOverviewRepo.deleteSalesOverview(index);
+        return true;
     }
 
     public boolean updateSalesOverview(int index, SalesOverview salesOverview) {
