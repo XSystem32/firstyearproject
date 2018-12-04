@@ -26,7 +26,7 @@ public class SalesOverviewController {
     private final String REDIRECT_SALESOVERVIEW = "redirect:/salesoverview/index.html";
     private String DELETESALEOVERVIEW = "deleteSalesOverview";
     private String UPDATESALESOVERVIEW = "salesoverview/update.html";
-
+    private String DISPLAYSALESOVERVIEW = "salesoverview/display.html";
 
 
 
@@ -90,6 +90,14 @@ public class SalesOverviewController {
         LOGGER.info("updateSalesOverview was called");
         salesOverviewService.updateSalesOverview(salesOverview);
         return REDIRECT_SALESOVERVIEW;
+    }
+
+    @RequestMapping(value = "/displaySalesOverview", method = RequestMethod.GET)
+    public String displaySalesOverview(@RequestParam(name="id")String id, Model model){
+        LOGGER.info("Display salesoverview was called" + id);
+        SalesOverview salesOverview = salesOverviewService.getSalesOverview(Integer.parseInt(id));
+        model.addAttribute("salesoverview", salesOverview);
+        return DISPLAYSALESOVERVIEW;
     }
 
 }

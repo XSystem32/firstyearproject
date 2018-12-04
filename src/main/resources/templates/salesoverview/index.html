@@ -92,8 +92,9 @@
 
         <tr th:each="salesoverview : ${salesoverviews}" salesOverviewId="tablerow">
 
-
-            <td th:text="${salesoverview.date}"/>
+            <td>
+                <a th:href="@{/displaySalesOverview(id=${salesoverview.salesOverviewId})}" > <p th:text="${salesoverview.date}"/> </a>
+            </td>
             <td th:text="${salesoverview.credit}"/>
             <td th:text="${salesoverview.cash}"/>
             <td th:text="${salesoverview.till}"/>
