@@ -102,6 +102,7 @@ public class UserRepoImpl extends JdbcFix implements UserRepo {
             user.setName(result.getString("name"));
             user.setClearance(result.getInt("clearance"));
 
+            System.out.println(user);
             return user;
 
         } catch (Exception e) {
