@@ -8,7 +8,7 @@ public class User {
     private String password;
     private String email;
     private String name;
-    private String clearance;
+    private int clearance;
 
 
 
@@ -17,7 +17,7 @@ public class User {
     public User() {
     }
 
-    public User(int userId, String username, String password, String email, String name, String clearance) {
+    public User(int userId, String username, String password, String email, String name, int clearance) {
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -58,11 +58,11 @@ public class User {
         this.email = email;
     }
 
-    public String getClearance() {
+    public int getClearance() {
         return clearance;
     }
 
-    public void setClearance(String username) {
+    public void setClearance(int username) {
         this.clearance = clearance;
     }
 
