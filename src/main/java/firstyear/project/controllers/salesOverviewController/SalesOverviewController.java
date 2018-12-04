@@ -25,6 +25,7 @@ public class SalesOverviewController {
     private String SALESOVERVIEWS = "index.html";
     private final String REDIRECT_SALESOVERVIEW = "redirect:/salesoverview/index.html";
     private String DELETESALEOVERVIEW = "deleteSalesOverview";
+    private String UPDATESALESOVERVIEW = "salesoverview/update.html";
 
 
 
@@ -74,6 +75,20 @@ public class SalesOverviewController {
     public String deleteSalesOverview(@RequestParam(name="id")String id){
         LOGGER.info("Delete movie was called" + id);
         salesOverviewService.deleteSalesOverview(Integer.parseInt(id));
+        return REDIRECT_SALESOVERVIEW;
+    }
+
+    @RequestMapping(value = "/updateSalesOverview", method = RequestMethod.GET)
+    public String updateSalesOverview(@RequestParam(name = "id") String id, Model model) {
+        LOGGER.info("updateSalesOverview action called... " + id);
+        model.addAttribute("salesoverview", salesOverviewService.getSalesOverview(Integer.parseInt(id)));
+        return UPDATESALESOVERVIEW;
+    }
+
+    @RequestMapping("/updateSalesOverviewSubmit")
+    public String updateSalesOverview(@ModelAttribute SalesOverview salesOverview) {
+        LOGGER.info("updateSalesOverview was called");
+        salesOverviewService.updateSalesOverview(salesOverview);
         return REDIRECT_SALESOVERVIEW;
     }
 

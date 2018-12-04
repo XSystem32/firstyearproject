@@ -12,7 +12,7 @@ public interface SalesOverviewRepo {
 
     boolean createSalesOverview(SalesOverview salesOverview);
     boolean deleteSalesOverview(int index);
-    boolean updateSalesOverview(int index, SalesOverview salesOverview);
+    boolean updateSalesOverview(SalesOverview salesOverview);
     SalesOverview getSalesOverview(int index);
     List<SalesOverview> getSalesOverviews(LocalDate start, LocalDate end);
 }

@@ -84,6 +84,7 @@
             <th>Till</th>
             <th>Vault</th>
             <th>Delete</th>
+            <th>Update</th>
         </tr>
         </thead>
 
@@ -98,6 +99,8 @@
             <td th:text="${salesoverview.till}"/>
             <td th:text="${salesoverview.vault}"/>
             <td><a th:href="@{/deleteSalesOverview(id=${salesoverview.salesOverviewId})}"> Delete </a> </td>
+            <td><a th:href="@{/updateSalesOverview(id=${salesoverview.salesOverviewId})}"> Update </a> </td>
+
 
 
         </tr>
