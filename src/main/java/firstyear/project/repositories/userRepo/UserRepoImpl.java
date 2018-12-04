@@ -120,7 +120,6 @@ public class UserRepoImpl extends JdbcFix implements UserRepo {
             Statement statement = connection.createStatement();
             String stringGet = "SELECT * FROM charlie.users ";
 
-            System.out.println(stringGet);
             statement.executeQuery(stringGet);
             ResultSet result = statement.getResultSet();
 
