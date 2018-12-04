@@ -27,8 +27,8 @@
         <tr th:object="${user}" id="tablerow">
             <td th:text="${user.username}"/>
             <td><a href="reset">reset password</a></td>
-            <td th:text="${user.email}"/>
-            <td th:text="${user.name}"/>
+            <td th:text="${user.userEmail}"/>
+            <td th:text="${user.fullName}"/>
             <td th:text="${user.clearance}"/>
         </tr>
 
