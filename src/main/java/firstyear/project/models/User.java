@@ -54,7 +54,7 @@ public class User {
         return userEmail;
     }
 
-    public void setUserEmail(String username) {
+    public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
 
@@ -62,7 +62,7 @@ public class User {
         return clearance;
     }
 
-    public void setClearance(int username) {
+    public void setClearance(int clearance) {
         this.clearance = clearance;
     }
 
@@ -70,7 +70,7 @@ public class User {
         return fullName;
     }
 
-    public void setFullName(String username) {
+    public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
