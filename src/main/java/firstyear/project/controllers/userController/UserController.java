@@ -29,7 +29,7 @@ public class UserController {
     private final String UPDATE_USER = "user/updateUser.html";
     private final String DISPLAY_USER = "user/User.html";
     private final String DISPLAY_USERS = "user/Users.html";
-    private final String REDIRECT_INDEX = "redirect:/";
+    private final String REDIRECT_INDEX = "redirect:/user/displayUsers";
 
     @GetMapping("/userTest")
     public String usertest (Model model){
@@ -48,22 +48,31 @@ public class UserController {
     public String saveUser(@ModelAttribute User user) {
         LOGGER.info("save was called... ");
         userService.createUser(user);
-        return DISPLAY_USERS;
+        return REDIRECT_INDEX;
     }
 
 
     @RequestMapping(value = "user/deleteUser", method = RequestMethod.GET)
-    public String delete(@RequestParam(name="id")String id, Model model) {
+    public String delete(@RequestParam(name="id")String id) {
         LOGGER.info("delete was called... ");
         userService.deleteUser(Integer.parseInt(id));
-        return DISPLAY_USERS;
+        return REDIRECT_INDEX;
     }
 
-    @GetMapping("user/updateUser")
-    public String update(Model model) {
+    @RequestMapping(value = "user/updateUser", method = RequestMethod.GET)
+    public String update(@RequestParam(name = "id")String id, Model model) {
         LOGGER.info("update was called... ");
+        model.addAttribute("user", userService.getUser(Integer.parseInt(id)));
         return UPDATE_USER;
     }
+
+    @RequestMapping("/updateUserSubmit")
+    public String updateSubmit(@ModelAttribute User user){
+        LOGGER.info("updateSubmit was called");
+        userService.updateUser(user.getUserId(), user);
+        return REDIRECT_INDEX;
+    }
+
 
     @RequestMapping(value = "user/User", method = RequestMethod.GET)
     public String display(@RequestParam(name="id")String id, Model model) {

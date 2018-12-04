@@ -7,8 +7,8 @@
 <body>
 <div class="wrapper">
 
-    <div class="col-md-12">
-        <h1 class="headline"  th:text="${user.fullName}" />
+    <div class="col-md-12" >
+        <h1 class="headline" > <p  th:text="${user.fullName}" />   </h1>
     </div>
 
     <table class="redTable">
@@ -19,6 +19,7 @@
             <th>Email</th>
             <th>Name</th>
             <th>Clearance</th>
+            <th>Update</th>
             <th>Delete</th>
         </tr>
         </thead>
@@ -26,15 +27,20 @@
         <tbody>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         <tr th:object="${user}" id="tablerow">
 =======
         <tr th:each="user : ${users}" salesOverviewId="tablerow">
 >>>>>>> 69f6508d0e9da597c3a11aa83f7b97560731fd2f
+=======
+        <tr id="tablerow">
+>>>>>>> 397b4f9cb8da06cb409de82c82b65a110b639109
             <td th:text="${user.username}"/>
             <td><a href="reset">reset password</a></td>
             <td th:text="${user.userEmail}"/>
             <td th:text="${user.fullName}"/>
             <td th:text="${user.clearance}"/>
+            <td><a th:href="@{/user/updateUser(id=${user.userId})}" class="blocklink">Update</a></td>
             <td><a th:href="@{/user/deleteUser(id=${user.userId})}" class="blocklink">Delete</a></td>
 
         </tr>

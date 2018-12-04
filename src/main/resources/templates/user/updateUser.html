@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Update user</title>
 </head>
 <body>
+
+
+
+<div class="wrapper">
+    <div class="col-md-12">
+        <h1 class="headline">Update user</h1>
+    </div>
+    
+
+        <form method="post" action="#" th:action="@{/saveUser}" th:object="${user}"  >
+
+            <input type="text" placeholder="username" th:field="*{username}">
+
+            <input type="email" placeholder="email" th:field="*{userEmail}">
+            <input type="text" placeholder="name" th:field="*{fullName}">
+            <input type="number" step="1" min="0" max="3" placeholder="clearance" th:field="*{clearance}">
+
+            <input type="submit" value="Submit">
+
+        </form>
+
+
+
+</div>
 
 </body>
 </html>
