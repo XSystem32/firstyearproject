@@ -24,7 +24,11 @@
 
         <tbody>
 
+<<<<<<< HEAD
         <tr th:object="${user}" id="tablerow">
+=======
+        <tr th:each="user : ${users}" salesOverviewId="tablerow">
+>>>>>>> 69f6508d0e9da597c3a11aa83f7b97560731fd2f
             <td th:text="${user.username}"/>
             <td><a href="reset">reset password</a></td>
             <td th:text="${user.userEmail}"/>

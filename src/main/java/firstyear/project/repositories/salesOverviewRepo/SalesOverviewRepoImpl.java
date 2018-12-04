@@ -29,7 +29,7 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo 
 
             while (result.next()){
                 SalesOverview so = new SalesOverview();
-                so.setId(result.getInt("salesOverviewId"));
+                so.setSalesOverviewId(result.getInt("salesOverviewId"));
                 so.setDate(result.getDate("date"));
                 so.setCredit(result.getDouble("credit"));
                 so.setCash(result.getDouble("cash"));
@@ -75,7 +75,7 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo 
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringDelete = "DELETE FROM salesoverviews  WHERE salesOverviewId =" + index + ";";
+            String stringDelete = "DELETE FROM charlie.salesoverviews  WHERE salesOverviewId =" + index + ";";
             statement.execute(stringDelete);
 
 
@@ -95,7 +95,7 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo 
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringUpdate = "UPDATE salesoverviews SET date='"+ so.getDateString() +"" +
+            String stringUpdate = "UPDATE charlie.salesoverviews SET date='"+ so.getDateString() +"" +
                     "', credit='" + so.getCredit() +"" +
                     "', cash='"+ so.getCash()+ "" +
                     "',till='"+ so.getTill()+"" +
@@ -134,7 +134,7 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo 
 
 
 
-            so.setId(result.getInt("salesOverviewId"));
+            so.setSalesOverviewId(result.getInt("salesOverviewId"));
             so.setDate(result.getDate("date"));
             so.setCredit(result.getDouble("credit"));
             so.setCash(result.getDouble("cash"));

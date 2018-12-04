@@ -4,13 +4,10 @@ package firstyear.project.models;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class SalesOverview {
-    private int id;
+    private int salesOverviewId;
 
     @DateTimeFormat (pattern = "yyyy-MM-dd")
     private LocalDate date;
@@ -25,8 +22,8 @@ public class SalesOverview {
         this.date = LocalDate.now();
     }
 
-    public SalesOverview(int id, LocalDate date, double credit, double cash, double till, double vault, String comment) {
-        this.id = id;
+    public SalesOverview(int salesOverviewId, LocalDate date, double credit, double cash, double till, double vault, String comment) {
+        this.salesOverviewId = salesOverviewId;
         this.date = date;
         this.credit = credit;
         this.cash = cash;
@@ -35,12 +32,12 @@ public class SalesOverview {
         this.comment = comment;
     }
 
-    public int getId() {
-        return id;
+    public int getSalesOverviewId() {
+        return salesOverviewId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSalesOverviewId(int salesOverviewId) {
+        this.salesOverviewId = salesOverviewId;
     }
 
     public LocalDate getDate() {
@@ -106,7 +103,7 @@ public class SalesOverview {
     @Override
     public String toString() {
         return "SalesOverview{" +
-                "id=" + id +
+                "salesOverviewId=" + salesOverviewId +
                 ", date=" + date +
                 ", credit=" + credit +
                 ", cash=" + cash +
