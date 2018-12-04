@@ -20,9 +20,8 @@ public class UserRepoImpl extends JdbcFix implements UserRepo {
             connection = getConnection();
             Statement statement = connection.createStatement();
 
-            String stringInsert = "INSERT INTO charlie.users VALUE (default, '" + user.getUsername() + "', " + user.getPassword() + ", "+ user.getUserEmail() +","+ user.getFullName()+","+ user.getClearance()+"'); ";
+            String stringInsert = "INSERT INTO charlie.users VALUE (default, '" + user.getUsername() + "', '" + user.getPassword() + "', '"+ user.getUserEmail() +"','"+ user.getFullName()+"',"+ user.getClearance()+"); ";
 
-            System.out.println(stringInsert);
             statement.execute(stringInsert);
 
             return true;
@@ -37,7 +36,7 @@ public class UserRepoImpl extends JdbcFix implements UserRepo {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringDelete = "DELETE FROM Users  WHERE userId =" + index + ";";
+            String stringDelete = "DELETE FROM users WHERE userId =" + index + ";";
             statement.execute(stringDelete);
 
 
@@ -63,7 +62,7 @@ public class UserRepoImpl extends JdbcFix implements UserRepo {
                 ",name='"+ user.getFullName()+"'" +
                 ", clearance =" + user.getClearance() +"" + "" +
                 " WHERE userId = "+ index +";";
-        System.out.println(stringUpdate);
+
         statement.execute(stringUpdate);
 
     } catch (Exception e) {
@@ -93,8 +92,6 @@ public class UserRepoImpl extends JdbcFix implements UserRepo {
 
             User user = new User();
 
-
-
             user.setUserId(result.getInt("userId"));
             user.setUsername(result.getString("userName"));
             user.setPassword(result.getString("userPassword"));
@@ -102,7 +99,6 @@ public class UserRepoImpl extends JdbcFix implements UserRepo {
             user.setFullName(result.getString("fullName"));
             user.setClearance(result.getInt("clearance"));
 
-            System.out.println(user);
             return user;
 
         } catch (Exception e) {

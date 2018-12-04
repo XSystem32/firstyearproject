@@ -44,11 +44,11 @@ public class UserController {
         return CREATE_USER;
     }
 
-    @GetMapping("/saveUser")
+    @RequestMapping("/saveUser")
     public String saveUser(@ModelAttribute User user) {
         LOGGER.info("save was called... ");
         userService.createUser(user);
-        return REDIRECT_INDEX;
+        return DISPLAY_USERS;
     }
 
 

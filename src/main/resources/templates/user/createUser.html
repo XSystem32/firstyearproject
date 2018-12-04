@@ -29,6 +29,18 @@
         <tbody>
 
 
+        <form method="post" action="#" th:action="@{/saveUser}" th:object="${user}"  >
+
+            <input type="text" placeholder="username" th:field="*{username}">
+            <input type="password" placeholder="password" th:field="*{password}">
+            <input type="email" placeholder="email" th:field="*{userEmail}">
+            <input type="text" placeholder="name" th:field="*{fullName}">
+            <input type="number" step="1" min="0" max="3" placeholder="clearance" th:field="*{clearance}">
+
+            <input type="submit" value="Submit">
+
+        </form>
+
         <tr th:each="user : ${users}">
             <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.username}" />  </td>
             <td><a th:href="@{/user/resetPassword(id=${user.userId})}" class="blocklink">Reset</a></td>
