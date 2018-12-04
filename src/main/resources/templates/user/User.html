@@ -19,6 +19,7 @@
             <th>Email</th>
             <th>Name</th>
             <th>Clearance</th>
+            <th>Delete</th>
         </tr>
         </thead>
 
@@ -30,6 +31,8 @@
             <td th:text="${user.userEmail}"/>
             <td th:text="${user.fullName}"/>
             <td th:text="${user.clearance}"/>
+            <td><a th:href="@{/user/deleteUser(id=${user.userId})}" class="blocklink">Delete</a></td>
+
         </tr>
 
         </tbody>

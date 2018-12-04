@@ -46,21 +46,22 @@ public class UserController {
 
     @GetMapping("/saveUser")
     public String saveUser(@ModelAttribute User user) {
-        LOGGER.info("create was called... ");
+        LOGGER.info("save was called... ");
         userService.createUser(user);
         return REDIRECT_INDEX;
     }
 
 
-    @GetMapping("user/deleteUser")
-    public String delete(Model model) {
-        LOGGER.info("create was called... ");
-        return DELETE_USER;
+    @RequestMapping(value = "user/deleteUser", method = RequestMethod.GET)
+    public String delete(@RequestParam(name="id")String id, Model model) {
+        LOGGER.info("delete was called... ");
+        userService.deleteUser(Integer.parseInt(id));
+        return DISPLAY_USERS;
     }
 
     @GetMapping("user/updateUser")
     public String update(Model model) {
-        LOGGER.info("create was called... ");
+        LOGGER.info("update was called... ");
         return UPDATE_USER;
     }
 
@@ -77,7 +78,7 @@ public class UserController {
 
     @GetMapping("user/displayUsers")
     public String displayUsers(Model model) {
-        LOGGER.info("create was called... ");
+        LOGGER.info("display users was called... ");
 
         List<User> users = userService.getUsers();
 
