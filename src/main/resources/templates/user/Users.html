@@ -36,6 +36,7 @@
             <th>Email</th>
             <th>Name</th>
             <th>Clearance</th>
+            <th>Delete</th>
         </tr>
         </thead>
 
@@ -49,6 +50,7 @@
             <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.userEmail}" /></td>
             <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.fullName}" /></td>
             <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.clearance}" /></td>
+            <td><a th:href="@{/user/deleteUser(id=${user.userId})}" class="blocklink">Delete</a></td>
 
 =======
             <td th:text="${user.username}">  <a th:href="@{/user/User(salesOverviewId=${user.userId})}" class="blocklink"> <p th:text="${user.userId}"/> </a> </td>
