@@ -17,7 +17,7 @@ public class UserService implements UserRepo {
     @Override
     public boolean createUser(User user) {
         userRepo.createUser(user);
-        return false;
+        return true;
     }
 
     @Override
