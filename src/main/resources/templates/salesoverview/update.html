@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <form method="post" action="#" th:action="@{/updateSalesOverviewSubmit}" th:object="${salesoverview}"  >
+        <input type="hidden" th:field="*{salesOverviewId}">
+        <input type="date" id="date" name="date" th:field="*{date}"/>
+        <input type="number" min="0" max="1000000" step="1" value="" th:field="*{credit}"  />
+        <input type="number" min="0" max="1000000" step="1" value="" th:field="*{cash}"  />
+        <input type="number" min="0" max="1000000" step="1" value="" th:field="*{till}"  />
+        <input type="number" min="0" max="1000000" step="1" value="" th:field="*{vault}"  />
+
+        <input type="submit" value="Submit">
+
+
+    </form>
+
+</div>
+
+</body>
+</html>

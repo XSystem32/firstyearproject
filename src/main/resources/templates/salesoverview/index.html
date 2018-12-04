@@ -72,7 +72,7 @@
         <h1 class="headline">Sales overview</h1>
     </div>
 
-    <a href="createoverview.html">Create Sales Overview</a>
+    <a href="/salesoverview/createoverview.html">Create Sales Overview</a>
 
 
     <table class="redTable">
@@ -83,20 +83,26 @@
             <th>Cash</th>
             <th>Till</th>
             <th>Vault</th>
-            <th>Total</th>
+            <th>Delete</th>
+            <th>Update</th>
         </tr>
         </thead>
 
         <tbody>
 
-        <tr th:each="salesoverview : ${salesoverviews}" id="tablerow">
+        <tr th:each="salesoverview : ${salesoverviews}" salesOverviewId="tablerow">
 
-
-            <td th:text="${salesoverview.date}"/>
+            <td>
+                <a th:href="@{/displaySalesOverview(id=${salesoverview.salesOverviewId})}" > <p th:text="${salesoverview.date}"/> </a>
+            </td>
             <td th:text="${salesoverview.credit}"/>
             <td th:text="${salesoverview.cash}"/>
             <td th:text="${salesoverview.till}"/>
             <td th:text="${salesoverview.vault}"/>
+            <td><a th:href="@{/deleteSalesOverview(id=${salesoverview.salesOverviewId})}"> Delete </a> </td>
+            <td><a th:href="@{/updateSalesOverview(id=${salesoverview.salesOverviewId})}"> Update </a> </td>
+
+
 
         </tr>
 

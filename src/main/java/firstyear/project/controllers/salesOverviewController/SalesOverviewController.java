@@ -20,15 +20,18 @@ public class SalesOverviewController {
 
     private static final Logger LOGGER = Logger.getLogger(SalesOverviewController.class.getName());
 
-    private String INDEX = "index.html";
-    private String CREATEOVERVIEW = "createoverview.html";
-    private String SALESOVERVIEWS = "salesoverviews.html";
-    private final String REDIRECT_SALESOVERVIEW = "redirect:/salesoverviews.html";
+    private String INDEX = "salesoverview/index.html";
+    private String CREATEOVERVIEW = "salesoverview/createoverview.html";
+    private String SALESOVERVIEWS = "index.html";
+    private final String REDIRECT_SALESOVERVIEW = "redirect:/salesoverview/index.html";
+    private String DELETESALEOVERVIEW = "deleteSalesOverview";
+    private String UPDATESALESOVERVIEW = "salesoverview/update.html";
+    private String DISPLAYSALESOVERVIEW = "salesoverview/display.html";
 
 
 
-    @GetMapping("/salesoverviews.html")
-    public String overview (Model model) {
+    @GetMapping("/salesoverview/index.html")
+    public String index (Model model) {
         LOGGER.info("index was called");
 
         LocalDate end = LocalDate.now();
@@ -37,15 +40,9 @@ public class SalesOverviewController {
         System.out.println(start);
         List<SalesOverview> salesOverviews = salesOverviewService.getSalesOverviews(LocalDate.from(start) ,LocalDate.now());
         model.addAttribute("salesoverviews", salesOverviews);
-        return SALESOVERVIEWS;
-    }
-
-
-    @GetMapping("/index.html")
-    public String index (Model model) {
-        LOGGER.info("index was called");
         return INDEX;
     }
+
     @GetMapping("/test")
     public String test (Model model){
         LOGGER.info("test was called");
@@ -57,7 +54,7 @@ public class SalesOverviewController {
     }
 
 
-    @GetMapping("/createoverview.html")
+    @GetMapping("salesoverview/createoverview.html")
     public String create(Model model, SalesOverview dateConverter) {
         LOGGER.info("create was called... ");
         model.addAttribute("salesoverview", new SalesOverview());
@@ -74,5 +71,33 @@ public class SalesOverviewController {
         return REDIRECT_SALESOVERVIEW;
     }
 
+    @RequestMapping(value = "/deleteSalesOverview", method = RequestMethod.GET)
+    public String deleteSalesOverview(@RequestParam(name="id")String id){
+        LOGGER.info("Delete movie was called" + id);
+        salesOverviewService.deleteSalesOverview(Integer.parseInt(id));
+        return REDIRECT_SALESOVERVIEW;
+    }
+
+    @RequestMapping(value = "/updateSalesOverview", method = RequestMethod.GET)
+    public String updateSalesOverview(@RequestParam(name = "id") String id, Model model) {
+        LOGGER.info("updateSalesOverview action called... " + id);
+        model.addAttribute("salesoverview", salesOverviewService.getSalesOverview(Integer.parseInt(id)));
+        return UPDATESALESOVERVIEW;
+    }
+
+    @RequestMapping("/updateSalesOverviewSubmit")
+    public String updateSalesOverview(@ModelAttribute SalesOverview salesOverview) {
+        LOGGER.info("updateSalesOverview was called");
+        salesOverviewService.updateSalesOverview(salesOverview);
+        return REDIRECT_SALESOVERVIEW;
+    }
+
+    @RequestMapping(value = "/displaySalesOverview", method = RequestMethod.GET)
+    public String displaySalesOverview(@RequestParam(name="id")String id, Model model){
+        LOGGER.info("Display salesoverview was called" + id);
+        SalesOverview salesOverview = salesOverviewService.getSalesOverview(Integer.parseInt(id));
+        model.addAttribute("salesoverview", salesOverview);
+        return DISPLAYSALESOVERVIEW;
+    }
 
 }

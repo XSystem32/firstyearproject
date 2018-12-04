@@ -45,6 +45,7 @@
 
 
         <tr th:each="user : ${users}">
+
             <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.username}" />  </td>
             <td><a th:href="@{/user/resetPassword(id=${user.userId})}" class="blocklink">Reset</a></td>
             <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.userEmail}" /></td>
