@@ -14,8 +14,10 @@
     </div>
 
 
-        <form method="post" action="#" th:action="@{/saveUser}" th:object="${user}"  >
+        <form method="post" action="#" th:action="@{/updateUserSubmit}" th:object="${user}"  >
 
+
+            <input type="hidden" th:field="*{userId}" >
             <input type="text" placeholder="username" th:field="*{username}">
 
             <input type="email" placeholder="email" th:field="*{userEmail}">

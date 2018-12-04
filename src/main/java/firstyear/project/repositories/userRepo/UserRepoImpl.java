@@ -56,13 +56,15 @@ public class UserRepoImpl extends JdbcFix implements UserRepo {
         // SQL SKAL TJEKKES !!!!!!!!!!!!!!!!
         connection = getConnection();
         Statement statement = connection.createStatement();
-        String stringUpdate = "UPDATE Users SET UserName='"+ user.getUsername() +"'" +
+        String stringUpdate = "UPDATE charlie.users SET username='"+ user.getUsername() +"'" +
                 ", userPassword='" + user.getPassword() +"'"+
-                ", email='"+ user.getUserEmail()+ "'" +
-                ",name='"+ user.getFullName()+"'" +
+                ", userEmail='"+ user.getUserEmail()+ "'" +
+                ", fullName='"+ user.getFullName()+"'" +
                 ", clearance =" + user.getClearance() +"" + "" +
                 " WHERE userId = "+ index +";";
 
+        System.out.println("user id " + user.getUserId());
+        System.out.println(stringUpdate);
         statement.execute(stringUpdate);
 
     } catch (Exception e) {
