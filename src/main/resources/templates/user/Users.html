@@ -45,7 +45,7 @@
 
 
         <tr th:each="user : ${users}">
-<<<<<<< HEAD
+
             <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.username}" />  </td>
             <td><a th:href="@{/user/resetPassword(id=${user.userId})}" class="blocklink">Reset</a></td>
             <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.userEmail}" /></td>
@@ -54,13 +54,7 @@
             <td><a th:href="@{/user/updateUser(id=${user.userId})}" class="blocklink">Update</a></td>
             <td><a th:href="@{/user/deleteUser(id=${user.userId})}" class="blocklink">Delete</a></td>
 
-=======
-            <td th:text="${user.username}">  <a th:href="@{/user/User(salesOverviewId=${user.userId})}" class="blocklink"> <p th:text="${user.userId}"/> </a> </td>
-            <td><a th:href="@{/user/resetPassword(salesOverviewId=${user.userId})}" class="blocklink">Reset</a></td>
-            <td th:text="${user.email}"/>
-            <td th:text="${user.name}"/>
-            <td th:text="${user.clearance}"/>
->>>>>>> 69f6508d0e9da597c3a11aa83f7b97560731fd2f
+
         </tr>
 
 

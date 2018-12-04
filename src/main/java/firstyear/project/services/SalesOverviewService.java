@@ -36,8 +36,8 @@ public class SalesOverviewService implements SalesOverviewRepo {
         return true;
     }
 
-    public boolean updateSalesOverview(int index, SalesOverview salesOverview) {
-        salesOverviewRepo.updateSalesOverview(index, salesOverview);
+    public boolean updateSalesOverview(SalesOverview salesOverview) {
+        salesOverviewRepo.updateSalesOverview(salesOverview);
         return true;
     }
 

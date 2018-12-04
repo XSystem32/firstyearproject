@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Display</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <table>
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Credit</th>
+            <th>Cash</th>
+            <th>Till</th>
+            <th>Vault</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:object="${salesoverview}">
+            <td>
+                <p th:text="${salesoverview.date}"/>
+            </td>
+            <td th:text="${salesoverview.credit}"/>
+            <td th:text="${salesoverview.cash}"/>
+            <td th:text="${salesoverview.till}"/>
+            <td th:text="${salesoverview.vault}"/>
+
+            <td><a th:href="@{/deleteSalesOverview(id=${salesoverview.salesOverviewId})}"> Delete </a> </td>
+            <td><a th:href="@{/updateSalesOverview(id=${salesoverview.salesOverviewId})}"> Update </a> </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

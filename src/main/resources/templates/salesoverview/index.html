@@ -84,6 +84,7 @@
             <th>Till</th>
             <th>Vault</th>
             <th>Delete</th>
+            <th>Update</th>
         </tr>
         </thead>
 
@@ -91,13 +92,16 @@
 
         <tr th:each="salesoverview : ${salesoverviews}" salesOverviewId="tablerow">
 
-
-            <td th:text="${salesoverview.date}"/>
+            <td>
+                <a th:href="@{/displaySalesOverview(id=${salesoverview.salesOverviewId})}" > <p th:text="${salesoverview.date}"/> </a>
+            </td>
             <td th:text="${salesoverview.credit}"/>
             <td th:text="${salesoverview.cash}"/>
             <td th:text="${salesoverview.till}"/>
             <td th:text="${salesoverview.vault}"/>
             <td><a th:href="@{/deleteSalesOverview(id=${salesoverview.salesOverviewId})}"> Delete </a> </td>
+            <td><a th:href="@{/updateSalesOverview(id=${salesoverview.salesOverviewId})}"> Update </a> </td>
+
 
 
         </tr>

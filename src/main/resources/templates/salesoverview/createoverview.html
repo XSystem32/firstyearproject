@@ -21,6 +21,7 @@
     <form method="post" th:action="@{/saveSalesOverview}" th:object="${salesoverview}"  >
 
         <p>Date</p>
+<<<<<<< HEAD
 <<<<<<< HEAD:src/main/resources/templates/createoverview.html
         <input type="date" id="date" fullName="date" th:field="*{date}"/>
 =======
@@ -29,9 +30,15 @@
 
         <p>Cash</p>
         <input type="number" min="0" max="1000000" step="1" value="" th:field="*{cash}" />
+=======
+        <input type="date" id="date" fullName="date" th:field="*{date}"/>
+>>>>>>> 5c0da8b42132e02f674d0cbb998d5d90caeee85e
 
         <p>Credit</p>
         <input type="number" min="0" max="1000000" step="1" value="" th:field="*{credit}" />
+
+        <p>Cash</p>
+        <input type="number" min="0" max="1000000" step="1" value="" th:field="*{cash}" />
 
         <p>Till</p>
         <input type="number" min="0" max="1000000" step="1" value="" th:field="*{till}" />
