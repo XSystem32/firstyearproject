@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Create user</title>
+
+
+
 </head>
 <body>
+
+
+<div class="wrapper">
+    <div class="col-md-12">
+        <h1 class="headline">Create user</h1>
+    </div>
+
+    <table class="redTable">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Clearance</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+        <tr th:each="user : ${users}">
+            <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.username}" />  </td>
+            <td><a th:href="@{/user/resetPassword(id=${user.userId})}" class="blocklink">Reset</a></td>
+            <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.email}" /></td>
+            <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.name}" /></td>
+            <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.clearance}" /></td>
+        </tr>
+
+
+        </tbody>
+
+    </table>
+
+</div>
 
 </body>
 </html>

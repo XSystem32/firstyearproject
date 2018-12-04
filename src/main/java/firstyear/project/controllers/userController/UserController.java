@@ -7,18 +7,20 @@ import firstyear.project.models.User;
 import firstyear.project.models.SalesOverview;
 import firstyear.project.services.UserService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
 public class UserController {
+
+    @Autowired
+    UserService userService;
 
     private static final Logger LOGGER = Logger.getLogger(SalesOverviewController.class.getName());
 
@@ -29,23 +31,23 @@ public class UserController {
     private final String DISPLAY_USERS = "user/Users.html";
     private final String REDIRECT_INDEX = "redirect:/";
 
-    @GetMapping("user/createUser")
-    public String create(Model model) {
-        LOGGER.info("create was called... ");
-
-        return CREATE_USER;
-    }
-
     @GetMapping("/userTest")
     public String usertest (Model model){
         LOGGER.info("test was called");
         return REDIRECT_INDEX;
     }
 
-    @GetMapping("/saveUser")
-    public String saveUser(Model model) {
+    @GetMapping("user/createUser")
+    public String create(Model model) {
         LOGGER.info("create was called... ");
+        model.addAttribute("user", new User());
+        return CREATE_USER;
+    }
 
+    @GetMapping("/saveUser")
+    public String saveUser(@ModelAttribute User user) {
+        LOGGER.info("create was called... ");
+        userService.createUser(user);
         return REDIRECT_INDEX;
     }
 
@@ -62,10 +64,13 @@ public class UserController {
         return UPDATE_USER;
     }
 
-    @RequestMapping(value = "user/displayUser", method = RequestMethod.GET)
+    @RequestMapping(value = "user/User", method = RequestMethod.GET)
     public String display(@RequestParam(name="id")String id, Model model) {
         LOGGER.info("display user was called... ");
 
+        User user = userService.getUser(Integer.parseInt(id));
+
+        model.addAttribute("user", user);
 
         return DISPLAY_USER;
     }
@@ -74,12 +79,7 @@ public class UserController {
     public String displayUsers(Model model) {
         LOGGER.info("create was called... ");
 
-        ArrayList<User> users = new ArrayList<>();
-
-        users.add(new User(1,"ptrprkt","asdf","peter@parker.dk","Peter Parker", "1"));
-        users.add(new User(2,"katiee","asdf","katie@parker.dk","Katie Parker", "1"));
-        users.add(new User(3,"coolcat","asdf","catt@parker.dk","Frank Black", "1"));
-
+        List<User> users = userService.getUsers();
 
         model.addAttribute("users", users);
         return DISPLAY_USERS;
