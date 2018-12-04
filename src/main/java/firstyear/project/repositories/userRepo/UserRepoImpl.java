@@ -97,7 +97,7 @@ public class UserRepoImpl extends JdbcFix implements UserRepo {
 
             user.setUserId(result.getInt("userId"));
             user.setUsername(result.getString("userName"));
-            user.setPassword(result.getString("userpassword"));
+            user.setPassword(result.getString("userPassword"));
             user.setUserEmail(result.getString("userEmail"));
             user.setFullName(result.getString("fullName"));
             user.setClearance(result.getInt("clearance"));
