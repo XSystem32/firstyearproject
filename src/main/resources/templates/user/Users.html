@@ -7,8 +7,11 @@
     <style>
 
         .blocklink{
-            display:block;
+            display: block;
 
+        }
+        tr:hover{
+            background: #af2b31;
         }
     </style>
 </head>
@@ -40,11 +43,11 @@
 
 
         <tr th:each="user : ${users}">
-            <td th:text="${user.username}">  <a th:href="@{/user/User(id=${user.userId})}" class="blocklink"> <p th:text="${user.userId}"/> </a> </td>
+            <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.username}" />  </td>
             <td><a th:href="@{/user/resetPassword(id=${user.userId})}" class="blocklink">Reset</a></td>
-            <td th:text="${user.email}"/>
-            <td th:text="${user.name}"/>
-            <td th:text="${user.clearance}"/>
+            <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.email}" /></td>
+            <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.name}" /></td>
+            <td><a th:href="@{/user/User(id=${user.userId})}" class="blocklink"   th:text="${user.clearance}" /></td>
         </tr>
 
 
