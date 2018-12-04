@@ -6,8 +6,8 @@ public class User {
     private int userId;
     private String username;
     private String password;
-    private String email;
-    private String name;
+    private String userEmail;
+    private String fullName;
     private int clearance;
 
 
@@ -17,12 +17,12 @@ public class User {
     public User() {
     }
 
-    public User(int userId, String username, String password, String email, String name, int clearance) {
+    public User(int userId, String username, String password, String userEmail, String fullName, int clearance) {
         this.userId = userId;
         this.username = username;
         this.password = password;
-        this.email = email;
-        this.name = name;
+        this.userEmail = userEmail;
+        this.fullName = fullName;
         this.clearance = clearance;
     }
 
@@ -50,12 +50,12 @@ public class User {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setEmail(String username) {
-        this.email = email;
+    public void setUserEmail(String username) {
+        this.userEmail = userEmail;
     }
 
     public int getClearance() {
@@ -66,12 +66,12 @@ public class User {
         this.clearance = clearance;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String username) {
-        this.name = name;
+    public void setFullName(String username) {
+        this.fullName = fullName;
     }
 
     @Override
@@ -80,8 +80,8 @@ public class User {
                 "userId=" + userId +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", fullName='" + fullName + '\'' +
                 ", clearance='" + clearance + '\'' +
                 '}';
     }

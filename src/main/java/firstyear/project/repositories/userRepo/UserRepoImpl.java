@@ -20,7 +20,7 @@ public class UserRepoImpl extends JdbcFix implements UserRepo {
             connection = getConnection();
             Statement statement = connection.createStatement();
 
-            String stringInsert = "INSERT INTO charlie.users VALUE (default, '" + user.getUsername() + "', " + user.getPassword() + ", "+ user.getEmail() +","+ user.getName()+","+ user.getClearance()+"'); ";
+            String stringInsert = "INSERT INTO charlie.users VALUE (default, '" + user.getUsername() + "', " + user.getPassword() + ", "+ user.getUserEmail() +","+ user.getFullName()+","+ user.getClearance()+"'); ";
 
             System.out.println(stringInsert);
             statement.execute(stringInsert);
@@ -59,8 +59,8 @@ public class UserRepoImpl extends JdbcFix implements UserRepo {
         Statement statement = connection.createStatement();
         String stringUpdate = "UPDATE Users SET UserName='"+ user.getUsername() +"'" +
                 ", userPassword='" + user.getPassword() +"'"+
-                ", email='"+ user.getEmail()+ "'" +
-                ",name='"+ user.getName()+"'" +
+                ", email='"+ user.getUserEmail()+ "'" +
+                ",name='"+ user.getFullName()+"'" +
                 ", clearance =" + user.getClearance() +"" + "" +
                 " WHERE userId = "+ index +";";
         System.out.println(stringUpdate);
@@ -98,8 +98,8 @@ public class UserRepoImpl extends JdbcFix implements UserRepo {
             user.setUserId(result.getInt("userId"));
             user.setUsername(result.getString("userName"));
             user.setPassword(result.getString("userpassword"));
-            user.setEmail(result.getString("email"));
-            user.setName(result.getString("name"));
+            user.setUserEmail(result.getString("userEmail"));
+            user.setFullName(result.getString("fullName"));
             user.setClearance(result.getInt("clearance"));
 
             return user;
@@ -132,8 +132,8 @@ public class UserRepoImpl extends JdbcFix implements UserRepo {
                 user.setUserId(result.getInt("userId"));
                 user.setUsername(result.getString("userName"));
                 user.setPassword(result.getString("userPassword"));
-                user.setEmail(result.getString("email"));
-                user.setName(result.getString("name"));
+                user.setUserEmail(result.getString("userEmail"));
+                user.setFullName(result.getString("fullName"));
                 user.setClearance(result.getInt("clearance"));
                 users.add(user);
             }
