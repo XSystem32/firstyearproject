@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Update</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/universal.css}" />
+
 </head>
 <body>
 
@@ -15,6 +17,8 @@
         <input type="number" min="0" max="1000000" step="1" value="" th:field="*{cash}"  />
         <input type="number" min="0" max="1000000" step="1" value="" th:field="*{till}"  />
         <input type="number" min="0" max="1000000" step="1" value="" th:field="*{vault}"  />
+        <input type="text" placeholder="comment" th:field="*{comment}">
+
 
         <input type="submit" value="Submit">
 

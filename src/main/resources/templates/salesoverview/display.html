@@ -16,6 +16,7 @@
             <th>Cash</th>
             <th>Till</th>
             <th>Vault</th>
+            <th>Comment</th>
         </tr>
         </thead>
         <tbody>
@@ -27,6 +28,8 @@
             <td th:text="${salesoverview.cash}"/>
             <td th:text="${salesoverview.till}"/>
             <td th:text="${salesoverview.vault}"/>
+            <td th:text="${salesoverview.comment}"/>
+
 
             <td><a th:href="@{/deleteSalesOverview(id=${salesoverview.salesOverviewId})}"> Delete </a> </td>
             <td><a th:href="@{/updateSalesOverview(id=${salesoverview.salesOverviewId})}"> Update </a> </td>
