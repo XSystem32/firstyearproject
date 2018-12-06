@@ -2,6 +2,7 @@ package firstyear.project.controllers.salesOverviewController;
 
 import firstyear.project.models.SalesOverview;
 import firstyear.project.services.SalesOverviewService;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +34,10 @@ public class SalesOverviewController {
     @GetMapping("/salesoverview/index.html")
     public String index (Model model) {
         LOGGER.info("index was called");
+
+        LocalDate month = LocalDate.now();
+
+        model.addAttribute("currentMonth", month);
 
         LocalDate end = LocalDate.now();
         LocalDate start = end.minusMonths(1);

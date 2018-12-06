@@ -10,17 +10,46 @@
         *{
             font-family: arial;
         }
-
-        a{
-            font-size: 30px;
-            color: #f6f6f6;
+        body{
             background: #af2b31;
+        }
+        .wrapper{
+            padding: 0 15px 15px 15px;
+            background: #FFFFFF;
+        }
+
+        #comment {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 10ch;
+        }
+
+        a, a:visited, a:hover, a:active{
+            font-size: 30px;
+            color: black;
+            text-decoration: none;
         }
         .wrapper{
             width: 80%;
             margin: 0 auto;
         }
+        #buttonLink{
+            padding: 5px;
+            background: #af2b31;
+            color: white;
 
+        }
+        #buttonLink:hover{
+            background: #cd3038;
+
+        }
+        #menu{
+            margin: 5px 0 5px 0;
+        }
+        .blocklink{
+            display: block;
+        }
 
         .headline{
             font-size: 70px;
@@ -43,9 +72,17 @@
         table.redTable tbody td {
             font-size: 20px;
         }
+        .redTable tbody{
+            background: #eacec9;
+        }
 
         table.redTable tr:nth-child(even) {
-            background: #F5C8BF;
+            background: #f5e2df;
+        }
+
+
+        table.redTable tbody tr:hover {
+            background: #fff1ef;;
         }
 
         table.redTable thead {
@@ -70,9 +107,14 @@
 
     <div class="col-md-12">
         <h1 class="headline">Sales overview</h1>
+        <h2 th:text="${currentMonth.month}"  />
     </div>
 
-    <a href="/salesoverview/createoverview.html">Create Sales Overview</a>
+    <div type=""></div>
+
+    <div id="menu">
+    <a href="/salesoverview/createoverview.html" id="buttonLink">Create Sales Overview</a>
+    </div>
 
 
     <table class="redTable">
@@ -84,12 +126,15 @@
             <th>Till</th>
             <th>Vault</th>
             <th>Comment</th>
+            <th>Total</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
 
         <tbody>
 
-        <tr th:each="salesoverview : ${salesoverviews}" salesOverviewId="tablerow">
+        <tr th:each="salesoverview : ${salesoverviews}" >
 
             <td>
                 <a th:href="@{/displaySalesOverview(id=${salesoverview.salesOverviewId})}" > <p th:text="${salesoverview.date}"/> </a>
@@ -98,14 +143,12 @@
             <td th:text="${salesoverview.cash}"/>
             <td th:text="${salesoverview.till}"/>
             <td th:text="${salesoverview.vault}"/>
-            <td th:text="${salesoverview.comment}"/>
+            <td id="comment" th:text="${salesoverview.comment}"/>
+            <td th:text="${salesoverview.total}"/>
 
             <td><a th:href="@{/deleteSalesOverview(id=${salesoverview.salesOverviewId})}"> &#10006; </a> </td>
-            <td><a th:href="@{/updateSalesOverview(id=${salesoverview.salesOverviewId})}"> Update </a> </td>
+            <td><a th:href="@{/updateSalesOverview(id=${salesoverview.salesOverviewId})}"> <img src="https://image.flaticon.com/icons/svg/61/61456.svg" width="20" height="35"> </a> </td>
 
-
-
-        </tr>
 
         </tbody>
 

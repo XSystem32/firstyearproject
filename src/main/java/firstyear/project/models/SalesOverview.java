@@ -17,6 +17,7 @@ public class SalesOverview {
     private double till;
     private double vault;
     private String comment;
+    private double total;
 
     public SalesOverview() {
         this.date = LocalDate.now();
@@ -95,10 +96,14 @@ public class SalesOverview {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
     public String getDateString(){
         return date.toString();
     }
 
+    public double getTotal() {
+        return credit + cash;
+    }
 
     @Override
     public String toString() {

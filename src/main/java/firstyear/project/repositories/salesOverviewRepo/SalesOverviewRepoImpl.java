@@ -21,7 +21,7 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo 
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringGet = "SELECT * FROM charlie.salesoverviews WHERE date BETWEEN '" + start + "' AND '" + end +"';";
+            String stringGet = "SELECT * FROM charlie.salesoverviews WHERE date BETWEEN '" + start + "' AND '" + end +"' ORDER by date asc;";
 
             System.out.println(stringGet);
             statement.executeQuery(stringGet);
@@ -36,6 +36,7 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo 
                 so.setTill(result.getDouble("till"));
                 so.setVault(result.getDouble("vault"));
                 so.setComment(result.getString("comment"));
+                so.getTotal();
                 salesOverviews.add(so);
             }
             return salesOverviews;
