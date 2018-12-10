@@ -3,12 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <title>Display</title>
+
+    <style>
+
+        *{
+            font-family: arial;
+        }
+
+        .wrapper{
+            padding: 0 15px 15px 15px;
+            background: #FFFFFF;
+        }
+
+        a, a:visited, a:hover, a:active{
+            font-size: 30px;
+            color: black;
+            text-decoration: none;
+        }
+        .wrapper{
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        table.displayTable {
+            border: 2px solid #af2b31;
+            background-color: #fdf8ff;
+            width: 100%;
+            text-align: center;
+            border-collapse: collapse;
+
+        }
+        table.displayTable td, table.displayTable th {
+            border: 1px solid #AAAAAA;
+            padding: 3px 2px;
+        }
+
+        table.displayTable tbody td {
+            font-size: 20px;
+        }
+        .displayTable tbody{
+            background: #eacec9;
+        }
+
+        table.displayTable tr:nth-child(even) {
+            background: #f5e2df;
+        }
+
+
+        table.displayTable tbody tr:hover {
+            background: #fff1ef;;
+        }
+
+        table.displayTable thead {
+            background: #af2b31;
+        }
+
+        table.displayTable thead th {
+            font-size: 20px;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-align: center;
+            border-left: 2px solid #af2b31;
+        }
+
+    </style>
+
 </head>
 <body>
-
 <div class="wrapper">
 
-    <table>
+    <table class="displayTable">
         <thead>
         <tr>
             <th>Date</th>
@@ -17,8 +81,11 @@
             <th>Till</th>
             <th>Vault</th>
             <th>Comment</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
+
         <tbody>
         <tr th:object="${salesoverview}">
             <td>
