@@ -2,12 +2,14 @@ package firstyear.project.repositories.bookingRepo;
 
 import firstyear.project.models.Booking;
 import firstyear.project.models.SalesOverview;
+import firstyear.project.models.User;
 import firstyear.project.repositories.JdbcFix;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookingRepoImpl extends JdbcFix implements BookingRepo {
@@ -25,7 +27,7 @@ public class BookingRepoImpl extends JdbcFix implements BookingRepo {
                     ","+ booking.getBandEmail()+
                     ",'"+booking.getBandPhone()+
                     "','"+booking.getContactName()+
-                    "',"+booking.getWebside()+"); ";
+                    "',"+booking.getWebsite()+"); ";
 
             System.out.println(stringInsert);
             statement.execute(stringInsert);
@@ -69,7 +71,7 @@ public class BookingRepoImpl extends JdbcFix implements BookingRepo {
                     "',bandEmail='"+ booking.getBandEmail()+"" +
                     "', bandPhone ='" + booking.getBandPhone() +"" +
                     "', contactName ='" + booking.getContactName() + "" +
-                    "', webside ='" + booking.getWebside()+ "'" +
+                    "', website ='" + booking.getWebsite()+ "'" +
                     " WHERE bookingId = "+ booking.getBookingId() +";";
             System.out.println(stringUpdate);
             statement.execute(stringUpdate);
@@ -104,13 +106,13 @@ public class BookingRepoImpl extends JdbcFix implements BookingRepo {
 
 
             booking.setBookingId(result.getInt("bookingId"));
-            booking.setBandName(result.getString("date"));
-            booking.setBandDate(result.getLocalDate("credit"));
-            booking.setBandCost(result.getDouble("cash"));
-            booking.setBandEmail(result.getString("till"));
-            booking.setBandPhone(result.getInt("vault"));
-            booking.setContactName(result.getString("comment"));
-            booking.setWebside(result.getString("comment"));
+            booking.setBandName(result.getString("bandName"));
+            booking.setbandDate(result.getDate("bandDate"));
+            booking.setBandCost(result.getDouble("bandCost"));
+            booking.setBandEmail(result.getString("bandEmail"));
+            booking.setBandPhone(result.getInt("bandPhone"));
+            booking.setContactName(result.getString("contactName"));
+            booking.setWebsite(result.getString("website"));
 
             return booking;
 
@@ -122,9 +124,42 @@ public class BookingRepoImpl extends JdbcFix implements BookingRepo {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
+        }
+    }
     @Override
     public List<Booking> getBookings() {
-        return null;
+        List<Booking> bookings = new ArrayList<>();
+        try {
+            connection = getConnection();
+            Statement statement = connection.createStatement();
+            String stringGet = "SELECT * FROM charlie.bookings ";
+
+            statement.executeQuery(stringGet);
+            ResultSet result = statement.getResultSet();
+
+            while (result.next()){
+                Booking booking = new Booking();
+                booking.setBookingId(result.getInt("bookingId"));
+                booking.setBandName(result.getString("bandName"));
+                booking.setbandDate(result.getDate("bandDate"));
+                booking.setBandCost(result.getDouble("bandCost"));
+                booking.setBandEmail(result.getString("bandEmail"));
+                booking.setBandPhone(result.getInt("bandPhone"));
+                booking.setContactName(result.getString("contactName"));
+                booking.setWebsite(result.getString("website"));
+                bookings.add(booking);
+            }
+            return bookings;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;} finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }
