@@ -3,6 +3,7 @@ package firstyear.project.models;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Booking {
@@ -17,13 +18,13 @@ public class Booking {
     private String bandEmail;
     private int bandPhone;
     private String contactName;
-    private String webside;
+    private String website;
 
 
     public Booking() {
     }
 
-    public Booking(int bookingId, String bandName, LocalDate bandDate, double bandCost, String bandEmail, int bandPhone, String contactName, String webside) {
+    public Booking(int bookingId, String bandName, LocalDate bandDate, double bandCost, String bandEmail, int bandPhone, String contactName, String website) {
         this.bookingId = bookingId;
         BandName = bandName;
         this.bandDate = bandDate;
@@ -31,7 +32,7 @@ public class Booking {
         this.bandEmail = bandEmail;
         this.bandPhone = bandPhone;
         this.contactName = contactName;
-        this.webside = webside;
+        this.website = website;
     }
 
     public int getBookingId() {
@@ -56,6 +57,14 @@ public class Booking {
 
     public void setBandDate(LocalDate bandDate) {
         this.bandDate = bandDate;
+    }
+
+    public void setbandDate(Date date){
+        this.bandDate = date.toLocalDate();
+    }
+
+    public void setDate(String date){
+        this.bandDate = LocalDate.parse(date);
     }
 
     public double getBandCost() {
@@ -90,12 +99,12 @@ public class Booking {
         this.contactName = contactName;
     }
 
-    public String getWebside() {
-        return webside;
+    public String getWebsite() {
+        return website;
     }
 
-    public void setWebside(String webside) {
-        this.webside = webside;
+    public void setWebsite(String website) {
+        this.website = website;
     }
 
     @Override
@@ -108,7 +117,7 @@ public class Booking {
                 ", bandEmail='" + bandEmail + '\'' +
                 ", bandPhone=" + bandPhone +
                 ", contactName='" + contactName + '\'' +
-                ", webside='" + webside + '\'' +
+                ", website='" + website + '\'' +
                 '}';
     }
 }
