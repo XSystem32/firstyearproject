@@ -4,6 +4,7 @@ import java.time.LocalTime;
 
 public class Shift {
 
+    private int shiftId;
     private LocalTime start;
     private LocalTime end;
     private User user;
@@ -11,10 +12,19 @@ public class Shift {
     public Shift() {
     }
 
-    public Shift(LocalTime start, LocalTime end, User user) {
+    public Shift(int shiftId, LocalTime start, LocalTime end, User user) {
+        this.shiftId = shiftId;
         this.start = start;
         this.end = end;
         this.user = user;
+    }
+
+    public int getShiftId() {
+        return shiftId;
+    }
+
+    public void setShiftId(int shiftId) {
+        this.shiftId = shiftId;
     }
 
     public LocalTime getStart() {
@@ -44,7 +54,8 @@ public class Shift {
     @Override
     public String toString() {
         return "Shift{" +
-                "start=" + start +
+                "shiftId=" + shiftId +
+                ", start=" + start +
                 ", end=" + end +
                 ", user=" + user +
                 '}';
