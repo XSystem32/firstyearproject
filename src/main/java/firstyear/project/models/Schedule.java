@@ -1,15 +1,35 @@
 package firstyear.project.models;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
 public class Schedule {
 
-    private String schedule;
+    private int scheduleId;
     private LocalTime start;
     private LocalTime end;
     private List<Shift> shifts;
     private List<Booking> bookings;
+
+    public Schedule() {
+    }
+
+    public Schedule(int scheduleId, LocalTime start, LocalTime end, List<Shift> shifts, List<Booking> bookings) {
+        this.scheduleId = scheduleId;
+        this.start = start;
+        this.end = end;
+        this.shifts = shifts;
+        this.bookings = bookings;
+    }
+
+    public int getScheduleId() {
+        return scheduleId;
+    }
+
+    public void setScheduleId(int scheduleId) {
+        this.scheduleId = scheduleId;
+    }
 
     public LocalTime getStart() {
         return start;
@@ -18,6 +38,9 @@ public class Schedule {
     public void setStart(LocalTime start) {
         this.start = start;
     }
+    public void setStart(String start){
+        this.start = LocalTime.parse(start);
+    }
 
     public LocalTime getEnd() {
         return end;
@@ -25,6 +48,9 @@ public class Schedule {
 
     public void setEnd(LocalTime end) {
         this.end = end;
+    }
+    public void setEnd(String end){
+        this.end = LocalTime.parse(end);
     }
 
     public List<Shift> getShifts() {
@@ -43,30 +69,14 @@ public class Schedule {
         this.bookings = bookings;
     }
 
-    public String getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(String schedule) {
-        this.schedule = schedule;
-    }
-
     @Override
     public String toString() {
-        return "schedule{" +
-                "schedule='" + schedule + '\'' +
+        return "Schedule{" +
+                "scheduleId=" + scheduleId +
                 ", start=" + start +
                 ", end=" + end +
                 ", shifts=" + shifts +
                 ", bookings=" + bookings +
                 '}';
-    }
-
-    public Schedule(String schedule, LocalTime start, LocalTime end, List<firstyear.project.models.Shift> shifts, List<Booking> bookings) {
-        this.schedule = schedule;
-        this.start = start;
-        this.end = end;
-        this.shifts = shifts;
-        this.bookings = bookings;
     }
 }

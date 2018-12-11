@@ -16,44 +16,6 @@ import java.util.List;
 public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo {
 
     @Override
-    public List<SalesOverview> getSalesOverviews(LocalDate start, LocalDate end) {
-        List<SalesOverview> salesOverviews = new ArrayList<>();
-        try {
-            connection = getConnection();
-            Statement statement = connection.createStatement();
-            String stringGet = "SELECT * FROM charlie.salesoverviews WHERE date BETWEEN '" + start + "' AND '" + end +"' ORDER by date asc;";
-
-            System.out.println(stringGet);
-            statement.executeQuery(stringGet);
-            ResultSet result = statement.getResultSet();
-
-            while (result.next()){
-                SalesOverview so = new SalesOverview();
-                so.setSalesOverviewId(result.getInt("salesOverviewId"));
-                so.setDate(result.getDate("date"));
-                so.setCredit(result.getDouble("credit"));
-                so.setCash(result.getDouble("cash"));
-                so.setTill(result.getDouble("till"));
-                so.setVault(result.getDouble("vault"));
-                so.setComment(result.getString("comment"));
-                so.getTotal();
-                salesOverviews.add(so);
-            }
-            return salesOverviews;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;} finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-    @Override
     public boolean createSalesOverview(SalesOverview so) {
         try {
             connection = getConnection();
@@ -158,4 +120,42 @@ public class SalesOverviewRepoImpl extends JdbcFix implements SalesOverviewRepo 
 
 
 
+
+    @Override
+    public List<SalesOverview> getSalesOverviews(LocalDate start, LocalDate end) {
+        List<SalesOverview> salesOverviews = new ArrayList<>();
+        try {
+            connection = getConnection();
+            Statement statement = connection.createStatement();
+            String stringGet = "SELECT * FROM charlie.salesoverviews WHERE date BETWEEN '" + start + "' AND '" + end +"' ORDER by date asc;";
+
+            System.out.println(stringGet);
+            statement.executeQuery(stringGet);
+            ResultSet result = statement.getResultSet();
+
+            while (result.next()){
+                SalesOverview so = new SalesOverview();
+                so.setSalesOverviewId(result.getInt("salesOverviewId"));
+                so.setDate(result.getDate("date"));
+                so.setCredit(result.getDouble("credit"));
+                so.setCash(result.getDouble("cash"));
+                so.setTill(result.getDouble("till"));
+                so.setVault(result.getDouble("vault"));
+                so.setComment(result.getString("comment"));
+                so.getTotal();
+                salesOverviews.add(so);
+            }
+            return salesOverviews;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;} finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 }

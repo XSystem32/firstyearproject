@@ -8,6 +8,15 @@ public class Shift {
     private LocalTime end;
     private User user;
 
+    public Shift() {
+    }
+
+    public Shift(LocalTime start, LocalTime end, User user) {
+        this.start = start;
+        this.end = end;
+        this.user = user;
+    }
+
     public LocalTime getStart() {
         return start;
     }
@@ -29,12 +38,6 @@ public class Shift {
     }
 
     public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Shift(LocalTime start, LocalTime end, User user) {
-        this.start = start;
-        this.end = end;
         this.user = user;
     }
 
