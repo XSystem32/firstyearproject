@@ -4,11 +4,13 @@ import firstyear.project.models.Booking;
 import firstyear.project.models.Schedule;
 import firstyear.project.models.Shift;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+@Repository
 public interface ScheduleRepo {
 
     boolean createSchedule (Schedule schedule);
