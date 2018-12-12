@@ -8,15 +8,17 @@ public class Shift {
     private LocalTime start;
     private LocalTime end;
     private User user;
+    private Schedule schedule;
 
     public Shift() {
     }
 
-    public Shift(int shiftId, LocalTime start, LocalTime end, User user) {
+    public Shift(int shiftId, LocalTime start, LocalTime end, User user, Schedule schedule) {
         this.shiftId = shiftId;
         this.start = start;
         this.end = end;
         this.user = user;
+        this.schedule = schedule;
     }
 
     public int getShiftId() {
@@ -35,20 +37,12 @@ public class Shift {
         this.start = start;
     }
 
-    public void setStart(String start){
-        this.start = LocalTime.parse(start);
-    }
-
     public LocalTime getEnd() {
         return end;
     }
 
     public void setEnd(LocalTime end) {
         this.end = end;
-    }
-
-    public void setEnd(String end){
-        this.end = LocalTime.parse(end);
     }
 
     public User getUser() {
@@ -59,6 +53,22 @@ public class Shift {
         this.user = user;
     }
 
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
+    }
+
+    public void setStart(String start){
+        this.start = LocalTime.parse(start);
+    }
+
+    public void setEnd(String end){
+        this.end = LocalTime.parse(end);
+    }
+
     @Override
     public String toString() {
         return "Shift{" +
@@ -66,6 +76,7 @@ public class Shift {
                 ", start=" + start +
                 ", end=" + end +
                 ", user=" + user +
+                ", schedule=" + schedule +
                 '}';
     }
 }

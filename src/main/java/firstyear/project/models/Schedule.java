@@ -9,17 +9,15 @@ public class Schedule {
     private int scheduleId;
     private LocalTime start;
     private LocalTime end;
-    private List<Shift> shifts;
     private List<Booking> bookings;
 
     public Schedule() {
     }
 
-    public Schedule(int scheduleId, LocalTime start, LocalTime end, List<Shift> shifts, List<Booking> bookings) {
+    public Schedule(int scheduleId, LocalTime start, LocalTime end, List<Booking> bookings) {
         this.scheduleId = scheduleId;
         this.start = start;
         this.end = end;
-        this.shifts = shifts;
         this.bookings = bookings;
     }
 
@@ -53,14 +51,6 @@ public class Schedule {
         this.end = LocalTime.parse(end);
     }
 
-    public List<Shift> getShifts() {
-        return shifts;
-    }
-
-    public void setShifts(List<Shift> shifts) {
-        this.shifts = shifts;
-    }
-
     public List<Booking> getBookings() {
         return bookings;
     }
@@ -75,7 +65,6 @@ public class Schedule {
                 "scheduleId=" + scheduleId +
                 ", start=" + start +
                 ", end=" + end +
-                ", shifts=" + shifts +
                 ", bookings=" + bookings +
                 '}';
     }

@@ -16,15 +16,13 @@ import java.util.List;
 @Repository
 public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
 
-    //@Autowired
-    //shiftrepo goes here
 
     public boolean createSchedule(Schedule schedule) {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
 
-            String stringInsert = "INSERT INTO charlie.schedule VALUE (default, '" + schedule.getStart() + "', " + schedule.getEnd() + ", " + schedule.getShifts() + "," + schedule.getBookings() + "); ";
+            String stringInsert = "INSERT INTO charlie.schedule VALUE (default, '" + schedule.getStart() + "', " + schedule.getEnd() + "," + schedule.getBookings() + "); ";
 
             System.out.println(stringInsert);
             statement.execute(stringInsert);
@@ -67,7 +65,6 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
             Statement statement = connection.createStatement();
             String stringUpdate = "UPDATE charlie.schedules SET start='" + schedule.getStart() + "" +
                     "', end ='" + schedule.getEnd() + "" +
-                    "', shifts='" + schedule.getShifts() + "" +
                     "',bookings='" + schedule.getBookings() + "'" +
                     " WHERE ScheduleId = " + schedule.getScheduleId() + ";";
             System.out.println(stringUpdate);
@@ -103,7 +100,6 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
             schedule.setScheduleId(result.getInt("scheduleId"));
             schedule.setStart(result.getString("start"));
             schedule.setEnd(result.getString("end"));
-            //schedule.setShifts(get shift, use metoed from shiftrepo
 
             return schedule;
 
@@ -135,7 +131,6 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
                 schedule.setScheduleId(result.getInt("scheduleId"));
                 schedule.setStart(result.getString("start"));
                 schedule.setEnd(result.getString("end"));
-                //schedule.setShifts(get shift, use metoed from shiftrepo
                 schedules.add(schedule);
             }
             return schedules;

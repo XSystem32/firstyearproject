@@ -25,7 +25,7 @@ public class ShiftRepoImpl extends JdbcFix implements ShiftRepo {
             connection = getConnection();
             Statement statement = connection.createStatement();
 
-            String stringInsert = "INSERT INTO charlie.shifts VALUE (default, '" + shift.getStart() + "', " + shift.getEnd() + ", " + shift.getUser() + "); ";
+            String stringInsert = "INSERT INTO charlie.shifts VALUE (default, '" + shift.getStart() + "', " + shift.getEnd() + ", " + shift.getUser() +  ", " + shift.getSchedule() + "); ";
 
             System.out.println(stringInsert);
             statement.execute(stringInsert);
@@ -67,6 +67,7 @@ public class ShiftRepoImpl extends JdbcFix implements ShiftRepo {
             String stringUpdate = "UPDATE charlie.shifts SET start='"+ shift.getStart() +"" +
                     "', end='" + shift.getEnd() +"" +
                     "', user ='"+ shift.getUser()+ "'" +
+                    "', schedule ='"+ shift.getSchedule()+ "" +
                     " WHERE salesOverviewId = "+ shift.getShiftId() +";";
             System.out.println(stringUpdate);
             statement.execute(stringUpdate);
@@ -103,7 +104,8 @@ public class ShiftRepoImpl extends JdbcFix implements ShiftRepo {
             shift.setShiftId(result.getInt("shiftId"));
             shift.setStart(result.getString("start"));
             shift.setEnd(result.getString("end"));
-           // shift.setUser(result.getUser("userId"));
+            //shift.setUser(result.getUser("userId"));
+            //shift.setSchedule(result.getSchedule("userId"));
 
             return shift;
 
