@@ -135,7 +135,6 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
                 schedule.setScheduleId(result.getInt("scheduleId"));
                 schedule.setStart(result.getString("start"));
                 schedule.setEnd(result.getString("end"));
-                //schedule.setShifts(get shift, use metoed from shiftrepo
                 schedules.add(schedule);
             }
             return schedules;
