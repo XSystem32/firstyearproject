@@ -15,7 +15,7 @@ public class ScheduleService implements ScheduleRepo {
 
     @Override
     public boolean createSchedule(Schedule schedule) {
-        scheduleRepo.createSchedule(scheduleRepo);
+        scheduleRepo.createSchedule(schedule);
         return true;
     }
 
@@ -27,7 +27,7 @@ public class ScheduleService implements ScheduleRepo {
 
     @Override
     public boolean updateSchedule(Schedule schedule) {
-        scheduleRepo.updateSchedule(scheduleRepo);
+        scheduleRepo.updateSchedule(schedule);
         return true;
     }
 

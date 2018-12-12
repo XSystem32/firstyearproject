@@ -35,12 +35,20 @@ public class Shift {
         this.start = start;
     }
 
+    public void setStart(String start){
+        this.start = LocalTime.parse(start);
+    }
+
     public LocalTime getEnd() {
         return end;
     }
 
     public void setEnd(LocalTime end) {
         this.end = end;
+    }
+
+    public void setEnd(String end){
+        this.end = LocalTime.parse(end);
     }
 
     public User getUser() {

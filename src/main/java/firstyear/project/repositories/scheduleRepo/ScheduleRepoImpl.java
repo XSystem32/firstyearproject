@@ -65,10 +65,10 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringUpdate = "UPDATE charlie.schedules SET date='" + schedule.getStart() + "" +
-                    "', credit='" + schedule.getEnd() + "" +
-                    "', cash='" + schedule.getShifts() + "" +
-                    "',till='" + schedule.getBookings() + "'" +
+            String stringUpdate = "UPDATE charlie.schedules SET start='" + schedule.getStart() + "" +
+                    "', end ='" + schedule.getEnd() + "" +
+                    "', shifts='" + schedule.getShifts() + "" +
+                    "',bookings='" + schedule.getBookings() + "'" +
                     " WHERE ScheduleId = " + schedule.getScheduleId() + ";";
             System.out.println(stringUpdate);
             statement.execute(stringUpdate);
