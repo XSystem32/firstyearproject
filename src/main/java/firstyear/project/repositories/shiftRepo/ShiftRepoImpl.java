@@ -15,8 +15,6 @@ import java.util.List;
 @Repository
 public class ShiftRepoImpl extends JdbcFix implements ShiftRepo {
 
-    @Autowired
-    UserRepo userRepo;
 
 
     @Override
