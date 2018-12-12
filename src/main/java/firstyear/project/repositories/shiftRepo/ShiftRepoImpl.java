@@ -104,9 +104,6 @@ public class ShiftRepoImpl extends JdbcFix implements ShiftRepo {
             shift.setShiftId(result.getInt("shiftId"));
             shift.setStart(result.getString("start"));
             shift.setEnd(result.getString("end"));
-            //shift.setUser(result.getUser("userId"));
-            //shift.setSchedule(result.getSchedule("userId"));
-
             return shift;
 
         } catch (Exception e) {
