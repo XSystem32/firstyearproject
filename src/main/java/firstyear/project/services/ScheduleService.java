@@ -60,11 +60,10 @@ public class ScheduleService implements ScheduleRepo {
         // This method makes the empty schedule days that are in between the ones saved in the database.
         LinkedList<Schedule> existingSchedules = getLinkedListSchedules(start, end);
         List<Schedule> schedules = new ArrayList<>();
-        YearMonth yearMonth = YearMonth.now();
+        YearMonth yearMonth = YearMonth.of(start.getYear(), start.getMonthValue());
         int lengthOfMonth = yearMonth.lengthOfMonth();
 
-
-        for (int i = 1; i < lengthOfMonth; i++ ) {
+        for (int i = 1; i < lengthOfMonth + 1; i++ ) {
             if (existingSchedules.peekFirst() != null) {
 
                 if (existingSchedules.peekFirst().getScheduleDate().getDayOfMonth() == i){
