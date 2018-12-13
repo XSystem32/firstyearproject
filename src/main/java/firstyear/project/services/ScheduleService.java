@@ -51,7 +51,9 @@ public class ScheduleService implements ScheduleRepo {
         int lengthOfMonth = yearMonth.lengthOfMonth();
 
         for (int i = 1; i < lengthOfMonth; i++ ) {
-            schedules.add(new Schedule());
+            Schedule schedule = new Schedule();
+            schedule.setScheduleDate(LocalDate.of(yearMonth.getYear(),yearMonth.getMonthValue(),i));
+            schedules.add(schedule);
         }
 
 
