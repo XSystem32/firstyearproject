@@ -7,15 +7,15 @@ import java.util.List;
 public class Schedule {
 
     private int scheduleId;
-    private LocalTime start;
-    private LocalTime end;
+    private LocalDate start;
+    private LocalDate end;
     private List<Shift> shifts;
     private List<Booking> bookings;
 
     public Schedule() {
     }
 
-    public Schedule(int scheduleId, LocalTime start, LocalTime end, List<Shift> shifts, List<Booking> bookings) {
+    public Schedule(int scheduleId, LocalDate start, LocalDate end, List<Shift> shifts, List<Booking> bookings) {
         this.scheduleId = scheduleId;
         this.start = start;
         this.end = end;
@@ -31,26 +31,26 @@ public class Schedule {
         this.scheduleId = scheduleId;
     }
 
-    public LocalTime getStart() {
+    public LocalDate getStart() {
         return start;
     }
 
-    public void setStart(LocalTime start) {
+    public void setStart(LocalDate start) {
         this.start = start;
     }
     public void setStart(String start){
-        this.start = LocalTime.parse(start);
+        this.start = LocalDate.parse(start);
     }
 
-    public LocalTime getEnd() {
+    public LocalDate getEnd() {
         return end;
     }
 
-    public void setEnd(LocalTime end) {
+    public void setEnd(LocalDate end) {
         this.end = end;
     }
     public void setEnd(String end){
-        this.end = LocalTime.parse(end);
+        this.end = LocalDate.parse(end);
     }
 
     public List<Shift> getShifts() {

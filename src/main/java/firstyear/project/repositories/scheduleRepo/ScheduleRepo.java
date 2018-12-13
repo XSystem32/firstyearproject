@@ -17,5 +17,5 @@ public interface ScheduleRepo {
     boolean deleteSchedule (int index);
     boolean updateSchedule (Schedule schedule);
     Schedule getSchedule (int index);
-    List <Schedule> getSchedules (LocalTime start, LocalTime end);
+    List <Schedule> getSchedules (LocalDate start, LocalDate end);
 }

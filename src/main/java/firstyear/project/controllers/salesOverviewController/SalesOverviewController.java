@@ -21,13 +21,13 @@ public class SalesOverviewController {
 
     private static final Logger LOGGER = Logger.getLogger(SalesOverviewController.class.getName());
 
-    private String INDEX = "salesoverview/index.html";
-    private String CREATEOVERVIEW = "salesoverview/createoverview.html";
-    private String SALESOVERVIEWS = "index.html";
+    private final String INDEX = "salesoverview/index.html";
+    private final String CREATEOVERVIEW = "salesoverview/createoverview.html";
+    private final String SALESOVERVIEWS = "index.html";
     private final String REDIRECT_SALESOVERVIEW = "redirect:/salesoverview/index.html";
-    private String DELETESALEOVERVIEW = "deleteSalesOverview";
-    private String UPDATESALESOVERVIEW = "salesoverview/update.html";
-    private String DISPLAYSALESOVERVIEW = "salesoverview/display.html";
+    private final String DELETESALEOVERVIEW = "deleteSalesOverview";
+    private final String UPDATESALESOVERVIEW = "salesoverview/update.html";
+    private final String DISPLAYSALESOVERVIEW = "salesoverview/display.html";
 
 
 
@@ -45,16 +45,6 @@ public class SalesOverviewController {
         System.out.println(start);
         List<SalesOverview> salesOverviews = salesOverviewService.getSalesOverviews(LocalDate.from(start) ,LocalDate.now());
         model.addAttribute("salesoverviews", salesOverviews);
-        return INDEX;
-    }
-
-    @GetMapping("/test")
-    public String test (Model model){
-        LOGGER.info("test was called");
-        SalesOverview so = new SalesOverview();
-        so.setComment("/test SO I made to see if this works.");
-
-        salesOverviewService.createSalesOverview(so);
         return INDEX;
     }
 

@@ -5,6 +5,7 @@ import firstyear.project.repositories.scheduleRepo.ScheduleRepo;
 import firstyear.project.repositories.scheduleRepo.ScheduleRepoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class ScheduleService implements ScheduleRepo {
     }
 
     @Override
-    public List<Schedule> getSchedules(LocalTime start, LocalTime end) {
+    public List<Schedule> getSchedules(LocalDate start, LocalDate end) {
         return scheduleRepo.getSchedules(start, end);
     }
 }
