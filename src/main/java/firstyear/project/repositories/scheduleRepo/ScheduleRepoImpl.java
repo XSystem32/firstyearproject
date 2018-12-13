@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,8 +132,9 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
             while (result.next()) {
                 Schedule schedule = new Schedule();
                 schedule.setScheduleId(result.getInt("scheduleId"));
-                schedule.setStart(result.getString("start"));
-                schedule.setEnd(result.getString("end"));
+                schedule.setStart((result.getString("openingTime")));
+                schedule.setEnd(result.getString("closingTime"));
+                schedule.setScheduleDate(LocalDate.parse(result.getString("scheduleDate")));
                 schedules.add(schedule);
             }
             return schedules;

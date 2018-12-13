@@ -16,6 +16,8 @@ public class Schedule {
     public Schedule() {
     }
 
+
+
     public Schedule(int scheduleId, LocalTime start, LocalTime end, List<Shift> shifts, List<Booking> bookings) {
         this.scheduleId = scheduleId;
         this.openingTime = start;
@@ -78,12 +80,14 @@ public class Schedule {
         this.bookings = bookings;
     }
 
+
     @Override
     public String toString() {
         return "Schedule{" +
                 "scheduleId=" + scheduleId +
                 ", openingTime=" + openingTime +
                 ", closingTime=" + closingTime +
+                ", scheduleDate=" + scheduleDate +
                 ", shifts=" + shifts +
                 ", bookings=" + bookings +
                 '}';
