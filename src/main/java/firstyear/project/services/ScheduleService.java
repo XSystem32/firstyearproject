@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.YearMonth;
 import java.util.List;
 @Service
 public class ScheduleService implements ScheduleRepo {
@@ -42,4 +43,19 @@ public class ScheduleService implements ScheduleRepo {
     public List<Schedule> getSchedules(LocalDate start, LocalDate end) {
         return scheduleRepo.getSchedules(start, end);
     }
+
+    public List<Schedule> populateMonth(LocalDate start, LocalDate end){
+        // This method makes the empty schedule days that are in between the ones saved in the database.
+        List<Schedule> schedules = getSchedules(start, end);
+        YearMonth yearMonth = YearMonth.now();
+        int lengthOfMonth = yearMonth.lengthOfMonth();
+
+        for (int i = 1; i < lengthOfMonth; i++ ) {
+            schedules.add(new Schedule());
+        }
+
+
+        return schedules;
+    }
+
 }

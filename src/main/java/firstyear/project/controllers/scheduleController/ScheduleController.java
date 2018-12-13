@@ -44,7 +44,7 @@ public class ScheduleController {
         LocalDate start = LocalDate.of(yearValue, monthValue,1);
         LocalDate end = LocalDate.of(yearValue, monthValue,lengthOfMonth);
 
-        List<Schedule> schedules = scheduleService.getSchedules(start, end);
+        List<Schedule> schedules = scheduleService.populateMonth(start, end);
 
         model.addAttribute("schedules", schedules);
 
