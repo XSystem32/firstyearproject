@@ -1,13 +1,14 @@
 package firstyear.project.models;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public class Schedule {
 
     private int scheduleId;
-    private LocalDate openingTime;
-    private LocalDate closingTime;
+    private LocalTime openingTime;
+    private LocalTime closingTime;
     private LocalDate scheduleDate;
     private List<Shift> shifts;
     private List<Booking> bookings;
@@ -15,7 +16,7 @@ public class Schedule {
     public Schedule() {
     }
 
-    public Schedule(int scheduleId, LocalDate start, LocalDate end, List<Shift> shifts, List<Booking> bookings) {
+    public Schedule(int scheduleId, LocalTime start, LocalTime end, List<Shift> shifts, List<Booking> bookings) {
         this.scheduleId = scheduleId;
         this.openingTime = start;
         this.closingTime = end;
@@ -39,26 +40,26 @@ public class Schedule {
         this.scheduleId = scheduleId;
     }
 
-    public LocalDate getOpeningTime() {
+    public LocalTime getOpeningTime() {
         return openingTime;
     }
 
-    public void setOpeningTime(LocalDate openingTime) {
+    public void setOpeningTime(LocalTime openingTime) {
         this.openingTime = openingTime;
     }
     public void setStart(String start){
-        this.openingTime = LocalDate.parse(start);
+        this.openingTime = LocalTime.parse(start);
     }
 
-    public LocalDate getClosingTime() {
+    public LocalTime getClosingTime() {
         return closingTime;
     }
 
-    public void setClosingTime(LocalDate closingTime) {
+    public void setClosingTime(LocalTime closingTime) {
         this.closingTime = closingTime;
     }
     public void setEnd(String end){
-        this.closingTime = LocalDate.parse(end);
+        this.closingTime = LocalTime.parse(end);
     }
 
     public List<Shift> getShifts() {
