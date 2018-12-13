@@ -1,14 +1,14 @@
 package firstyear.project.models;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 public class Schedule {
 
     private int scheduleId;
-    private LocalDate start;
-    private LocalDate end;
+    private LocalDate openingTime;
+    private LocalDate closingTime;
+    private LocalDate scheduleDate;
     private List<Shift> shifts;
     private List<Booking> bookings;
 
@@ -17,10 +17,18 @@ public class Schedule {
 
     public Schedule(int scheduleId, LocalDate start, LocalDate end, List<Shift> shifts, List<Booking> bookings) {
         this.scheduleId = scheduleId;
-        this.start = start;
-        this.end = end;
+        this.openingTime = start;
+        this.closingTime = end;
         this.shifts = shifts;
         this.bookings = bookings;
+    }
+
+    public LocalDate getScheduleDate() {
+        return scheduleDate;
+    }
+
+    public void setScheduleDate(LocalDate scheduleDate) {
+        this.scheduleDate = scheduleDate;
     }
 
     public int getScheduleId() {
@@ -31,26 +39,26 @@ public class Schedule {
         this.scheduleId = scheduleId;
     }
 
-    public LocalDate getStart() {
-        return start;
+    public LocalDate getOpeningTime() {
+        return openingTime;
     }
 
-    public void setStart(LocalDate start) {
-        this.start = start;
+    public void setOpeningTime(LocalDate openingTime) {
+        this.openingTime = openingTime;
     }
     public void setStart(String start){
-        this.start = LocalDate.parse(start);
+        this.openingTime = LocalDate.parse(start);
     }
 
-    public LocalDate getEnd() {
-        return end;
+    public LocalDate getClosingTime() {
+        return closingTime;
     }
 
-    public void setEnd(LocalDate end) {
-        this.end = end;
+    public void setClosingTime(LocalDate closingTime) {
+        this.closingTime = closingTime;
     }
     public void setEnd(String end){
-        this.end = LocalDate.parse(end);
+        this.closingTime = LocalDate.parse(end);
     }
 
     public List<Shift> getShifts() {
@@ -73,8 +81,8 @@ public class Schedule {
     public String toString() {
         return "Schedule{" +
                 "scheduleId=" + scheduleId +
-                ", start=" + start +
-                ", end=" + end +
+                ", openingTime=" + openingTime +
+                ", closingTime=" + closingTime +
                 ", shifts=" + shifts +
                 ", bookings=" + bookings +
                 '}';

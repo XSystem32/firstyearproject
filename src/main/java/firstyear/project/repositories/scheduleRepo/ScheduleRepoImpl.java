@@ -1,16 +1,13 @@
 package firstyear.project.repositories.scheduleRepo;
 
-import firstyear.project.models.SalesOverview;
 import firstyear.project.models.Schedule;
 import firstyear.project.repositories.JdbcFix;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +22,7 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
             connection = getConnection();
             Statement statement = connection.createStatement();
 
-            String stringInsert = "INSERT INTO charlie.schedule VALUE (default, '" + schedule.getStart() + "', " + schedule.getEnd() + ", " + schedule.getShifts() + "," + schedule.getBookings() + "); ";
+            String stringInsert = "INSERT INTO charlie.schedule VALUE (default, '" + schedule.getOpeningTime() + "', " + schedule.getClosingTime() + ", " + schedule.getShifts() + "," + schedule.getBookings() + "); ";
 
             System.out.println(stringInsert);
             statement.execute(stringInsert);
@@ -66,8 +63,8 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringUpdate = "UPDATE charlie.schedules SET start='" + schedule.getStart() + "" +
-                    "', end ='" + schedule.getEnd() + "" +
+            String stringUpdate = "UPDATE charlie.schedules SET start='" + schedule.getOpeningTime() + "" +
+                    "', end ='" + schedule.getClosingTime() + "" +
                     "', shifts='" + schedule.getShifts() + "" +
                     "',bookings='" + schedule.getBookings() + "'" +
                     " WHERE ScheduleId = " + schedule.getScheduleId() + ";";
@@ -125,7 +122,7 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringGet = "SELECT * FROM charlie.schedules WHERE date BETWEEN '" + start + "' AND '" + end + "' ORDER by date asc;";
+            String stringGet = "SELECT * FROM charlie.schedules WHERE scheduleDate BETWEEN '" + start + "' AND '" + end + "' ORDER by scheduleDate asc;";
 
             System.out.println(stringGet);
             statement.executeQuery(stringGet);
