@@ -4,23 +4,22 @@ import firstyear.project.models.Schedule;
 import firstyear.project.repositories.scheduleRepo.ScheduleRepo;
 import firstyear.project.repositories.shiftRepo.ShiftRepo;
 import firstyear.project.services.ScheduleService;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Month;
+import java.time.YearMonth;
 import java.util.List;
 import java.util.logging.Logger;
 
-
+@Controller
 public class ScheduleController {
-
-    @Autowired
-    ScheduleRepo scheduleRepo;
-
-    @Autowired
-    ShiftRepo shiftRepo;
 
     @Autowired
     ScheduleService scheduleService;
@@ -30,20 +29,27 @@ public class ScheduleController {
 
     private final String SCHEDULES = "schedule/schedules.html";
 
-    @GetMapping("/test")
+    @RequestMapping("/schedule")
     public String index (Model model) {
-        LOGGER.info("index was called");
+        LOGGER.info("schedule index was called");
 
-        LocalDate nowMonth = LocalDate.now();
-        int month = nowMonth.getMonthValue();
+        YearMonth yearMonth = YearMonth.now();
+
+        int lengthOfMonth = yearMonth.lengthOfMonth();
+
+        int monthValue = yearMonth.getMonthValue();
+        int yearValue = yearMonth.getYear();
 
 
-        LocalDate end = LocalDate.now();
-        LocalDate start = end.plusWeeks(6);
+        LocalDate start = LocalDate.of(yearValue, monthValue,1);
+        LocalDate end = LocalDate.of(yearValue, monthValue,lengthOfMonth);
 
-        model.addAttribute("nowMonth",month);
+        List<Schedule> schedules = scheduleService.getSchedules(start, end);
 
-        List<Schedule> schedules = scheduleService.getSchedules(LocalDate.from(end), LocalDate.now());
+        model.addAttribute("schedules", schedules);
+
+
+
 
         return SCHEDULES;
     }
