@@ -27,7 +27,6 @@
         background: red;
         height: 50px;
         font-weight: bold;
-        line-height: 50px;
     }
 
 
@@ -47,7 +46,14 @@
             <div class="day">Sunday</div>
         </span>
 
-        <div class="day" th:each="schedule : ${schedules}"> <p th:text="${schedule.scheduleDate}" /> </div>
+        <div class="day" th:each="schedule : ${schedules}">
+            <p th:text="${schedule.scheduleDate.dayOfMonth}" />
+            <span th:text="${schedule.openingTime} " /> - 
+            <span th:text="${schedule.closingTime} " />
+
+
+
+        </div>
 
 
 
