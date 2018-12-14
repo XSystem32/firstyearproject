@@ -54,7 +54,7 @@ public class ScheduleController {
     @RequestMapping(value = "/schedule/displaySchedule", method = RequestMethod.GET)
     public String displaySchedule(@RequestParam(name = "id") String id, Model model) {
         LOGGER.info("displaySchedule action called... " + id);
-        //model.addAttribute("schedule", scheduleService.getSchedule(Integer.parseInt(id)));
+        model.addAttribute("schedule", scheduleService.getSchedule(Integer.parseInt(id)));
         return DISPLAY_SCHEDULE;
     }
 }

@@ -39,7 +39,10 @@ public class ScheduleService implements ScheduleRepo {
 
     @Override
     public Schedule getSchedule(int index) {
-        return scheduleRepo.getSchedule(index);
+
+        Schedule schedule = scheduleRepo.getSchedule(index);
+
+        return schedule;
     }
 
     @Override

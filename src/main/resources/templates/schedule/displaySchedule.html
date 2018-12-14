@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Schedule</title>
 </head>
 <body>
 
-
+<input type="hidden" th:text="${schedule.scheduleId}" >
+<!--  <p th:text="${schedule.scheduleDate.dayOfMonth}" /> -->
+<span th:text="${schedule.openingTime} " /><a th:href="@{/schedule/displaySchedule(id=${schedule.scheduleId})}" class="blocklink">-</a>
+<span th:text="${schedule.closingTime} " />
 
 
 </body>

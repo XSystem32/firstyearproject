@@ -1,5 +1,7 @@
 package firstyear.project.repositories.scheduleRepo;
 
+import firstyear.project.controllers.salesOverviewController.SalesOverviewController;
+import firstyear.project.models.SalesOverview;
 import firstyear.project.models.Schedule;
 import firstyear.project.repositories.JdbcFix;
 import org.springframework.stereotype.Repository;
@@ -11,12 +13,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Repository
 public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
 
-    //@Autowired
-    //shiftrepo goes here
+    private static final Logger LOGGER = Logger.getLogger(SalesOverviewController.class.getName());
 
     public boolean createSchedule(Schedule schedule) {
         try {
@@ -90,20 +92,25 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
         try {
             connection = getConnection();
 
-
             Statement statement = connection.createStatement();
             String stringGet = "SELECT * FROM charlie.schedules WHERE scheduleId =" + index + ";";
 
             statement.executeQuery(stringGet);
             ResultSet result = statement.getResultSet();
-            result.next();
 
+
+            if (result.next() == false){
+                return new Schedule();
+            }
+
+
+            result.next();
             Schedule schedule = new Schedule();
 
-
             schedule.setScheduleId(result.getInt("scheduleId"));
-            schedule.setStart(result.getString("start"));
-            schedule.setEnd(result.getString("end"));
+            schedule.setStart(result.getString("openingTime"));
+            schedule.setEnd(result.getString("closingTime"));
+            schedule.setScheduleDate(LocalDate.parse(result.getString("scheduleDate")));
 
 
             return schedule;
