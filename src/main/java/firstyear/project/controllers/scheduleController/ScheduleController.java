@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -28,6 +30,7 @@ public class ScheduleController {
 
 
     private final String SCHEDULES = "schedule/schedules.html";
+    private final String DISPLAY_SCHEDULE = "schedule/displaySchedule.html";
 
     @RequestMapping("/schedule")
     public String index (Model model) {
@@ -40,17 +43,18 @@ public class ScheduleController {
         int monthValue = yearMonth.getMonthValue();
         int yearValue = yearMonth.getYear();
 
-
         LocalDate start = LocalDate.of(yearValue, monthValue,1);
         LocalDate end = LocalDate.of(yearValue, monthValue,lengthOfMonth);
-
         List<Schedule> schedules = scheduleService.populateMonth(start, end);
-
         model.addAttribute("schedules", schedules);
 
-
-
-
         return SCHEDULES;
+    }
+
+    @RequestMapping(value = "/schedule/displaySchedule", method = RequestMethod.GET)
+    public String displaySchedule(@RequestParam(name = "id") String id, Model model) {
+        LOGGER.info("displaySchedule action called... " + id);
+        //model.addAttribute("schedule", scheduleService.getSchedule(Integer.parseInt(id)));
+        return DISPLAY_SCHEDULE;
     }
 }

@@ -89,6 +89,8 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
     public Schedule getSchedule(int index) {
         try {
             connection = getConnection();
+
+
             Statement statement = connection.createStatement();
             String stringGet = "SELECT * FROM charlie.schedules WHERE scheduleId =" + index + ";";
 
@@ -102,7 +104,7 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
             schedule.setScheduleId(result.getInt("scheduleId"));
             schedule.setStart(result.getString("start"));
             schedule.setEnd(result.getString("end"));
-            //schedule.setShifts(get shift, use metoed from shiftrepo
+
 
             return schedule;
 

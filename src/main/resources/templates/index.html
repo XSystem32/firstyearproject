@@ -39,11 +39,15 @@
 
         #wrapper{
             margin: 50px auto;
-            width: 1200px;
-            height: 800px;
+            width:500px;
             background: white;
             padding: 30px;
         }
+        #wrapper input{
+
+        }
+
+
         body{
             background: #af2b31;
         }
@@ -66,51 +70,10 @@
             color: white;
             font-weight: bold;
         }
-        .date{
-
-            font-weight: bold;
-        }
         p{
             margin: 0;
             padding: 0;
         }
-
-        .shift{
-            background: #d0cfff;
-            margin-bottom: 5px;
-
-        }
-
-        .time{
-            text-align: right;
-            float:right;
-        }
-        .fullName{
-            float:left;
-
-        }
-        .floatclear{
-            clear: both;
-        }
-        .noschedule{
-            background: #ffa9a9;
-        }
-        .dummyrow{
-            font-weight: bold;
-        }
-        .band{
-            background: #d3ffc6;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-
-        .month{
-            margin-top: -20px;
-            font-size: 300%;
-            font-weight: bold;
-        }
-        
 
 
 
@@ -126,73 +89,17 @@
     <a href="user/displayUsers">Users</a>
 </div>
 
+</div>
+
 <div id="wrapper">
+    <form>
+        <input type="text" placeholder="Username" />
 
-    <p class="month">November</p>
-
-
-<div class="table-responsive">
-    <table class="table">
-
-        <tr class="tablehead">
-            <td><p>Monday</p></td>
-            <td><p>Tuesday</p></td>
-            <td><p>Wednesday</p></td>
-            <td><p>Thursday</p></td>
-            <td><p>Friday</p></td>
-            <td><p>Saturday</p></td>
-            <td><p>Sunday</p></td>
-
-        </tr>
-
-        <tr>
-
-            <td>
-                <p class="date">1</p>
-                <div class="shift"><p class="fullName">Peter </p>   <p class="time">16 - 22</p> <p class="floatclear"></p></div>
-                <div class="shift"><p class="fullName">Alice </p> <p class="time">20 - 24</p> <p class="floatclear"></p></div>
-            </td>
+        <input type="password" placeholder="Password" />
+        <input type="submit" placeholder="Log in" />
 
 
-            <td class="noschedule">
-                <p class="date">2</p>
-                <div class="shift"></div>
-            </td>
-            <td class="noschedule">
-                <p class="date">3</p>
-
-            </td>
-            <td>
-                <p class="date">4</p>
-                <div class="shift"><p class="fullName">Anders </p>   <p class="time">16 - 22</p> <p class="floatclear"></p></div>
-                <div class="shift"><p class="fullName">David </p> <p class="time">21 - 02</p> <p class="floatclear"></p></div>
-            </td>
-            <td>
-                <p class="date">5</p>
-                <div class="band"><p class="fullName">Chris Tanner </p>   <p class="time">16 - 22</p> <p class="floatclear"></p></div>
-                <div class="shift"><p class="fullName">Frank </p>   <p class="time">16 - 22</p> <p class="floatclear"></p></div>
-                <div class="shift"><p class="fullName">Alice </p> <p class="time">21 - 02</p> <p class="floatclear"></p></div>
-                <div class="shift"><p class="fullName">David </p> <p class="time">21 - 02</p> <p class="floatclear"></p></div>
-            </td>
-            <td class="noschedule">
-                <p class="date">6</p>
-
-            </td>
-            <td>
-                <p class="date">7</p>
-                <div class="shift"><p class="fullName">Frank </p>   <p class="time">16 - 22</p> <p class="floatclear"></p></div>
-            </td>
-
-        </tr>
-
-
-
-
-        <tr class="dummyrow"><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td></tr>
-        <tr class="dummyrow"><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td></tr>
-        <tr class="dummyrow"><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td></tr>
-
-    </table>
+    </form>
 </div>
 
 </div>
