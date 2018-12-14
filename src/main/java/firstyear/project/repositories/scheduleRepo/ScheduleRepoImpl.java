@@ -54,6 +54,7 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
             String lastInsertId = "SELECT LAST_INSERT_ID();";
             statement.executeQuery(lastInsertId);
             ResultSet result = statement.getResultSet();
+            result.next();
             schedule.setScheduleId(result.getInt(1));
             schedule.setScheduleDate(LocalDate.parse(date));
 
@@ -130,7 +131,7 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
             Schedule schedule = new Schedule();
 
             if (result.next() != false) {
-                
+
                 schedule.setScheduleId(result.getInt("scheduleId"));
                 schedule.setStart(result.getString("openingTime"));
                 schedule.setEnd(result.getString("closingTime"));
