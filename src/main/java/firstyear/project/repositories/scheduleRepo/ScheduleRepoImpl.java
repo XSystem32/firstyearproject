@@ -4,6 +4,7 @@ import firstyear.project.controllers.salesOverviewController.SalesOverviewContro
 import firstyear.project.models.SalesOverview;
 import firstyear.project.models.Schedule;
 import firstyear.project.repositories.JdbcFix;
+import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
@@ -37,6 +38,34 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
             closeConnection(connection);
         }
         return false;
+    }
+
+    public Schedule createScheduleFromDate(String date) {
+        try {
+            connection = getConnection();
+            Statement statement = connection.createStatement();
+
+            String stringInsert = "INSERT INTO charlie.schedules (scheduleId, scheduleDate) VALUE (default, '" + date + "' ); ";
+
+            statement.execute(stringInsert);
+
+            Schedule schedule = new Schedule();
+
+            String lastInsertId = "SELECT LAST_INSERT_ID();";
+            statement.executeQuery(lastInsertId);
+            ResultSet result = statement.getResultSet();
+            schedule.setScheduleId(result.getInt(1));
+            schedule.setScheduleDate(LocalDate.parse(date));
+
+            statement.execute(stringInsert);
+
+            return schedule;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection(connection);
+        }
+        return null;
     }
 
 
@@ -88,6 +117,41 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
         return false;
     }
 
+    public Schedule getScheduleByDate(String date) {
+        LOGGER.info("getScheduleByDate was called with: " + date);
+        try {
+            connection = getConnection();
+
+            Statement statement = connection.createStatement();
+            String stringGet = "SELECT * FROM charlie.schedules WHERE scheduleDate = '" + date + "';";
+
+            statement.executeQuery(stringGet);
+            ResultSet result = statement.getResultSet();
+            Schedule schedule = new Schedule();
+
+            if (result.next() != false) {
+                
+                schedule.setScheduleId(result.getInt("scheduleId"));
+                schedule.setStart(result.getString("openingTime"));
+                schedule.setEnd(result.getString("closingTime"));
+                schedule.setScheduleDate(LocalDate.parse(result.getString("scheduleDate")));
+            } else {
+                schedule.setScheduleId(0);
+            }
+            return schedule;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public Schedule getSchedule(int index) {
         try {
             connection = getConnection();
@@ -97,13 +161,6 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
 
             statement.executeQuery(stringGet);
             ResultSet result = statement.getResultSet();
-
-
-            if (result.next() == false){
-                return new Schedule();
-            }
-
-
             result.next();
             Schedule schedule = new Schedule();
 
@@ -111,7 +168,6 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
             schedule.setStart(result.getString("openingTime"));
             schedule.setEnd(result.getString("closingTime"));
             schedule.setScheduleDate(LocalDate.parse(result.getString("scheduleDate")));
-
 
             return schedule;
 
@@ -141,6 +197,8 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
             while (result.next()) {
                 Schedule schedule = new Schedule();
                 schedule.setScheduleId(result.getInt("scheduleId"));
+                LOGGER.info(result.getString("scheduleId"));
+                LOGGER.info(result.getString("openingTime"));
                 schedule.setStart((result.getString("openingTime")));
                 schedule.setEnd(result.getString("closingTime"));
                 schedule.setScheduleDate(LocalDate.parse(result.getString("scheduleDate")));

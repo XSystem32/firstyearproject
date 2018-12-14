@@ -52,9 +52,9 @@ public class ScheduleController {
     }
 
     @RequestMapping(value = "/schedule/displaySchedule", method = RequestMethod.GET)
-    public String displaySchedule(@RequestParam(name = "id") String id, Model model) {
-        LOGGER.info("displaySchedule action called... " + id);
-        model.addAttribute("schedule", scheduleService.getSchedule(Integer.parseInt(id)));
+    public String displaySchedule(@RequestParam(name = "date") String date, Model model) {
+        LOGGER.info("displaySchedule action called... " + date);
+        model.addAttribute("schedule", scheduleService.getScheduleByDate(date));
         return DISPLAY_SCHEDULE;
     }
 }

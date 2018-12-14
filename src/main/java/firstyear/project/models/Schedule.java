@@ -1,12 +1,18 @@
 package firstyear.project.models;
 
+import org.apache.tomcat.jni.Local;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
 public class Schedule {
 
+
+
     private int scheduleId;
+    @DateTimeFormat(pattern = "HH:mm:ss")
     private LocalTime openingTime;
     private LocalTime closingTime;
     private LocalDate scheduleDate;
@@ -50,7 +56,12 @@ public class Schedule {
         this.openingTime = openingTime;
     }
     public void setStart(String start){
-        this.openingTime = LocalTime.parse(start);
+        if (start == null){
+            this.openingTime = LocalTime.of(0,0,0);
+        } else {
+            this.openingTime = LocalTime.parse(start);
+        }
+
     }
 
     public LocalTime getClosingTime() {
@@ -61,7 +72,15 @@ public class Schedule {
         this.closingTime = closingTime;
     }
     public void setEnd(String end){
-        this.closingTime = LocalTime.parse(end);
+        if (end == null){
+             this.closingTime = LocalTime.of(0,0,0);
+        } else {
+            this.closingTime = LocalTime.parse(end);
+        }
+
+    }
+    public void setClosingTime(int hour, int minute){
+        this.closingTime = LocalTime.of(hour, minute);
     }
 
     public List<Shift> getShifts() {

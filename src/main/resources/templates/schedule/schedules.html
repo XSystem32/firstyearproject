@@ -52,7 +52,7 @@
         <div class="day" th:each="schedule : ${schedules}">
             <input type="hidden" th:text="${schedule.scheduleId}" >
             <p th:text="${schedule.scheduleDate.dayOfMonth}" />
-            <span th:text="${schedule.openingTime} " /><a th:href="@{/schedule/displaySchedule(id=${schedule.scheduleId})}" class="blocklink">-</a>
+            <span th:text="${schedule.openingTime} " /><a th:href="@{/schedule/displaySchedule(date=${schedule.scheduleDate})}" class="blocklink">-</a>
             <span th:text="${schedule.closingTime} " />
 
 

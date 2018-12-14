@@ -1,5 +1,6 @@
 package firstyear.project.services;
 
+import firstyear.project.controllers.salesOverviewController.SalesOverviewController;
 import firstyear.project.models.Schedule;
 import firstyear.project.repositories.scheduleRepo.ScheduleRepo;
 import firstyear.project.repositories.scheduleRepo.ScheduleRepoImpl;
@@ -13,11 +14,16 @@ import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Logger;
+
 @Service
 public class ScheduleService implements ScheduleRepo {
 
     @Autowired
     ScheduleRepoImpl scheduleRepo;
+
+    private static final Logger LOGGER = Logger.getLogger(SalesOverviewController.class.getName());
+
 
     @Override
     public boolean createSchedule(Schedule schedule) {
@@ -39,8 +45,17 @@ public class ScheduleService implements ScheduleRepo {
 
     @Override
     public Schedule getSchedule(int index) {
-
         Schedule schedule = scheduleRepo.getSchedule(index);
+        return schedule;
+    }
+    public Schedule getScheduleByDate(String date) {
+        LOGGER.info("getScheduleByDate was called with: " + date);
+        Schedule schedule = scheduleRepo.getScheduleByDate(date);
+
+
+        if (schedule.getScheduleId() == 0) {
+            schedule = scheduleRepo.createScheduleFromDate(date);
+        }
 
         return schedule;
     }
