@@ -10,33 +10,52 @@
 
     *{
         font-family: Arial;
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background: #af2b31;
     }
     #calendar{
-        background: green;
-        width: 700px;
+        background: white;
+    }
+    #wrapper{
+        width: 80%;
+        margin: 0 auto;
     }
 
     .day{
-        background: darkgreen;
-        width: 98px;
-        height: 98px;
+        background: white;
+        width: 14%;
+        height: 150px;
         float: left;
         border: 1px solid black;
     }
     #calendarHead div{
-        background: red;
-        height: 50px;
+        background: #af2b31;
+        color: white;
+        height: 35px;
+        font-size: 150%;
         font-weight: bold;
+        border-left: 1px solid #af2b31;
+        border-right: 1px solid #af2b31;
+        border-top: none;
+
     }
     .blocklink{
         display: block;
+        height: 100%;
+        width: 100%;
+    }
+    .shift {
+        background: #a4fff9;
     }
 
 
 </style>
 
 
-<div class="wrapper">
+<div id="wrapper">
 
     <div id="calendar">
         <span id="calendarHead">
@@ -51,11 +70,17 @@
 
         <div class="day" th:each="schedule : ${schedules}">
             <input type="hidden" th:value="${schedule.scheduleId}" />
+            <a th:href="@{/schedule/displaySchedule(date=${schedule.scheduleDate})}" class="blocklink">
             <p th:text="${schedule.scheduleDate.dayOfMonth}" />
-            <span th:text="${schedule.openingTime} " /><a th:href="@{/schedule/displaySchedule(date=${schedule.scheduleDate})}" class="blocklink">-</a>
-            <span th:text="${schedule.closingTime} " />
 
 
+            <div class="shift">
+
+                <span th:text="${schedule.openingTime} " />
+                <span th:text="${schedule.closingTime} " />
+
+            </div>
+            </a>
 
         </div>
 

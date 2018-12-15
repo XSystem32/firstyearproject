@@ -3,18 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Schedule</title>
+
+    <style>
+
+        *{
+            font-family: Arial;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #af2b31;
+        }
+        #calendar{
+            background: white;
+        }
+        #wrapper{
+            width: 80%;
+            margin: 0 auto;
+            background: white;
+        }
+
+        .day{
+            background: white;
+            width: 14%;
+            height: 150px;
+            float: left;
+            border: 1px solid black;
+        }
+        #calendarHead div{
+            background: #af2b31;
+            color: white;
+            height: 35px;
+            font-size: 150%;
+            font-weight: bold;
+            border-left: 1px solid #af2b31;
+            border-right: 1px solid #af2b31;
+            border-top: none;
+
+        }
+        .blocklink{
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+        .shift {
+            background: #a4fff9;
+        }
+
+
+
+    </style>
 </head>
 <body>
+<div id="wrapper">
+    <input type="hidden" th:value="${schedule.scheduleId}"  />
+    <p th:text="${schedule.scheduleDate.dayOfMonth}" />
 
-<input type="hidden" th:text="${schedule.scheduleId}"  />
-<p th:text="${schedule.scheduleDate.dayOfMonth}" />
-<span th:text="${schedule.openingTime} " /><a th:href="@{/schedule/displaySchedule(id=${schedule.scheduleId})}" class="blocklink">-</a>
-<span th:text="${schedule.closingTime} " />
+    Opening hours:
+    <span th:text="${schedule.openingTime} " />
+    <span th:text="${schedule.closingTime} " />
+    <br />
 
-<a th:href="@{/schedule/deleteSchedule(id=${schedule.scheduleId})}">Delete this schedule</a>
+    <a th:href="@{/schedule/deleteSchedule(id=${schedule.scheduleId})}">Delete this schedule</a>
 
 
-
+</div>
 
 </body>
 </html>
