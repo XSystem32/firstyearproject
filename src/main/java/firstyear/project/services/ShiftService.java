@@ -3,12 +3,17 @@ package firstyear.project.services;
 
 import firstyear.project.models.Shift;
 import firstyear.project.repositories.shiftRepo.ShiftRepo;
+import firstyear.project.repositories.shiftRepo.ShiftRepoImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ShiftService implements ShiftRepo {
+
+    @Autowired
+    ShiftRepoImpl shiftRepo;
 
     @Override
     public boolean createShift(Shift shift) {
@@ -32,7 +37,7 @@ public class ShiftService implements ShiftRepo {
     }
 
     @Override
-    public List<Shift> getShifts() {
-        return null;
+    public List<Shift> getShifts(int scheduleId) {
+        return shiftRepo.getShifts(scheduleId);
     }
 }

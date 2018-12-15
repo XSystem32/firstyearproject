@@ -8,17 +8,17 @@ public class Shift {
     private LocalTime start;
     private LocalTime end;
     private User user;
-    private Schedule schedule;
+    private int scheduleId;
 
     public Shift() {
     }
 
-    public Shift(int shiftId, LocalTime start, LocalTime end, User user, Schedule schedule) {
+    public Shift(int shiftId, LocalTime start, LocalTime end, User user, int schedule) {
         this.shiftId = shiftId;
         this.start = start;
         this.end = end;
         this.user = user;
-        this.schedule = schedule;
+        this.scheduleId = schedule;
     }
 
     public int getShiftId() {
@@ -53,12 +53,12 @@ public class Shift {
         this.user = user;
     }
 
-    public Schedule getSchedule() {
-        return schedule;
+    public int getScheduleId() {
+        return scheduleId;
     }
 
-    public void setSchedule(Schedule schedule) {
-        this.schedule = schedule;
+    public void setScheduleId(int scheduleId) {
+        this.scheduleId = scheduleId;
     }
 
     public void setStart(String start){
@@ -76,7 +76,7 @@ public class Shift {
                 ", start=" + start +
                 ", end=" + end +
                 ", user=" + user +
-                ", schedule=" + schedule +
+                ", scheduleId=" + scheduleId +
                 '}';
     }
 }

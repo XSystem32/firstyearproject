@@ -1,9 +1,11 @@
 package firstyear.project.controllers.scheduleController;
 
 import firstyear.project.models.Schedule;
+import firstyear.project.models.Shift;
 import firstyear.project.repositories.scheduleRepo.ScheduleRepo;
 import firstyear.project.repositories.shiftRepo.ShiftRepo;
 import firstyear.project.services.ScheduleService;
+import firstyear.project.services.ShiftService;
 import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,9 @@ public class ScheduleController {
 
     @Autowired
     ScheduleService scheduleService;
+
+    @Autowired
+    ShiftService shiftService;
 
     private static final Logger LOGGER = Logger.getLogger(ScheduleController.class.getName());
 
@@ -55,7 +60,13 @@ public class ScheduleController {
     @RequestMapping(value = "/schedule/displaySchedule", method = RequestMethod.GET)
     public String displaySchedule(@RequestParam(name = "date") String date, Model model) {
         LOGGER.info("displaySchedule action called... " + date);
-        model.addAttribute("schedule", scheduleService.getScheduleByDate(date));
+        Schedule schedule = scheduleService.getScheduleByDate(date);
+
+        model.addAttribute("schedule", schedule);
+
+        List<Shift> shifts = shiftService.getShifts(schedule.getScheduleId());
+
+
         return DISPLAY_SCHEDULE;
     }
 

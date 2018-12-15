@@ -12,6 +12,6 @@ public interface ShiftRepo {
     boolean deleteShift(int index);
     boolean updateShift(Shift shift);
     Shift getShift(int index);
-    List<Shift> getShifts();
+    List<Shift> getShifts(int scheduleId);
 
 }
