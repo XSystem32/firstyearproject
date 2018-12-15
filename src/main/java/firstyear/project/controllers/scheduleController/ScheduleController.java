@@ -31,6 +31,7 @@ public class ScheduleController {
 
     private final String SCHEDULES = "schedule/schedules.html";
     private final String DISPLAY_SCHEDULE = "schedule/displaySchedule.html";
+    private final String REDIRECT_INDEX = "redirect:/schedule";
 
     @RequestMapping("/schedule")
     public String index (Model model) {
@@ -57,4 +58,14 @@ public class ScheduleController {
         model.addAttribute("schedule", scheduleService.getScheduleByDate(date));
         return DISPLAY_SCHEDULE;
     }
+
+    @RequestMapping(value = "/schedule/deleteSchedule", method = RequestMethod.GET)
+    public String deleteSchedule(@RequestParam(name = "id") String id, Model model) {
+        LOGGER.info("deleteSchedule action called... " + id);
+        scheduleService.deleteSchedule(Integer.parseInt(id));
+        return REDIRECT_INDEX;
+    }
+
+
+
 }

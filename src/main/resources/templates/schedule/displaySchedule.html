@@ -6,10 +6,14 @@
 </head>
 <body>
 
-<input type="hidden" th:text="${schedule.scheduleId}" >
-<!--  <p th:text="${schedule.scheduleDate.dayOfMonth}" /> -->
+<input type="hidden" th:text="${schedule.scheduleId}"  />
+<p th:text="${schedule.scheduleDate.dayOfMonth}" />
 <span th:text="${schedule.openingTime} " /><a th:href="@{/schedule/displaySchedule(id=${schedule.scheduleId})}" class="blocklink">-</a>
 <span th:text="${schedule.closingTime} " />
+
+<a th:href="@{/schedule/deleteSchedule(id=${schedule.scheduleId})}">Delete this schedule</a>
+
+
 
 
 </body>

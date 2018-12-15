@@ -74,7 +74,7 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringDelete = "DELETE FROM charlie.schedule  WHERE scheduleId =" + index + ";";
+            String stringDelete = "DELETE FROM charlie.schedules WHERE scheduleId =" + index + ";";
             statement.execute(stringDelete);
 
 

@@ -42,7 +42,6 @@ public class SalesOverviewController {
         LocalDate end = LocalDate.now();
         LocalDate start = end.minusMonths(1);
 
-        System.out.println(start);
         List<SalesOverview> salesOverviews = salesOverviewService.getSalesOverviews(LocalDate.from(start) ,LocalDate.now());
         model.addAttribute("salesoverviews", salesOverviews);
         return INDEX;
