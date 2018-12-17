@@ -3,8 +3,11 @@ package firstyear.project.repositories.scheduleRepo;
 import firstyear.project.controllers.salesOverviewController.SalesOverviewController;
 import firstyear.project.models.SalesOverview;
 import firstyear.project.models.Schedule;
+import firstyear.project.models.Shift;
 import firstyear.project.repositories.JdbcFix;
+import firstyear.project.services.ShiftService;
 import org.apache.tomcat.jni.Local;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
@@ -19,7 +22,10 @@ import java.util.logging.Logger;
 @Repository
 public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
 
-    private static final Logger LOGGER = Logger.getLogger(SalesOverviewController.class.getName());
+    @Autowired
+    ShiftService shiftService;
+
+    private static final Logger LOGGER = Logger.getLogger(ScheduleRepoImpl.class.getName());
 
     public boolean createSchedule(Schedule schedule) {
         try {
@@ -41,6 +47,7 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
     }
 
     public Schedule createScheduleFromDate(String date) {
+        LOGGER.info("createScheduleFromDate was called with date " + date);
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
@@ -58,7 +65,7 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
             schedule.setScheduleId(result.getInt(1));
             schedule.setScheduleDate(LocalDate.parse(date));
 
-            statement.execute(stringInsert);
+            
 
             return schedule;
         } catch (Exception e) {
@@ -119,7 +126,7 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
     }
 
     public Schedule getScheduleByDate(String date) {
-        LOGGER.info("getScheduleByDate was called with: " + date);
+        LOGGER.info("repo getScheduleByDate was called with: " + date);
         try {
             connection = getConnection();
 
@@ -131,12 +138,13 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
             Schedule schedule = new Schedule();
 
             if (result.next() != false) {
-
+                LOGGER.info("Creating the object as intended");
                 schedule.setScheduleId(result.getInt("scheduleId"));
                 schedule.setStart(result.getString("openingTime"));
                 schedule.setEnd(result.getString("closingTime"));
                 schedule.setScheduleDate(LocalDate.parse(result.getString("scheduleDate")));
             } else {
+                LOGGER.info("returning a dummy with ID 0 since none was found.");
                 schedule.setScheduleId(0);
             }
             return schedule;
@@ -189,20 +197,26 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringGet = "SELECT * FROM charlie.schedules WHERE scheduleDate BETWEEN '" + start + "' AND '" + end + "' ORDER by scheduleDate asc;";
+            String stringGet =
+                    "SELECT * FROM charlie.schedules " +
+                    "LEFT JOIN charlie.shifts ON charlie.schedules.scheduleId = charlie.shifts.scheduleId WHERE scheduleDate BETWEEN '" + start + "' AND '" + end + "'" +
+            "ORDER by scheduleDate asc;";
+
+
 
             System.out.println(stringGet);
             statement.executeQuery(stringGet);
             ResultSet result = statement.getResultSet();
 
+            int lastId = 0;
+
             while (result.next()) {
                 Schedule schedule = new Schedule();
                 schedule.setScheduleId(result.getInt("scheduleId"));
-                LOGGER.info(result.getString("scheduleId"));
-                LOGGER.info(result.getString("openingTime"));
                 schedule.setStart((result.getString("openingTime")));
                 schedule.setEnd(result.getString("closingTime"));
                 schedule.setScheduleDate(LocalDate.parse(result.getString("scheduleDate")));
+                schedule.setShifts(shiftService.getShifts(result.getInt("scheduleId")));
                 schedules.add(schedule);
             }
             return schedules;

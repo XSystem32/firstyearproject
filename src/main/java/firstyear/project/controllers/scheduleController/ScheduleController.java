@@ -62,9 +62,10 @@ public class ScheduleController {
         LOGGER.info("displaySchedule action called... " + date);
         Schedule schedule = scheduleService.getScheduleByDate(date);
 
+
         model.addAttribute("schedule", schedule);
 
-        List<Shift> shifts = shiftService.getShifts(schedule.getScheduleId());
+        //List<Shift> shifts = shiftService.getShifts(schedule.getScheduleId());
 
 
         return DISPLAY_SCHEDULE;

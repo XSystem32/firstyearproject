@@ -22,7 +22,7 @@ public class ScheduleService implements ScheduleRepo {
     @Autowired
     ScheduleRepoImpl scheduleRepo;
 
-    private static final Logger LOGGER = Logger.getLogger(SalesOverviewController.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ScheduleService.class.getName());
 
 
     @Override
@@ -49,12 +49,14 @@ public class ScheduleService implements ScheduleRepo {
         return schedule;
     }
     public Schedule getScheduleByDate(String date) {
-        LOGGER.info("getScheduleByDate was called with: " + date);
+        LOGGER.info("service getScheduleByDate was called with: " + date);
         Schedule schedule = scheduleRepo.getScheduleByDate(date);
 
-
         if (schedule.getScheduleId() == 0) {
+            LOGGER.fine("Attempts to create a new schedule since none existed on " + date);
             schedule = scheduleRepo.createScheduleFromDate(date);
+        } else {
+            LOGGER.fine("the ID was " + schedule.getScheduleId() + " something probably went wrong.");
         }
 
         return schedule;
