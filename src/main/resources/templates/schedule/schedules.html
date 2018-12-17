@@ -74,10 +74,10 @@
             <p th:text="${schedule.scheduleDate.dayOfMonth}" />
 
 
-            <div class="shift">
+            <div th:each="shift : ${schedule.shifts}"  class="shift">
 
-                <span th:text="${schedule.openingTime} " />
-                <span th:text="${schedule.closingTime} " />
+                <span th:text="${shift.start} " />
+                <span th:text="${shift.end} " />
 
             </div>
             </a>

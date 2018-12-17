@@ -34,7 +34,6 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
 
             String stringInsert = "INSERT INTO charlie.schedule VALUE (default, '" + schedule.getOpeningTime() + "', " + schedule.getClosingTime() + ", " + schedule.getShifts() + "," + schedule.getBookings() + "); ";
 
-            System.out.println(stringInsert);
             statement.execute(stringInsert);
 
             return true;
@@ -65,7 +64,7 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
             schedule.setScheduleId(result.getInt(1));
             schedule.setScheduleDate(LocalDate.parse(date));
 
-            
+
 
             return schedule;
         } catch (Exception e) {
@@ -108,7 +107,7 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
                     "', shifts='" + schedule.getShifts() + "" +
                     "',bookings='" + schedule.getBookings() + "'" +
                     " WHERE ScheduleId = " + schedule.getScheduleId() + ";";
-            System.out.println(stringUpdate);
+
             statement.execute(stringUpdate);
 
         } catch (Exception e) {
@@ -193,31 +192,40 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
     }
 
     public List<Schedule> getSchedules(LocalDate start, LocalDate end) {
+        LOGGER.info("getSchedules was called with " + start + " and " + end);
         List<Schedule> schedules = new ArrayList<>();
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
             String stringGet =
                     "SELECT * FROM charlie.schedules " +
-                    "LEFT JOIN charlie.shifts ON charlie.schedules.scheduleId = charlie.shifts.scheduleId WHERE scheduleDate BETWEEN '" + start + "' AND '" + end + "'" +
-            "ORDER by scheduleDate asc;";
+                    "LEFT JOIN charlie.shifts ON charlie.schedules.scheduleId = charlie.shifts.scheduleId " +
+                    "LEFT JOIN charlie.users ON charlie.shifts.userId = charlie.users.userId " +
+                    "WHERE scheduleDate BETWEEN '" + start + "' AND '" + end + "'" +
+                    "ORDER by scheduleDate asc;";
 
+            LOGGER.info(stringGet  + " was the SQL line used.");
 
-
-            System.out.println(stringGet);
             statement.executeQuery(stringGet);
             ResultSet result = statement.getResultSet();
 
-            int lastId = 0;
+            String lastDate = "";
+            Schedule schedule = new Schedule();
 
             while (result.next()) {
-                Schedule schedule = new Schedule();
-                schedule.setScheduleId(result.getInt("scheduleId"));
-                schedule.setStart((result.getString("openingTime")));
-                schedule.setEnd(result.getString("closingTime"));
-                schedule.setScheduleDate(LocalDate.parse(result.getString("scheduleDate")));
-                schedule.setShifts(shiftService.getShifts(result.getInt("scheduleId")));
+
+                if (result.getString("scheduleDate") != lastDate){
+                    schedule = createSchedule(result);
+                    if (result.getString("shiftId") != null) {
+                        schedule.addShift(result);
+                    }
+
+                    lastDate = schedule.getScheduleDate().toString();
+                } else {
+                    schedule.addShift(result);
+                }
                 schedules.add(schedule);
+
             }
             return schedules;
 
@@ -233,4 +241,14 @@ public class ScheduleRepoImpl extends JdbcFix implements ScheduleRepo {
         }
 
     }
+    private Schedule createSchedule(ResultSet result) throws SQLException{
+        Schedule schedule = new Schedule();
+        schedule.setScheduleId(result.getInt("scheduleId"));
+        schedule.setStart((result.getString("openingTime")));
+        schedule.setEnd(result.getString("closingTime"));
+        schedule.setScheduleDate(LocalDate.parse(result.getString("scheduleDate")));
+        schedule.setShifts(shiftService.getShifts(result.getInt("scheduleId")));
+        return schedule;
+    }
+
 }

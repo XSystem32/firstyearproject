@@ -3,6 +3,8 @@ package firstyear.project.models;
 import org.apache.tomcat.jni.Local;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -99,6 +101,13 @@ public class Schedule {
         this.bookings = bookings;
     }
 
+    public void addShift(ResultSet result) throws SQLException {
+        Shift shift = new Shift();
+        shift.setShiftId(result.getInt("shiftId"));
+        shift.setStart(result.getString("start"));
+        shift.setEnd(result.getString("end"));
+        shift.setScheduleId(result.getInt("scheduleId"));
+    }
 
     @Override
     public String toString() {

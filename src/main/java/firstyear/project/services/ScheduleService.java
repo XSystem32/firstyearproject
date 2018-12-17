@@ -77,6 +77,7 @@ public class ScheduleService implements ScheduleRepo {
     }
 
     public List<Schedule> populateMonth(LocalDate start, LocalDate end){
+        LOGGER.info("populate month was called with: " + start + " and " + end);
         // This method makes the empty schedule days that are in between the ones saved in the database.
         LinkedList<Schedule> existingSchedules = getLinkedListSchedules(start, end);
         List<Schedule> schedules = new ArrayList<>();
