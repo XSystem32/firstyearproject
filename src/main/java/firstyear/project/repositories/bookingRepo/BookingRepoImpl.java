@@ -26,7 +26,7 @@ public class BookingRepoImpl extends JdbcFix implements BookingRepo {
                     ","+ booking.getBandEmail()+
                     ",'"+booking.getBandPhone()+
                     "','"+booking.getContactName()+
-                    "',"+booking.getWebsite()+"); ";
+                    "',"+booking.getWebsite()+"'); ";
 
             System.out.println(stringInsert);
             statement.execute(stringInsert);
