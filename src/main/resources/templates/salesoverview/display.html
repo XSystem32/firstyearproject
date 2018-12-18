@@ -6,25 +6,26 @@
 
     <style>
 
+
         *{
             font-family: arial;
         }
 
-        .wrapper{
-            padding: 0 15px 15px 15px;
-            background: #FFFFFF;
-        }
+
 
         a, a:visited, a:hover, a:active{
-            font-size: 30px;
             color: black;
             text-decoration: none;
         }
         .wrapper{
             width: 80%;
-            margin: 0 auto;
+            margin: 50px auto;
         }
-
+        #commentDiv{
+            background: #eacec9;
+            border: 2px solid #af2b31;
+            padding: 15px;
+        }
         table.displayTable {
             border: 2px solid #af2b31;
             background-color: #fdf8ff;
@@ -65,11 +66,41 @@
             text-align: center;
             border-left: 2px solid #af2b31;
         }
+        /* The navigation bar */
+        .navbar {
+            margin-left: -8px;
+            overflow: hidden;
+            background-color: #333;
+            position: fixed; /* Set the navbar to fixed position */
+            top: 0; /* Position the navbar at the top of the page */
+            width: 100%; /* Full width */
+        }
+
+        /* Links inside the navbar */
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        /* Change background on mouse-over */
+        .navbar a:hover {
+            background: #ddd;
+            color: black;
+        }
 
     </style>
 
 </head>
 <body>
+<div class="navbar">
+    <a href="/salesoverview">Sales Overviews</a>
+    <a href="/schedule/">Work schedule</a>
+    <a href="/user/displayUsers">Users</a>
+</div>
 <div class="wrapper">
 
     <table class="displayTable">
@@ -80,7 +111,6 @@
             <th>Cash</th>
             <th>Till</th>
             <th>Vault</th>
-            <th>Comment</th>
             <th></th>
             <th></th>
         </tr>
@@ -95,7 +125,7 @@
             <td th:text="${salesoverview.cash}"/>
             <td th:text="${salesoverview.till}"/>
             <td th:text="${salesoverview.vault}"/>
-            <td th:text="${salesoverview.comment}"/>
+
 
 
             <td><a th:href="@{/deleteSalesOverview(id=${salesoverview.salesOverviewId})}"> Delete </a> </td>
@@ -103,6 +133,11 @@
         </tr>
         </tbody>
     </table>
+
+    <div id="commentDiv"  >
+        <h3>Comment:</h3>
+        <p th:text="${salesoverview.comment}" />
+    </div>
 
 </div>
 

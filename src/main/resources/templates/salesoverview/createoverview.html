@@ -6,7 +6,31 @@
 
 
     <style>
+        /* The navigation bar */
+        .navbar {
+            margin-left: -8px;
+            overflow: hidden;
+            background-color: #333;
+            position: fixed; /* Set the navbar to fixed position */
+            top: 0; /* Position the navbar at the top of the page */
+            width: 100%; /* Full width */
+        }
 
+        /* Links inside the navbar */
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        /* Change background on mouse-over */
+        .navbar a:hover {
+            background: #ddd;
+            color: black;
+        }
         * {
             font-family: Arial;
         }
@@ -58,8 +82,8 @@
 
         input[type=submit] {
             width: 15%;
-            background-color: #af2b31;
-            color: white;
+            background-color: #FFFFFF;
+            color: black;
             padding: 14px 20px;
             margin: 8px 0;
             border: none;
@@ -72,23 +96,19 @@
             background-color: #c03131;
         }
 
-        div {
-            width: 80%;
-            height: 80%;
-            border-radius: 5px;
-            background-color: #e8e8e8;
-            padding: 15px;
-            margin: 10px;
-        }
-        div
-
 
     </style>
 
 </head>
 <body>
+<div class="navbar">
+    <a href="/salesoverview">Sales Overviews</a>
+    <a href="/schedule/">Work schedule</a>
+    <a href="/user/displayUsers">Users</a>
+</div>
 
 <div class="wrapper">
+
 
     <form method="post" th:action="@{/saveSalesOverview}" th:object="${salesoverview}"  >
 
