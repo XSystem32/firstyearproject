@@ -31,7 +31,7 @@ public class SalesOverviewController {
 
 
 
-    @GetMapping("/salesoverview/index.html")
+    @GetMapping("/salesoverview")
     public String index (Model model) {
         LOGGER.info("index was called");
 
