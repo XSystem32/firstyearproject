@@ -3,9 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>User</title>
+    <style>
+        *{
+            font-family: arial;
+        }
+        #wrapper{
+            margin: 50px auto;
+            width: 80%;
+            background: #FFFFFF;
+        }
+        body{
+            background: #af2b31;
+        }
+
+        /* The navigation bar */
+        .navbar {
+            margin-left: -8px;
+            overflow: hidden;
+            background-color: #333;
+            position: fixed; /* Set the navbar to fixed position */
+            top: 0; /* Position the navbar at the top of the page */
+            width: 100%; /* Full width */
+        }
+
+        /* Links inside the navbar */
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        /* Change background on mouse-over */
+        .navbar a:hover {
+            background: #ddd;
+            color: black;
+        }
+    </style>
 </head>
 <body>
-<div class="wrapper">
+<div class="navbar">
+    <a href="/salesoverview">Sales Overviews</a>
+    <a href="/schedule/">Work schedule</a>
+    <a href="/user/displayUsers">Users</a>
+</div>
+<div id="wrapper">
 
     <div class="col-md-12" >
         <h1 class="headline" > <p  th:text="${user.fullName}" />   </h1>
