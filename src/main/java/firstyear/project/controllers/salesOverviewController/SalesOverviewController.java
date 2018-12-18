@@ -23,9 +23,7 @@ public class SalesOverviewController {
 
     private final String INDEX = "salesoverview/index.html";
     private final String CREATEOVERVIEW = "salesoverview/createoverview.html";
-    private final String SALESOVERVIEWS = "index.html";
-    private final String REDIRECT_SALESOVERVIEW = "redirect:/salesoverview/index.html";
-    private final String DELETESALEOVERVIEW = "deleteSalesOverview";
+    private final String REDIRECT_SALESOVERVIEW = "redirect:/salesoverview";
     private final String UPDATESALESOVERVIEW = "salesoverview/update.html";
     private final String DISPLAYSALESOVERVIEW = "salesoverview/display.html";
 
@@ -48,7 +46,7 @@ public class SalesOverviewController {
     }
 
 
-    @GetMapping("salesoverview/createoverview.html")
+    @GetMapping("salesoverview/createoverview")
     public String create(Model model, SalesOverview dateConverter) {
         LOGGER.info("create was called... ");
         model.addAttribute("salesoverview", new SalesOverview());
@@ -81,7 +79,7 @@ public class SalesOverviewController {
 
     @RequestMapping("/updateSalesOverviewSubmit")
     public String updateSalesOverview(@ModelAttribute SalesOverview salesOverview) {
-        LOGGER.info("updateSalesOverview was called");
+        LOGGER.info("updateSalesOverviewSubmit was called");
         salesOverviewService.updateSalesOverview(salesOverview);
         return REDIRECT_SALESOVERVIEW;
     }

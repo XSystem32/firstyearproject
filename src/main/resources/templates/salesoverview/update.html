@@ -88,6 +88,9 @@
 
     <form method="post" action="#" th:action="@{/updateSalesOverviewSubmit}" th:object="${salesoverview}"  >
 
+        <input type="hidden" th:field=="*{salesOverviewId}" th:value="*{salesOverviewId}">
+
+
         <div class="block">
             <label>Date</label>
             <input type="date" id="date" name="date" th:field="*{date}"/>
