@@ -107,6 +107,15 @@ public class Schedule {
         shift.setStart(result.getString("start"));
         shift.setEnd(result.getString("end"));
         shift.setScheduleId(result.getInt("scheduleId"));
+        User user = new User();
+        user.setUserId(result.getInt("userId"));
+        user.setFullName(result.getString("fullName"));
+        user.setPassword(result.getString("userPassword"));
+        user.setUsername(result.getString("username"));
+        user.setClearance(result.getInt("clearance"));
+
+        shift.setUser(user);
+        shifts.add(shift);
     }
 
     @Override
