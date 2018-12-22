@@ -23,74 +23,24 @@ a, a:visited, a:hover, a:active{
     text-decoration: none;
 }
 
-
-
-#buttonLink{
-
+#menu{
+    margin: 5px 0 5px 0;
+}
+#menu a{
     padding: 5px;
     color: white;
     border: 2px solid #af2b31;
     background-color: #af2b31;
     border-radius: 7px;
 }
-
-#buttonLink:hover{
+#menu a:hover{
     background: #cd3038;
-
 }
 
-#menu{
-    margin: 5px 0 5px 0;
-}
-.blocklink{
+.blockLink{
     display: block;
 }
 
-.headline{
-    font-size: 70px;
-    text-align: center;
-}
-
-table.redTable {
-    border: 2px solid #af2b31;
-    background-color: #fdf8ff;
-    width: 100%;
-    text-align: center;
-    border-collapse: collapse;
-
-}
-table.redTable td, table.redTable th {
-    border: 1px solid #AAAAAA;
-    padding: 3px 2px;
-}
-
-table.redTable tbody td {
-    font-size: 20px;
-}
-.redTable tbody{
-    background: #eacec9;
-}
-
-table.redTable tr:nth-child(even) {
-    background: #f5e2df;
-}
-
-
-table.redTable tbody tr:hover {
-    background: #fff1ef;;
-}
-
-table.redTable thead {
-    background: #af2b31;
-}
-
-table.redTable thead th {
-    font-size: 20px;
-    font-weight: bold;
-    color: #FFFFFF;
-    text-align: center;
-    border-left: 2px solid #af2b31;
-}
 /* The navigation bar */
 .navbar {
     margin-left: -8px;

@@ -7,29 +7,20 @@
 </head>
 <body>
 
-
-
 <div class="navbar">
     <a href="/salesoverview">Sales Overviews</a>
     <a href="/schedule/">Work schedule</a>
     <a href="/user/displayUsers">Users</a>
 </div>
+
 <div id="wrapper">
+    <h1>Sales overviews</h1>
 
-    <div class="col-md-12">
-        <h1 class="headline">Sales overview</h1>
-        <h2 th:text="${currentMonth.month}"  />
-    </div>
-
-    <div type=""></div>
-    <br>
     <div id="menu">
-    <a href="/salesoverview/createoverview" id="buttonLink">Create Sales Overview</a>
+    <a href="/salesoverview/createoverview">Create Sales Overview</a>
     </div>
-
-
-    <br>
-    <table class="redTable">
+    
+    <table>
         <thead>
         <tr>
             <th>Date</th>
@@ -61,9 +52,7 @@
             <td><a th:href="@{/deleteSalesOverview(id=${salesoverview.salesOverviewId})}"> &#10006; </a> </td>
             <td><a th:href="@{/updateSalesOverview(id=${salesoverview.salesOverviewId})}"> <img src="https://image.flaticon.com/icons/svg/61/61456.svg" width="20" height="35"> </a> </td>
 
-
         </tbody>
-
     </table>
 
 </div>
