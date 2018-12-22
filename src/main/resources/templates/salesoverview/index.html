@@ -19,38 +19,36 @@
     <div id="menu">
     <a href="/salesoverview/createoverview">Create Sales Overview</a>
     </div>
-    
+
     <table>
         <thead>
-        <tr>
-            <th>Date</th>
-            <th>Card</th>
-            <th>Cash</th>
-            <th>Till</th>
-            <th>Vault</th>
+            <th class="slim">Date</th>
+            <th class="slim">Card</th>
+            <th class="slim">Cash</th>
+            <th class="slim">Till</th>
+            <th class="slim">Vault</th>
             <th>Comment</th>
-            <th>Total</th>
+            <th class="slim">Total</th>
             <th></th>
             <th></th>
-        </tr>
         </thead>
 
         <tbody>
 
         <tr th:each="salesoverview : ${salesoverviews}" >
 
-            <td>
+            <td class="alignCenter">
                 <a th:href="@{/displaySalesOverview(id=${salesoverview.salesOverviewId})}" > <p th:text="${salesoverview.date}"/> </a>
             </td>
-            <td th:text="${salesoverview.credit}"/>
-            <td th:text="${salesoverview.cash}"/>
-            <td th:text="${salesoverview.till}"/>
-            <td th:text="${salesoverview.vault}"/>
+            <td class="alignRight" th:text="${salesoverview.credit}"/>
+            <td class="alignRight" th:text="${salesoverview.cash}"/>
+            <td class="alignRight" th:text="${salesoverview.till}"/>
+            <td class="alignRight" th:text="${salesoverview.vault}"/>
             <td id="comment" th:text="${salesoverview.comment}"/>
-            <td th:text="${salesoverview.total}"/>
+            <td class="alignRight" th:text="${salesoverview.total}"/>
 
-            <td><a th:href="@{/deleteSalesOverview(id=${salesoverview.salesOverviewId})}"> &#10006; </a> </td>
-            <td><a th:href="@{/updateSalesOverview(id=${salesoverview.salesOverviewId})}"> <img src="https://image.flaticon.com/icons/svg/61/61456.svg" width="20" height="35"> </a> </td>
+            <td class="alignCenter"><a th:href="@{/deleteSalesOverview(id=${salesoverview.salesOverviewId})}"> &#10006; </a> </td>
+            <td class="alignCenter"><a th:href="@{/updateSalesOverview(id=${salesoverview.salesOverviewId})}"> <img src="https://image.flaticon.com/icons/svg/61/61456.svg" width="20" height="35"> </a> </td>
 
         </tbody>
     </table>
