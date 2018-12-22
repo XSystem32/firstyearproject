@@ -3,7 +3,7 @@
     font-family: arial;
 }
 body {
-    background: #af2b31;
+    background: #c8c8ff;
 }
 a, a:visited, a:hover, a:active{
     color: black;
@@ -15,7 +15,7 @@ table {
     width:100%;
 }
 th {
-    background: #af2b31;
+    background: #6e6eff;
     color: white;
     font-weight: bold;
 }
@@ -24,13 +24,13 @@ td {
     padding: 0 10px 0 10px;
 }
 tr:nth-child(even) {
-    background: #FFFFFF;
+    background: #f5f5ff;
 }
 tr:nth-child(odd) {
-    background: #ffc8c8;
+    background: #ebebff;
 }
 tr:hover{
-    background: #FFFFFF;
+    background: #fafaff;
 }
 .slim{
     width:10%;
@@ -69,12 +69,12 @@ tr:hover{
 #menu a{
     padding: 5px;
     color: white;
-    border: 2px solid #af2b31;
-    background-color: #af2b31;
+    border: 2px solid #6e6eff;
+    background-color: #6e6eff;
     border-radius: 7px;
 }
 #menu a:hover{
-    background: #cd3038;
+    background: #6e6eff;
 }
 
 /* The navigation bar */
