@@ -1,12 +1,22 @@
-
+:root{
+    --color: #6e6eff;
+    --color-light1: #c8c8ff;
+    --color-light2: #d2d2ff;
+    --color-light3: #dcdcff;
+    --color-light4: #e6e6ff;
+    --color-light5: #f0f0ff;
+    --color-light6: #fafaff;
+    --color-lightest: #FFFFFF;
+    --color-darkest: #000000;
+}
 * {
     font-family: arial;
 }
 body {
-    background: #c8c8ff;
+    background: var(--color-light1);
 }
 a, a:visited, a:hover, a:active{
-    color: black;
+    color: var(--color-darkest);
     text-decoration: none;
 }
 
@@ -15,8 +25,8 @@ table {
     width:100%;
 }
 th {
-    background: #6e6eff;
-    color: white;
+    background: var(--color);
+    color: var(--color-lightest);
     font-weight: bold;
 }
 td {
@@ -24,13 +34,13 @@ td {
     padding: 0 10px 0 10px;
 }
 tr:nth-child(even) {
-    background: #f5f5ff;
+    background: var(--color-light4);
 }
 tr:nth-child(odd) {
-    background: #ebebff;
+    background: var(--color-light5);
 }
 tr:hover{
-    background: #fafaff;
+    background: var(--color-light6);
 }
 .slim{
     width:8%;
@@ -56,7 +66,7 @@ tr:hover{
 #wrapper{
     margin-top: 50px;
     padding: 0 15px 15px 15px;
-    background: #FFFFFF;
+    background: var(--color-lightest);
 }
 
 #comment {
@@ -71,13 +81,13 @@ tr:hover{
 }
 #menu a{
     padding: 5px;
-    color: white;
-    border: 2px solid #6e6eff;
-    background-color: #6e6eff;
+    color: var(--color-lightest);
+    border: 2px solid var(--color);
+    background-color:  var(--color);
     border-radius: 7px;
 }
 #menu a:hover{
-    background: #8585ff;
+    background: var(--color-light1);
 }
 
 /* The navigation bar */
