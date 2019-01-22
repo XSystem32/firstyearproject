@@ -42,11 +42,17 @@ tr:nth-child(odd) {
 tr:hover{
     background: var(--color-light6);
 }
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
 .slim{
     width:8%;
 }
 .slimmer{
     width:4%;
+}
+.inputPair{
+    padding: 25px;
 }
 
 .alignLeft{
@@ -61,6 +67,9 @@ tr:hover{
 
 .blockLink{
     display: block;
+}
+.floatLeft{
+    float: left;
 }
 
 #wrapper{
